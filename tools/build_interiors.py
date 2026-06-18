@@ -40,14 +40,21 @@ def compute(name):
     pa = np.array(prev)[..., 3]
     fa = np.array(furn.resize(prev.size))[..., 3]
     wall_top = WALL_TOP.get(name, 4)
+    # base: a tile is clear floor if it's inside, has no furniture, and isn't a wall edge
+    base = [[False]*tw for _ in range(th)]
+    for ty in range(th):
+        for tx in range(tw):
+            inside = tile_alpha(pa, tx, ty) > 0.55
+            has_furn = tile_alpha(fa, tx, ty) > 0.14   # stricter: catch more furniture
+            edge = tx < SIDE or tx >= tw-SIDE or ty < wall_top or ty >= th-BOTTOM
+            base[ty][tx] = inside and not has_furn and not edge
+    # erode: a citizen's body extends up ~1 tile, so the tile ABOVE the feet must
+    # also be clear floor — this keeps them off (and not overlapping) furniture.
     walk = []
     grid = [[False]*tw for _ in range(th)]
     for ty in range(th):
         for tx in range(tw):
-            inside = tile_alpha(pa, tx, ty) > 0.55
-            has_furn = tile_alpha(fa, tx, ty) > 0.22
-            edge = tx < SIDE or tx >= tw-SIDE or ty < wall_top or ty >= th-BOTTOM
-            if inside and not has_furn and not edge:
+            if base[ty][tx] and (ty == 0 or base[ty-1][tx]):
                 grid[ty][tx] = True
                 walk.append([tx, ty])
     # entry: a walkable tile nearest bottom-centre; door pixel at bottom-centre

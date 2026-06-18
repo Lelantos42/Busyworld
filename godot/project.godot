@@ -6,7 +6,7 @@ config_version=5
 [application]
 config/name="Busyworld"
 run/main_scene="res://scenes/Main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/description="A living pixel-art town inhabited by local AI citizens."
 boot_splash/show_image=false
 
@@ -15,8 +15,10 @@ GameConfig="*res://scripts/GameConfig.gd"
 Net="*res://scripts/Net.gd"
 
 [display]
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/size/resizable=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

@@ -198,7 +198,8 @@ func _build_interiors() -> void:
 		var idoor: DoorNode = DOOR_SCRIPT.new()
 		var dsheet := load("res://assets/doors/door_1.png") as Texture2D
 		if dsheet:
-			idoor.setup(dsheet)
+			idoor.setup(dsheet, 32, dsheet.get_height(), -1,
+				Vector2(-16, -float(dsheet.get_height())))   # anchor bottom-centre
 			idoor.position = origin + Vector2(float(info.door_px[0]), float(info.door_px[1]))
 			interiors_root.add_child(idoor)
 		interiors[place] = {
@@ -210,16 +211,15 @@ func _build_interiors() -> void:
 		i += 1
 
 func _make_ext_door(place: String, b: Dictionary) -> void:
-	var dtype := String(b.get("door_type", "door_1"))
-	var sheet := load("res://assets/doors/%s.png" % dtype) as Texture2D
-	if sheet == null:
-		sheet = load("res://assets/doors/door_1.png") as Texture2D
+	var da = b.get("door_anim", {})
+	if typeof(da) != TYPE_DICTIONARY or da.is_empty():
+		return
+	var sheet := load("res://assets/" + String(da.sheet)) as Texture2D
 	if sheet == null:
 		return
 	var d: DoorNode = DOOR_SCRIPT.new()
-	d.setup(sheet)
-	var door: Array = b.get("door", [b.bx, b.by])
-	d.position = Vector2(float(door[0]), float(door[1]))
+	d.setup(sheet, int(da.fw), int(da.fh), int(da.n), Vector2(float(da.ox), float(da.oy)))
+	d.position = Vector2(float(b.bx), float(b.by))   # baseline -> Y-sorts with its building
 	entities.add_child(d)
 	ext_doors[place] = d
 
@@ -241,7 +241,8 @@ func interior_path(place: String, from_w: Vector2, to_w: Vector2) -> PackedVecto
 	if a == b:
 		return PackedVector2Array([from_w, to_w])
 	var p := ra.get_point_path(a, b)
-	return p if p.size() > 1 else PackedVector2Array([from_w, to_w])
+	# never fall back to a straight line indoors (it would cut through walls/furniture)
+	return p if p.size() > 1 else PackedVector2Array([from_w])
 
 func _room_cell(ra: AStarGrid2D, info: Dictionary, local: Vector2) -> Vector2i:
 	var c := Vector2i(int(local.x / tile), int(local.y / tile))
@@ -260,16 +261,12 @@ func enter_building(a: Agent, place: String) -> void:
 	if not interiors.has(place):
 		return
 	if ext_doors.has(place):
-		ext_doors[place].open(1.4)
+		ext_doors[place].open(1.6)
+	if interiors[place].door:
+		interiors[place].door.open(1.6)
 	a.teleport(interiors[place].entry)
 	a.inside = place
 	a.current_action = "working" if place == a.workplace_name else "resting"
-	_roam_inside(a)
-
-func _roam_inside(a: Agent) -> void:
-	var tgt := interior_roam_point(a.inside)
-	if tgt != Vector2.ZERO:
-		a.walk_path(interior_path(a.inside, a.position, tgt))
 
 func exit_building(a: Agent) -> void:
 	if a.inside == "":
@@ -277,8 +274,48 @@ func exit_building(a: Agent) -> void:
 	var place := a.inside
 	a.inside = ""
 	if ext_doors.has(place):
-		ext_doors[place].open(1.4)
+		ext_doors[place].open(1.6)
+	if interiors.has(place) and interiors[place].door:
+		interiors[place].door.open(1.6)
 	a.teleport(place_pos(place))
+
+func _roam_inside(a: Agent) -> void:
+	var tgt := interior_roam_point(a.inside)
+	if tgt != Vector2.ZERO:
+		a.walk_path(interior_path(a.inside, a.position, tgt))
+
+# ---- unified travel: transitions in/out only happen AT the doors ----------
+func travel(a: Agent, place: String) -> void:
+	a.dest_place = place
+	a.has_dest_point = false
+	_step_travel(a)
+
+func travel_point(a: Agent, pt: Vector2) -> void:
+	a.dest_place = ""
+	a.dest_point = pt
+	a.has_dest_point = true
+	_step_travel(a)
+
+func _step_travel(a: Agent) -> void:
+	if a.dest_place != "" and a.inside == a.dest_place:
+		a.travel_phase = "roam"
+		_roam_inside(a)
+		return
+	if a.inside != "":                                  # leave: walk to the door first
+		a.travel_phase = "exiting"
+		a.walk_path(interior_path(a.inside, a.position, interiors[a.inside].entry))
+		return
+	if a.has_dest_point:
+		a.travel_phase = "outdoor"
+		a.go_to(a.dest_point)
+	elif a.dest_place != "" and interiors.has(a.dest_place):
+		a.travel_phase = "entering"
+		a.go_to(place_pos(a.dest_place))                # walk to the exterior door
+	elif a.dest_place != "":
+		a.travel_phase = "outdoor"
+		a.go_to(place_pos(a.dest_place))
+	else:
+		a.stop()
 
 func focus_interior(place: String) -> void:
 	if not interiors.has(place):
@@ -350,7 +387,7 @@ func random_walkable(near: Vector2, radius_px: float) -> Vector2:
 func _setup_camera() -> void:
 	camera = Camera2D.new()
 	camera.position = map_px * 0.5
-	camera.zoom = Vector2(0.62, 0.62)
+	camera.zoom = Vector2(1.15, 1.15)
 	if GameConfig.overview:
 		var vp := get_viewport_rect().size
 		var z: float = min(vp.x / map_px.x, vp.y / map_px.y)
@@ -501,7 +538,7 @@ func _attend_meeting(a: Agent, m: Dictionary) -> void:
 		if randf() < 0.4:
 			a.speak(_meeting_line(a))
 	else:
-		_go_into(a, MEETING_PLACE)
+		travel(a, MEETING_PLACE)
 	m.next_think = _life + randf_range(4.0, 8.0)
 
 func _meeting_line(a: Agent) -> String:
@@ -616,40 +653,30 @@ func _apply_action(a: Agent, action: Dictionary, m: Dictionary) -> void:
 	var atype := String(act.get("type", "idle")) if typeof(act) == TYPE_DICTIONARY else String(act)
 	match atype:
 		"move_to", "go_to":
-			var tgt: Vector2
-			var dest_place := ""
 			if act.has("place"):
-				dest_place = String(act.place)
-				tgt = place_pos(dest_place)
+				travel(a, String(act.place))
 			elif act.has("x"):
-				tgt = Vector2(float(act.x), float(act.y))
+				travel_point(a, Vector2(float(act.x), float(act.y)))
 			else:
-				tgt = place_pos("Town Plaza")
-			if a.inside != "" and a.inside != dest_place:
-				exit_building(a)
-			if interiors.has(dest_place):
-				a.pending_enter = dest_place
-			a.go_to(tgt)
+				travel(a, "Town Plaza")
 			interval = 5.0
 		"work":
-			_go_into(a, a.workplace_name)
+			travel(a, a.workplace_name)
 			interval = 9.0
 		"go_home":
-			_go_into(a, a.home_name)
+			travel(a, a.home_name)
 			interval = 8.0
 		"wander":
-			if a.inside != "":
-				exit_building(a)
-			a.go_to(random_walkable(a.position, 220.0))
+			var ref: Vector2 = place_pos(a.inside) if a.inside != "" else a.position
+			travel_point(a, random_walkable(ref, 200.0))
 			interval = 6.0
 		"talk_to":
-			if a.inside != "":
-				exit_building(a)
 			var who := String(act.get("agent", ""))
 			var o := _find_agent_by_name(who)
-			if o:
-				a.go_to(o.position + Vector2(randf_range(-28, 28), 24))
-				a.face_point(o.position)
+			if o and o.inside != "":
+				travel(a, o.inside)                        # join them indoors
+			elif o:
+				travel_point(a, o.position + Vector2(randf_range(-28, 28), 24))
 			interval = 6.0
 		"idle":
 			if a.inside != "":
@@ -661,21 +688,6 @@ func _apply_action(a: Agent, action: Dictionary, m: Dictionary) -> void:
 			interval = 6.0
 	m.next_think = _life + interval
 	a.set_think_cooldown(interval)
-
-func _go_into(a: Agent, place: String) -> void:
-	if place == "":
-		a.stop(); return
-	if a.inside == place:
-		_roam_inside(a)                              # already inside; wander the room
-		return
-	if a.inside != "":
-		exit_building(a)
-	if interiors.has(place):
-		a.pending_enter = place
-		a.go_to(place_pos(place))                    # walk to the door, then enter
-	else:
-		a.go_to(place_pos(place))                    # outdoor workplace (park, plaza)
-		a.current_action = "working"
 
 func _find_agent_by_name(n: String) -> Agent:
 	for id in agents.keys():
@@ -732,13 +744,19 @@ func _smalltalk(a: Agent, o: Agent) -> String:
 
 # ---------------------------------------------------------------- events in
 func _on_agent_arrived(a: Agent) -> void:
-	if a.pending_enter != "":
-		var bn := a.pending_enter
-		a.pending_enter = ""
-		enter_building(a, bn)
-		return
-	if a.current_action == "working":
-		a.face_point(place_pos(a.workplace_name) + Vector2(0, -20))
+	match a.travel_phase:
+		"exiting":                       # reached the interior door -> step outside
+			exit_building(a)
+			_step_travel(a)              # continue toward the destination
+		"entering":                      # reached the exterior door -> step inside
+			enter_building(a, a.dest_place)
+			a.travel_phase = "roam"
+		"outdoor":
+			a.travel_phase = "idle"
+			if a.dest_place != "" and a.dest_place == a.workplace_name:
+				a.current_action = "working"
+		_:
+			pass
 
 func _on_brain_connected() -> void:
 	hud.log_line("[brain] connected — citizens are thinking for themselves.")

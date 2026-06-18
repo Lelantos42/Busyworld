@@ -4,7 +4,7 @@ A complete orientation for anyone (human or a fresh AI session) picking up this
 project. Read this first, then `docs/ARCHITECTURE.md`.
 
 ## 1. What this is
-A living 2D pixel-art town (Godot 4.3) whose citizens are driven by local LLMs
+A living 2D pixel-art town (Godot 4.6) whose citizens are driven by local LLMs
 (Ollama) via a Python "brain" server. Citizens perceive an embodied world, act,
 talk, remember (SQLite, so they persist forever), have needs (hunger/coins), form
 relationships, go indoors, and take on the founder's requests for a coin reward.
@@ -50,10 +50,10 @@ GameAssets/         LimeZu source art (Modern Interiors/Exteriors)
 ```
 
 ## 4. How to run & verify (this is the important part)
-The environment has **no GPU/display**, but Godot 4.3 renders fine under Xvfb with
+The environment has **no GPU/display**, but Godot 4.6 renders fine under Xvfb with
 software GL, and `tools/run_godot.sh` wraps this. **You can take real screenshots —
 use them to verify every visual change.** The Godot binary lives at
-`tools/bin/godot` (downloaded, git-ignored; re-download from the Godot 4.3 release
+`tools/bin/godot` (downloaded, git-ignored; re-download from the Godot 4.6 release
 if missing).
 
 ```bash

@@ -71,38 +71,48 @@ def bake_ground():
 
 # --- buildings ---
 buildings, places, homes, collisions = [], [], [], []
+DOORS = json.load(open(os.path.join(ROOT, "godot/data/doors.json"))) if \
+    os.path.exists(os.path.join(ROOT, "godot/data/doors.json")) else {}
 
 def add_building(name, file, cx, by_ty, place=None, role=None, tags=None,
-                 home=False, door_dx=0, door_type="door_1", interior=""):
+                 home=False, interior=""):
     w, h = size(file)
     bx, by = cx * TILE, by_ty * TILE
-    door_x = bx + door_dx
+    # matched animated door for this building
+    da = DOORS.get(file, {})
+    door_anim = {}
+    if da:
+        door_anim = {"sheet": da["sheet"], "fw": da["fw"], "fh": da["fh"], "n": da["n"],
+                     "ox": da["ox"], "oy": da["oy"]}
+        door_x = bx + da["ox"] + da["fw"] / 2.0       # ground point at the door
+    else:
+        door_x = bx
     buildings.append({"name": name, "file": file, "bx": bx, "by": by, "w": w, "h": h,
                       "place": place or name, "tags": tags or [], "role": role,
-                      "door": [door_x, by], "door_type": door_type, "interior": interior})
+                      "door": [door_x, by], "door_anim": door_anim, "interior": interior})
     if place or role:
         places.append({"name": place or name, "x": door_x, "y": by + 24,
                        "type": "workplace" if role else "building", "tags": tags or [], "role": role})
     if home:
         homes.append({"x": door_x, "y": by + 26, "building": name})
 
-# Town Center (grand civic hall) — north of the plaza
-add_building("Town Center", "buildings/civic_townhall.png", CX, 23,
-             place="Town Center", role="coordinator", door_type="door_big_1", interior="int_condo",
-             tags=["a grand civic hall", "where the town meets to plan", "open and welcoming"])
+# Town Center (the civic building where the citizens gather) — north of the plaza
+add_building("Town Center", "buildings/civic_townhall.png", CX, 21,
+             place="Town Center", role="coordinator", interior="int_condo",
+             tags=["a civic building", "where the town meets to plan", "open and welcoming"])
 # Print Shop (the print-on-demand venture) — south of the plaza
 add_building("Print Shop", "buildings/work_printshop.png", CX, 47,
-             place="Print Shop", role="designer", door_type="door_big_1", interior="int_studio",
+             place="Print Shop", role="designer", interior="int_studio",
              tags=["workstations and screens", "the hum of a printer", "racks of finished products"])
-# Four homes, one per citizen
+# Four homes, one per citizen (all with matching animated doors)
 add_building("House 1", "buildings/house_onestory.png", 13, 20,
              place="House 1", home=True, interior="int_home1", tags=["a tidy one-storey home"])
 add_building("House 2", "buildings/house_japanese.png", 63, 20,
              place="House 2", home=True, interior="int_japanese", tags=["a calm home with paper screens"])
-add_building("House 3", "buildings/house_country.png", 13, 48,
-             place="House 3", home=True, interior="int_condo2", tags=["a cosy country house"])
-add_building("House 4", "buildings/house_terraced.png", 63, 48,
-             place="House 4", home=True, interior="int_home1", tags=["a snug terraced house"])
+add_building("House 3", "buildings/house_modern.png", 14, 47,
+             place="House 3", home=True, interior="int_home1", tags=["a bright modern home"])
+add_building("House 4", "buildings/house_onestory.png", 62, 47,
+             place="House 4", home=True, interior="int_japanese", tags=["a snug little home"])
 
 # --- carve sidewalk spurs to every door ---
 def nearest_sidewalk(start, max_r=24):
@@ -205,12 +215,7 @@ def render_preview(ground):
     items.sort(key=lambda t: t[0])
     for _, f, bx, by, w, h in items:
         img.alpha_composite(load(os.path.join(ASSETS, f)), (int(bx-w/2), int(by-h)))
-    for b in buildings:                       # closed-door frame
-        dp = os.path.join(ASSETS, "doors", b["door_type"] + ".png")
-        if os.path.exists(dp):
-            ds = load(dp); fw = 32
-            fr = ds.crop((0, 0, fw, ds.height))
-            img.alpha_composite(fr, (int(b["door"][0]-fw/2), int(b["door"][1]-ds.height)))
+    # (doors are drawn into the building images; the animated overlays match them)
     img.resize((img.width//2, img.height//2), Image.NEAREST).convert("RGB").save(PREVIEW)
     print("preview:", PREVIEW)
 

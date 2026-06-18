@@ -11,7 +11,7 @@ GODOT="$ROOT/tools/bin/godot"
 PROJ="$ROOT/godot"
 export LIBGL_ALWAYS_SOFTWARE=1
 export GALLIUM_DRIVER=llvmpipe
-XVFB=(xvfb-run -a -s "-screen 0 1366x768x24")
+XVFB=(xvfb-run -a -s "-screen 0 1920x1080x24")
 
 cmd="${1:-play}"; shift || true
 case "$cmd" in
@@ -20,15 +20,15 @@ case "$cmd" in
     ;;
   shot)
     OUT="$(realpath -m "$1")"; DELAY="${2:-8}"; shift 2 || true
-    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1280x720 \
+    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1920x1080 \
       -- --autopilot --screenshot "$OUT" --shotdelay "$DELAY" --shotseries 1 "$@" 2>&1 | tail -40
     ;;
   series)
     OUT="$(realpath -m "$1")"; N="$2"; DELAY="$3"; shift 3 || true
-    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1280x720 \
+    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1920x1080 \
       -- --screenshot "$OUT" --shotseries "$N" --shotdelay "$DELAY" "$@" 2>&1 | tail -40
     ;;
   play)
-    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1280x720 -- "$@" 2>&1 | tail -60
+    "${XVFB[@]}" "$GODOT" --path "$PROJ" --resolution 1920x1080 -- "$@" 2>&1 | tail -60
     ;;
 esac

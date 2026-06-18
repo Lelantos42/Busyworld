@@ -11,21 +11,28 @@
    "name": "Town Center",
    "file": "buildings/civic_townhall.png",
    "bx": 1216,
-   "by": 736,
-   "w": 576,
-   "h": 704,
+   "by": 672,
+   "w": 256,
+   "h": 416,
    "place": "Town Center",
    "tags": [
-    "a grand civic hall",
+    "a civic building",
     "where the town meets to plan",
     "open and welcoming"
    ],
    "role": "coordinator",
    "door": [
-    1216,
-    736
+    1178.0,
+    672
    ],
-   "door_type": "door_big_1",
+   "door_anim": {
+    "sheet": "doors/door_civic.png",
+    "fw": 64,
+    "fh": 64,
+    "n": 14,
+    "ox": -70,
+    "oy": -64
+   },
    "interior": "int_condo"
   },
   {
@@ -43,10 +50,17 @@
    ],
    "role": "designer",
    "door": [
-    1216,
+    1216.0,
     1504
    ],
-   "door_type": "door_big_1",
+   "door_anim": {
+    "sheet": "doors/door_shopping.png",
+    "fw": 64,
+    "fh": 96,
+    "n": 14,
+    "ox": -32,
+    "oy": -96
+   },
    "interior": "int_studio"
   },
   {
@@ -62,10 +76,17 @@
    ],
    "role": null,
    "door": [
-    416,
+    448.0,
     640
    ],
-   "door_type": "door_1",
+   "door_anim": {
+    "sheet": "doors/door_onestory.png",
+    "fw": 64,
+    "fh": 96,
+    "n": 14,
+    "ox": 0,
+    "oy": -128
+   },
    "interior": "int_home1"
   },
   {
@@ -81,49 +102,70 @@
    ],
    "role": null,
    "door": [
-    2016,
+    1904.0,
     640
    ],
-   "door_type": "door_1",
+   "door_anim": {
+    "sheet": "doors/door_japanese.png",
+    "fw": 64,
+    "fh": 64,
+    "n": 22,
+    "ox": -144,
+    "oy": -64
+   },
    "interior": "int_japanese"
   },
   {
    "name": "House 3",
-   "file": "buildings/house_country.png",
-   "bx": 416,
-   "by": 1536,
-   "w": 576,
-   "h": 512,
+   "file": "buildings/house_modern.png",
+   "bx": 448,
+   "by": 1504,
+   "w": 736,
+   "h": 448,
    "place": "House 3",
    "tags": [
-    "a cosy country house"
+    "a bright modern home"
    ],
    "role": null,
    "door": [
-    416,
-    1536
+    656.0,
+    1504
    ],
-   "door_type": "door_1",
-   "interior": "int_condo2"
+   "door_anim": {
+    "sheet": "doors/door_modern.png",
+    "fw": 64,
+    "fh": 96,
+    "n": 14,
+    "ox": 176,
+    "oy": -160
+   },
+   "interior": "int_home1"
   },
   {
    "name": "House 4",
-   "file": "buildings/house_terraced.png",
-   "bx": 2016,
-   "by": 1536,
-   "w": 384,
-   "h": 480,
+   "file": "buildings/house_onestory.png",
+   "bx": 1984,
+   "by": 1504,
+   "w": 512,
+   "h": 448,
    "place": "House 4",
    "tags": [
-    "a snug terraced house"
+    "a snug little home"
    ],
    "role": null,
    "door": [
-    2016,
-    1536
+    2016.0,
+    1504
    ],
-   "door_type": "door_1",
-   "interior": "int_home1"
+   "door_anim": {
+    "sheet": "doors/door_onestory.png",
+    "fw": 64,
+    "fh": 96,
+    "n": 14,
+    "ox": 0,
+    "oy": -128
+   },
+   "interior": "int_japanese"
   }
  ],
  "props": [
@@ -192,7 +234,7 @@
   },
   {
    "file": "props/tree_4.png",
-   "bx": 1616,
+   "bx": 944,
    "by": 96,
    "w": 128,
    "h": 160,
@@ -201,7 +243,7 @@
   },
   {
    "file": "props/tree_16.png",
-   "bx": 1712,
+   "bx": 1040,
    "by": 96,
    "w": 128,
    "h": 160,
@@ -210,7 +252,7 @@
   },
   {
    "file": "props/tree_4.png",
-   "bx": 2000,
+   "bx": 1424,
    "by": 96,
    "w": 128,
    "h": 160,
@@ -219,7 +261,7 @@
   },
   {
    "file": "props/tree_13.png",
-   "bx": 2288,
+   "bx": 1712,
    "by": 96,
    "w": 128,
    "h": 128,
@@ -228,8 +270,8 @@
   },
   {
    "file": "props/tree_12.png",
-   "bx": 752,
-   "by": 192,
+   "bx": 1904,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -238,7 +280,7 @@
   {
    "file": "props/tree_4.png",
    "bx": 2288,
-   "by": 192,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -246,8 +288,8 @@
   },
   {
    "file": "props/tree_10.png",
-   "bx": 1616,
-   "by": 288,
+   "bx": 944,
+   "by": 192,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -256,7 +298,7 @@
   {
    "file": "props/tree_14.png",
    "bx": 2288,
-   "by": 384,
+   "by": 192,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -265,7 +307,7 @@
   {
    "file": "props/tree_4.png",
    "bx": 752,
-   "by": 480,
+   "by": 288,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -273,8 +315,8 @@
   },
   {
    "file": "props/tree_24.png",
-   "bx": 752,
-   "by": 576,
+   "bx": 1616,
+   "by": 288,
    "w": 128,
    "h": 128,
    "collide": true,
@@ -282,6 +324,42 @@
   },
   {
    "file": "props/tree_23.png",
+   "bx": 80,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_3.png",
+   "bx": 944,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_8.png",
+   "bx": 1424,
+   "by": 480,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_18.png",
+   "bx": 1616,
+   "by": 576,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_16.png",
    "bx": 1712,
    "by": 576,
    "w": 128,
@@ -290,8 +368,8 @@
    "crad": 12
   },
   {
-   "file": "props/tree_3.png",
-   "bx": 176,
+   "file": "props/tree_20.png",
+   "bx": 272,
    "by": 672,
    "w": 128,
    "h": 160,
@@ -299,8 +377,8 @@
    "crad": 12
   },
   {
-   "file": "props/tree_8.png",
-   "bx": 464,
+   "file": "props/tree_14.png",
+   "bx": 1520,
    "by": 672,
    "w": 128,
    "h": 160,
@@ -308,8 +386,8 @@
    "crad": 12
   },
   {
-   "file": "props/tree_11.png",
-   "bx": 848,
+   "file": "props/tree_7.png",
+   "bx": 1616,
    "by": 672,
    "w": 128,
    "h": 160,
@@ -317,7 +395,16 @@
    "crad": 12
   },
   {
-   "file": "props/tree_8.png",
+   "file": "props/tree_23.png",
+   "bx": 1712,
+   "by": 672,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_18.png",
    "bx": 1904,
    "by": 672,
    "w": 128,
@@ -326,7 +413,7 @@
    "crad": 12
   },
   {
-   "file": "props/tree_4.png",
+   "file": "props/tree_21.png",
    "bx": 2000,
    "by": 672,
    "w": 128,
@@ -335,34 +422,25 @@
    "crad": 12
   },
   {
-   "file": "props/tree_22.png",
-   "bx": 272,
+   "file": "props/tree_24.png",
+   "bx": 80,
    "by": 768,
    "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 656,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 752,
-   "by": 768,
-   "w": 128,
-   "h": 160,
+   "h": 128,
    "collide": true,
    "crad": 12
   },
   {
    "file": "props/tree_20.png",
+   "bx": 1520,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_6.png",
    "bx": 1616,
    "by": 768,
    "w": 128,
@@ -371,90 +449,9 @@
    "crad": 12
   },
   {
-   "file": "props/tree_14.png",
-   "bx": 176,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 272,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 368,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 560,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_21.png",
-   "bx": 656,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 944,
-   "by": 960,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 1904,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2096,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 2192,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 80,
-   "by": 1056,
+   "file": "props/tree_15.png",
+   "bx": 1808,
+   "by": 768,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -462,8 +459,8 @@
   },
   {
    "file": "props/tree_5.png",
-   "bx": 944,
-   "by": 1056,
+   "bx": 2096,
+   "by": 768,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -471,8 +468,8 @@
   },
   {
    "file": "props/tree_1.png",
-   "bx": 1520,
-   "by": 1056,
+   "bx": 2192,
+   "by": 768,
    "w": 128,
    "h": 128,
    "collide": true,
@@ -480,8 +477,8 @@
   },
   {
    "file": "props/tree_15.png",
-   "bx": 752,
-   "by": 1152,
+   "bx": 272,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -489,8 +486,8 @@
   },
   {
    "file": "props/tree_17.png",
-   "bx": 1616,
-   "by": 1152,
+   "bx": 464,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -498,8 +495,8 @@
   },
   {
    "file": "props/tree_23.png",
-   "bx": 752,
-   "by": 1248,
+   "bx": 848,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -507,8 +504,8 @@
   },
   {
    "file": "props/tree_12.png",
-   "bx": 2288,
-   "by": 1248,
+   "bx": 1712,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -517,7 +514,7 @@
   {
    "file": "props/tree_24.png",
    "bx": 2288,
-   "by": 1344,
+   "by": 960,
    "w": 128,
    "h": 128,
    "collide": true,
@@ -525,16 +522,43 @@
   },
   {
    "file": "props/tree_17.png",
-   "bx": 80,
-   "by": 1536,
+   "bx": 1616,
+   "by": 1152,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_16.png",
-   "bx": 944,
+   "file": "props/tree_3.png",
+   "bx": 2288,
+   "by": 1248,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_15.png",
+   "bx": 2288,
+   "by": 1344,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 80,
+   "by": 1536,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_5.png",
+   "bx": 656,
    "by": 1536,
    "w": 128,
    "h": 160,
@@ -551,8 +575,8 @@
    "crad": 12
   },
   {
-   "file": "props/tree_16.png",
-   "bx": 1712,
+   "file": "props/tree_23.png",
+   "bx": 1424,
    "by": 1536,
    "w": 128,
    "h": 160,
@@ -560,19 +584,55 @@
    "crad": 12
   },
   {
-   "file": "props/tree_24.png",
-   "bx": 2288,
-   "by": 1632,
+   "file": "props/tree_15.png",
+   "bx": 1520,
+   "by": 1536,
    "w": 128,
-   "h": 128,
+   "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/bench_2.png",
+   "file": "props/tree_6.png",
+   "bx": 1904,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 2000,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_7.png",
+   "bx": 2096,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 2192,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/bench_1.png",
    "bx": 992,
    "by": 768,
-   "w": 96,
+   "w": 64,
    "h": 64,
    "collide": true,
    "crad": 10
@@ -587,10 +647,10 @@
    "crad": 10
   },
   {
-   "file": "props/bench_1.png",
+   "file": "props/bench_2.png",
    "bx": 1152,
    "by": 768,
-   "w": 64,
+   "w": 96,
    "h": 64,
    "collide": true,
    "crad": 10
@@ -650,16 +710,16 @@
    "crad": 10
   },
   {
-   "file": "props/flower_5.png",
+   "file": "props/flower_2.png",
    "bx": 960,
    "by": 1088,
-   "w": 96,
+   "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_3.png",
+   "file": "props/flower_2.png",
    "bx": 1056,
    "by": 736,
    "w": 64,
@@ -668,8 +728,44 @@
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
+   "file": "props/flower_2.png",
    "bx": 1056,
+   "by": 1088,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_1.png",
+   "bx": 1152,
+   "by": 736,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_2.png",
+   "bx": 1152,
+   "by": 1088,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_5.png",
+   "bx": 1248,
+   "by": 736,
+   "w": 96,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_4.png",
+   "bx": 1248,
    "by": 1088,
    "w": 96,
    "h": 32,
@@ -678,7 +774,7 @@
   },
   {
    "file": "props/flower_7.png",
-   "bx": 1152,
+   "bx": 1344,
    "by": 736,
    "w": 32,
    "h": 32,
@@ -687,7 +783,7 @@
   },
   {
    "file": "props/flower_6.png",
-   "bx": 1152,
+   "bx": 1344,
    "by": 1088,
    "w": 96,
    "h": 32,
@@ -695,70 +791,34 @@
    "crad": 10
   },
   {
-   "file": "props/flower_3.png",
-   "bx": 1248,
-   "by": 736,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_3.png",
-   "bx": 1248,
-   "by": 1088,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_1.png",
-   "bx": 1344,
-   "by": 736,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_2.png",
-   "bx": 1344,
-   "by": 1088,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_1.png",
-   "bx": 1440,
-   "by": 736,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
    "file": "props/flower_2.png",
    "bx": 1440,
-   "by": 1088,
+   "by": 736,
    "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/lamp_4.png",
+   "file": "props/flower_5.png",
+   "bx": 1440,
+   "by": 1088,
+   "w": 96,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/lamp_5.png",
    "bx": 976,
    "by": 736,
-   "w": 64,
+   "w": 32,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/lamp_2.png",
+   "file": "props/lamp_4.png",
    "bx": 1488,
    "by": 736,
    "w": 64,
@@ -785,7 +845,7 @@
    "crad": 6
   },
   {
-   "file": "props/car_left_4.png",
+   "file": "props/car_left_5.png",
    "bx": 384,
    "by": 1600,
    "w": 128,
@@ -803,7 +863,7 @@
    "crad": 20
   },
   {
-   "file": "props/car_left_5.png",
+   "file": "props/car_left_2.png",
    "bx": 1152,
    "by": 1600,
    "w": 128,
@@ -821,7 +881,7 @@
    "crad": 20
   },
   {
-   "file": "props/car_left_4.png",
+   "file": "props/car_left_1.png",
    "bx": 1920,
    "by": 1600,
    "w": 128,
@@ -833,11 +893,11 @@
  "places": [
   {
    "name": "Town Center",
-   "x": 1216,
-   "y": 760,
+   "x": 1178.0,
+   "y": 696,
    "type": "workplace",
    "tags": [
-    "a grand civic hall",
+    "a civic building",
     "where the town meets to plan",
     "open and welcoming"
    ],
@@ -845,7 +905,7 @@
   },
   {
    "name": "Print Shop",
-   "x": 1216,
+   "x": 1216.0,
    "y": 1528,
    "type": "workplace",
    "tags": [
@@ -857,7 +917,7 @@
   },
   {
    "name": "House 1",
-   "x": 416,
+   "x": 448.0,
    "y": 664,
    "type": "building",
    "tags": [
@@ -867,7 +927,7 @@
   },
   {
    "name": "House 2",
-   "x": 2016,
+   "x": 1904.0,
    "y": 664,
    "type": "building",
    "tags": [
@@ -877,21 +937,21 @@
   },
   {
    "name": "House 3",
-   "x": 416,
-   "y": 1560,
+   "x": 656.0,
+   "y": 1528,
    "type": "building",
    "tags": [
-    "a cosy country house"
+    "a bright modern home"
    ],
    "role": null
   },
   {
    "name": "House 4",
-   "x": 2016,
-   "y": 1560,
+   "x": 2016.0,
+   "y": 1528,
    "type": "building",
    "tags": [
-    "a snug terraced house"
+    "a snug little home"
    ],
    "role": null
   },
@@ -920,31 +980,31 @@
  ],
  "homes": [
   {
-   "x": 416,
+   "x": 448.0,
    "y": 666,
    "building": "House 1"
   },
   {
-   "x": 2016,
+   "x": 1904.0,
    "y": 666,
    "building": "House 2"
   },
   {
-   "x": 416,
-   "y": 1562,
+   "x": 656.0,
+   "y": 1530,
    "building": "House 3"
   },
   {
-   "x": 2016,
-   "y": 1562,
+   "x": 2016.0,
+   "y": 1530,
    "building": "House 4"
   }
  ],
  "collisions": [
   {
-   "x": 974.08,
-   "y": 606,
-   "w": 483.84,
+   "x": 1108.48,
+   "y": 542,
+   "w": 215.04,
    "h": 130
   },
   {
@@ -966,15 +1026,15 @@
    "h": 130
   },
   {
-   "x": 174.08,
-   "y": 1406,
-   "w": 483.84,
+   "x": 138.88,
+   "y": 1374,
+   "w": 618.24,
    "h": 130
   },
   {
-   "x": 1854.72,
-   "y": 1406,
-   "w": 322.56,
+   "x": 1768.96,
+   "y": 1374,
+   "w": 430.08,
    "h": 130
   }
  ],

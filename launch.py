@@ -51,7 +51,7 @@ def main() -> int:
     ap.add_argument("--world", default="busyworld")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8765)
-    ap.add_argument("--godot", default=None, help="path to the Godot 4.3 binary")
+    ap.add_argument("--godot", default=None, help="path to the Godot 4.6 binary")
     ap.add_argument("--no-brain", action="store_true", help="run the town without the brain")
     ap.add_argument("--brain-only", action="store_true", help="run only the brain server")
     args = ap.parse_args()
@@ -71,7 +71,7 @@ def main() -> int:
             godot = find_godot(args.godot)
             if not godot:
                 print("[launch] Godot binary not found. The brain is running; open the "
-                      "'godot' project in the Godot 4.3 editor and press Play.")
+                      "'godot' project in the Godot 4.6 editor and press Play.")
             else:
                 game_args = [godot, "--path", os.path.join(ROOT, "godot")]
                 passthrough = []

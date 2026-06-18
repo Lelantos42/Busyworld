@@ -1,0 +1,52 @@
+{
+ "buildings/house_onestory.png": {
+  "sheet": "doors/door_onestory.png",
+  "fw": 64,
+  "fh": 96,
+  "n": 14,
+  "ox": 0,
+  "oy": -128,
+  "cx": 288,
+  "ground_y": 416
+ },
+ "buildings/house_japanese.png": {
+  "sheet": "doors/door_japanese.png",
+  "fw": 64,
+  "fh": 64,
+  "n": 22,
+  "ox": -144,
+  "oy": -64,
+  "cx": 128,
+  "ground_y": 448
+ },
+ "buildings/house_modern.png": {
+  "sheet": "doors/door_modern.png",
+  "fw": 64,
+  "fh": 96,
+  "n": 14,
+  "ox": 176,
+  "oy": -160,
+  "cx": 576,
+  "ground_y": 384
+ },
+ "buildings/civic_townhall.png": {
+  "sheet": "doors/door_civic.png",
+  "fw": 64,
+  "fh": 64,
+  "n": 14,
+  "ox": -70,
+  "oy": -64,
+  "cx": 90,
+  "ground_y": 416
+ },
+ "buildings/work_printshop.png": {
+  "sheet": "doors/door_shopping.png",
+  "fw": 64,
+  "fh": 96,
+  "n": 14,
+  "ox": -32,
+  "oy": -96,
+  "cx": 288,
+  "ground_y": 384
+ }
+}

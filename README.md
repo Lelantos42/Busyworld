@@ -89,7 +89,7 @@ given (how they perceive and act, including multimodality).
 ## Quick start
 
 ### 1. Prerequisites
-- **[Godot 4.3](https://godotengine.org/download)** (standard build; the GL
+- **[Godot 4.6](https://godotengine.org/download)** (standard build; the GL
   Compatibility renderer is used, so it runs almost anywhere).
 - **Python 3.10+**.
 - *(Optional, for real AI minds)* **[Ollama](https://ollama.com)** with at least
@@ -131,12 +131,12 @@ Ollama and the same citizens begin thinking for themselves.
 
 ## Choosing how many citizens start
 
-The cast lives in [`godot/data/citizens.json`](godot/data/citizens.json) (12
+The cast lives in [`godot/data/citizens.json`](godot/data/citizens.json) (4
 citizens, top to bottom). `--agents N` starts the **first N**:
 
 ```bash
-python3 launch.py --agents 2      # just the mayor and the shopkeeper
-python3 launch.py --agents 12     # the whole town
+python3 launch.py --agents 2      # just the coordinator and the designer
+python3 launch.py --agents 4      # the whole town
 ```
 
 You can also set `default_agent_count` in
@@ -157,14 +157,14 @@ defaults:
   model: "llama3.2:3b"
 
 agents:
-  mayor:
-    host: "192.168.1.50"      # the mayor thinks on this machine…
+  coordinator:
+    host: "192.168.1.50"      # the coordinator thinks on this machine…
     port: 11434
     model: "llama3.1:8b"
     vision: true              # …and can see
     model_vision: "llama3.2-vision:11b"
-  baker:
-    host: "192.168.1.51"      # …the baker on another
+  maker:
+    host: "192.168.1.51"      # …the maker on another
     model: "qwen2.5:3b"
 ```
 
@@ -201,7 +201,7 @@ explicit setup.)*
 busyworld/
 ├── launch.py            one-command launcher (brain + town)
 ├── run.sh / run.bat     OS wrappers
-├── godot/               the Godot 4.3 project (the town)
+├── godot/               the Godot 4.6 project (the town)
 │   ├── project.godot
 │   ├── scenes/Main.tscn
 │   ├── scripts/         World, Agent, TownBuilder, HUD, Net, CharacterFrames…

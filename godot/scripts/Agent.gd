@@ -29,6 +29,10 @@ var _final_target := Vector2.ZERO
 
 var inside := ""              # building name when indoors, "" when outdoors
 var pending_enter := ""       # building to enter once the door is reached
+var dest_place := ""          # current travel destination (a place name)
+var dest_point := Vector2.ZERO
+var has_dest_point := false
+var travel_phase := "idle"    # idle | exiting | entering | outdoor | roam
 
 var world                              # set by World on spawn (for pathfinding)
 var _spr: AnimatedSprite2D
@@ -70,9 +74,9 @@ func _build_visual(sheet: Texture2D) -> void:
 	_name_lbl = Label.new()
 	_name_lbl.text = agent_name
 	_name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_name_lbl.position = Vector2(-70, -84)
-	_name_lbl.size = Vector2(140, 16)
-	_name_lbl.add_theme_font_size_override("font_size", 11)
+	_name_lbl.position = Vector2(-80, -88)
+	_name_lbl.size = Vector2(160, 18)
+	_name_lbl.add_theme_font_size_override("font_size", 15)
 	_name_lbl.add_theme_color_override("font_color", Color(1, 1, 1))
 	_name_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 	_name_lbl.add_theme_constant_override("outline_size", 5)
@@ -87,15 +91,15 @@ func _build_visual(sheet: Texture2D) -> void:
 	sb.border_color = Color(0.2, 0.2, 0.25, 0.9)
 	sb.set_content_margin_all(6)
 	_bubble.add_theme_stylebox_override("panel", sb)
-	_bubble.position = Vector2(-78, -150)
-	_bubble.size = Vector2(156, 54)
+	_bubble.position = Vector2(-95, -162)
+	_bubble.size = Vector2(190, 60)
 	_bubble.visible = false
 	add_child(_bubble)
 	_bubble_lbl = Label.new()
 	_bubble_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_bubble_lbl.size = Vector2(144, 42)
+	_bubble_lbl.size = Vector2(178, 48)
 	_bubble_lbl.position = Vector2(6, 5)
-	_bubble_lbl.add_theme_font_size_override("font_size", 11)
+	_bubble_lbl.add_theme_font_size_override("font_size", 14)
 	_bubble_lbl.add_theme_color_override("font_color", Color(0.12, 0.12, 0.16))
 	_bubble.add_child(_bubble_lbl)
 
