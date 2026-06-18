@@ -27,6 +27,9 @@ var _path_i := 0
 var _moving := false
 var _final_target := Vector2.ZERO
 
+var inside := ""              # building name when indoors, "" when outdoors
+var pending_enter := ""       # building to enter once the door is reached
+
 var world                              # set by World on spawn (for pathfinding)
 var _spr: AnimatedSprite2D
 var _name_lbl: Label
@@ -159,6 +162,18 @@ func go_to(target: Vector2) -> void:
 	_path_i = 1   # skip the start cell
 	_moving = true
 	current_action = "walking"
+
+func move_direct(target: Vector2) -> void:
+	# straight-line move with no pathfinding (used inside rooms)
+	_path = PackedVector2Array([position, target])
+	_path_i = 1
+	_moving = true
+
+func teleport(target: Vector2) -> void:
+	position = target
+	_path = PackedVector2Array()
+	_moving = false
+	_play("idle")
 
 func stop() -> void:
 	_path = PackedVector2Array()

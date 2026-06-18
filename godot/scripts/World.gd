@@ -22,6 +22,14 @@ var meta: Dictionary = {}              # id -> per-agent decision bookkeeping
 var places: Array = []
 var place_by_name: Dictionary = {}
 
+const DOOR_SCRIPT := preload("res://scripts/DoorNode.gd")
+var interiors: Dictionary = {}         # place name -> {bounds, walk, entry, center, door, zoom}
+var ext_doors: Dictionary = {}         # place name -> DoorNode (exterior)
+var interiors_root: Node2D
+var focused_interior := ""
+var _town_cam_pos := Vector2.ZERO
+var _town_cam_zoom := Vector2.ONE
+
 # clock
 var hour := 8.0
 var day := 1
@@ -55,6 +63,7 @@ func _ready() -> void:
 
 	var solids: Array = TownBuilder.build(self, entities, town)
 	_build_navgrid(solids)
+	_build_interiors()
 	_setup_camera()
 	_setup_daynight()
 	_setup_hud()
@@ -67,6 +76,15 @@ func _ready() -> void:
 	hud.log_line("Welcome to %s. %d citizens are waking up." % [town.get("town_name", "the town"), agents.size()])
 	if not Net.enabled:
 		hud.log_line("[autopilot] running without the brain server.")
+	if GameConfig.demo_interior != "":
+		_demo_interior(GameConfig.demo_interior)
+
+func _demo_interior(place: String) -> void:
+	for id in agents.keys():
+		var a: Agent = agents[id]
+		if a.workplace_name == place or a.home_name == place:
+			enter_building(a, place)
+	focus_interior(place)
 
 # ---------------------------------------------------------------- places
 func _build_places() -> void:
@@ -89,6 +107,120 @@ func nearest_place(pos: Vector2) -> Dictionary:
 			bd = d
 			best = p
 	return best
+
+# ---------------------------------------------------------------- interiors
+func _build_interiors() -> void:
+	interiors_root = Node2D.new()
+	interiors_root.name = "Interiors"
+	interiors_root.y_sort_enabled = true
+	add_child(interiors_root)
+	var ix0 := map_px.x + 600.0
+	var col_w := 760.0
+	var row_h := 840.0
+	var i := 0
+	for b in town.get("buildings", []):
+		var design := String(b.get("interior", ""))
+		var place := String(b.get("place", b.get("name", "")))
+		# exterior door for every building
+		_make_ext_door(place, b)
+		if design == "":
+			continue
+		var tex := load("res://assets/interiors/%s.png" % design) as Texture2D
+		if tex == null:
+			continue
+		var origin := Vector2(ix0 + float(i % 3) * col_w, 200.0 + float(i / 3) * row_h)
+		var sz := tex.get_size()
+		var room := Node2D.new()
+		room.position = origin
+		interiors_root.add_child(room)
+		var floor_spr := Sprite2D.new()
+		floor_spr.texture = tex
+		floor_spr.centered = false
+		floor_spr.z_index = -50
+		room.add_child(floor_spr)
+		# room label
+		var lbl := Label.new()
+		lbl.text = place
+		lbl.position = Vector2(6, -22)
+		lbl.add_theme_font_size_override("font_size", 16)
+		lbl.add_theme_color_override("font_color", Color(1, 0.9, 0.6))
+		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+		lbl.add_theme_constant_override("outline_size", 5)
+		room.add_child(lbl)
+		# interior exit door at the bottom-centre
+		var idoor: DoorNode = DOOR_SCRIPT.new()
+		var dsheet := load("res://assets/doors/door_1.png") as Texture2D
+		if dsheet:
+			idoor.setup(dsheet)
+			idoor.position = origin + Vector2(sz.x * 0.5, sz.y - 6)
+			interiors_root.add_child(idoor)
+		var inset := Vector2(sz.x * 0.24, sz.y * 0.26)
+		interiors[place] = {
+			"center": origin + sz * 0.5,
+			"entry": origin + Vector2(sz.x * 0.5, sz.y - 40.0),
+			"walk": Rect2(origin + inset, sz - inset * 2.0),
+			"door": idoor,
+			"zoom": clampf(min(1100.0 / sz.x, 640.0 / sz.y), 0.6, 2.0),
+		}
+		i += 1
+
+func _make_ext_door(place: String, b: Dictionary) -> void:
+	var dtype := String(b.get("door_type", "door_1"))
+	var sheet := load("res://assets/doors/%s.png" % dtype) as Texture2D
+	if sheet == null:
+		sheet = load("res://assets/doors/door_1.png") as Texture2D
+	if sheet == null:
+		return
+	var d: DoorNode = DOOR_SCRIPT.new()
+	d.setup(sheet)
+	var door: Array = b.get("door", [b.bx, b.by])
+	d.position = Vector2(float(door[0]), float(door[1]))
+	entities.add_child(d)
+	ext_doors[place] = d
+
+func interior_roam_point(place: String) -> Vector2:
+	if interiors.has(place):
+		var r: Rect2 = interiors[place].walk
+		return Vector2(r.position.x + randf() * r.size.x, r.position.y + randf() * r.size.y)
+	return Vector2.ZERO
+
+func enter_building(a: Agent, place: String) -> void:
+	if not interiors.has(place):
+		return
+	if ext_doors.has(place):
+		ext_doors[place].open(1.4)
+	a.teleport(interiors[place].entry)
+	a.inside = place
+	a.current_action = "working" if place == a.workplace_name else "resting"
+	a.move_direct(interior_roam_point(place))
+
+func exit_building(a: Agent) -> void:
+	if a.inside == "":
+		return
+	var place := a.inside
+	a.inside = ""
+	if ext_doors.has(place):
+		ext_doors[place].open(1.4)
+	a.teleport(place_pos(place))
+
+func focus_interior(place: String) -> void:
+	if not interiors.has(place):
+		return
+	if focused_interior == "":
+		_town_cam_pos = camera.position
+		_town_cam_zoom = camera.zoom
+	focused_interior = place
+	camera.position = interiors[place].center
+	camera.zoom = Vector2(interiors[place].zoom, interiors[place].zoom)
+	if interiors[place].door:
+		interiors[place].door.open(2.0)
+	hud.set_interior_mode(place)
+
+func leave_interior() -> void:
+	focused_interior = ""
+	camera.position = _town_cam_pos
+	camera.zoom = _town_cam_zoom
+	hud.clear_interior_mode()
 
 # ---------------------------------------------------------------- navgrid
 func _build_navgrid(solids: Array) -> void:
@@ -182,6 +314,7 @@ func _setup_hud() -> void:
 	hud.set_anchors_preset(Control.PRESET_FULL_RECT)
 	layer.add_child(hud)
 	hud.request_submitted.connect(_on_player_request)
+	hud.leave_interior_pressed.connect(leave_interior)
 	hud.set_town_name(String(town.get("town_name", "Busyworld")))
 
 # ---------------------------------------------------------------- spawn
@@ -257,6 +390,12 @@ func _request_decision(a: Agent, m: Dictionary) -> void:
 # ---------------------------------------------------------------- perception
 func _build_perception(a: Agent, m: Dictionary) -> Dictionary:
 	var here := nearest_place(a.position)
+	var loc_name := String(here.get("name", "town"))
+	var loc_tags: Array = here.get("tags", [])
+	if a.inside != "":
+		loc_name = "inside the " + a.inside
+		if place_by_name.has(a.inside):
+			loc_tags = place_by_name[a.inside].get("tags", [])
 	var vis: Array = []
 	var sorted_places := places.duplicate()
 	sorted_places.sort_custom(func(p, q):
@@ -283,11 +422,11 @@ func _build_perception(a: Agent, m: Dictionary) -> Dictionary:
 		"self": {
 			"name": a.agent_name, "title": a.title, "role": a.role,
 			"action": a.current_action, "mood": a.mood,
-			"energy": int(a.energy), "at": here.get("name", "town"),
-			"goal": m.get("goal", ""),
+			"energy": int(a.energy), "at": loc_name,
+			"goal": m.get("goal", ""), "indoors": a.inside != "",
 		},
 		"time": _clock_string(), "day": day, "phase": _phase(),
-		"location": {"name": here.get("name", "town"), "feels_like": here.get("tags", [])},
+		"location": {"name": loc_name, "feels_like": loc_tags},
 		"visible_places": vis,
 		"nearby_people": near,
 		"recent_events": m.get("recent", []),
@@ -338,25 +477,34 @@ func _apply_action(a: Agent, action: Dictionary, m: Dictionary) -> void:
 	match atype:
 		"move_to", "go_to":
 			var tgt: Vector2
+			var dest_place := ""
 			if act.has("place"):
-				tgt = place_pos(String(act.place))
+				dest_place = String(act.place)
+				tgt = place_pos(dest_place)
 			elif act.has("x"):
 				tgt = Vector2(float(act.x), float(act.y))
 			else:
 				tgt = place_pos("Town Plaza")
+			if a.inside != "" and a.inside != dest_place:
+				exit_building(a)
+			if interiors.has(dest_place):
+				a.pending_enter = dest_place
 			a.go_to(tgt)
 			interval = 5.0
 		"work":
-			a.go_to(place_pos(a.workplace_name))
-			a.current_action = "working"
+			_go_into(a, a.workplace_name)
 			interval = 9.0
 		"go_home":
-			a.go_to(place_pos(a.home_name))
+			_go_into(a, a.home_name)
 			interval = 8.0
 		"wander":
+			if a.inside != "":
+				exit_building(a)
 			a.go_to(random_walkable(a.position, 220.0))
 			interval = 6.0
 		"talk_to":
+			if a.inside != "":
+				exit_building(a)
 			var who := String(act.get("agent", ""))
 			var o := _find_agent_by_name(who)
 			if o:
@@ -364,12 +512,30 @@ func _apply_action(a: Agent, action: Dictionary, m: Dictionary) -> void:
 				a.face_point(o.position)
 			interval = 6.0
 		"idle":
-			a.stop()
+			if a.inside != "":
+				a.move_direct(interior_roam_point(a.inside))
+			else:
+				a.stop()
 			interval = float(act.get("seconds", 5))
 		_:
 			interval = 6.0
 	m.next_think = _life + interval
 	a.set_think_cooldown(interval)
+
+func _go_into(a: Agent, place: String) -> void:
+	if place == "":
+		a.stop(); return
+	if a.inside == place:
+		a.move_direct(interior_roam_point(place))   # already inside; shuffle around
+		return
+	if a.inside != "":
+		exit_building(a)
+	if interiors.has(place):
+		a.pending_enter = place
+		a.go_to(place_pos(place))                    # walk to the door, then enter
+	else:
+		a.go_to(place_pos(place))                    # outdoor workplace (park, plaza)
+		a.current_action = "working"
 
 func _find_agent_by_name(n: String) -> Agent:
 	for id in agents.keys():
@@ -426,6 +592,11 @@ func _smalltalk(a: Agent, o: Agent) -> String:
 
 # ---------------------------------------------------------------- events in
 func _on_agent_arrived(a: Agent) -> void:
+	if a.pending_enter != "":
+		var bn := a.pending_enter
+		a.pending_enter = ""
+		enter_building(a, bn)
+		return
 	if a.current_action == "working":
 		a.face_point(place_pos(a.workplace_name) + Vector2(0, -20))
 
@@ -498,6 +669,24 @@ func _try_select(screen_pos: Vector2) -> void:
 			"goal": m.get("goal", ""), "thought": m.get("thought", ""),
 			"money": m.get("money", 0), "personality": best.personality,
 		})
+		return
+	# no citizen hit: clicking a building enters its interior
+	if focused_interior == "":
+		var place := _building_at(world_pos)
+		if place != "":
+			focus_interior(place)
+
+func _building_at(world_pos: Vector2) -> String:
+	var hit := ""
+	var best_by := -INF
+	for b in town.get("buildings", []):
+		var rect := Rect2(float(b.bx) - float(b.w) / 2.0, float(b.by) - float(b.h),
+			float(b.w), float(b.h))
+		if rect.has_point(world_pos) and interiors.has(String(b.get("place", ""))):
+			if float(b.by) > best_by:        # prefer the front-most building
+				best_by = float(b.by)
+				hit = String(b.get("place", ""))
+	return hit
 
 # ---------------------------------------------------------------- screenshots
 func _screenshot_logic(dt: float) -> void:

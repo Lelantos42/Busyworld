@@ -3,6 +3,7 @@ extends Control
 # click-to-inspect citizen panel.
 
 signal request_submitted(text: String)
+signal leave_interior_pressed()
 
 var _town := "Busyworld"
 var _clock_lbl: Label
@@ -12,6 +13,8 @@ var _log: RichTextLabel
 var _input: LineEdit
 var _inspector: Panel
 var _insp_text: RichTextLabel
+var _interior_bar: PanelContainer
+var _interior_lbl: Label
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -19,6 +22,7 @@ func _ready() -> void:
 	_build_log()
 	_build_input()
 	_build_inspector()
+	_build_interior_bar()
 
 func _panel(bg := Color(0.10, 0.11, 0.15, 0.86)) -> StyleBoxFlat:
 	var sb := StyleBoxFlat.new()
@@ -120,6 +124,35 @@ func _build_inspector() -> void:
 	close.offset_left = -28; close.offset_right = -6; close.offset_top = 4; close.offset_bottom = 26
 	close.pressed.connect(func(): _inspector.visible = false)
 	_inspector.add_child(close)
+
+func _build_interior_bar() -> void:
+	_interior_bar = PanelContainer.new()
+	_interior_bar.add_theme_stylebox_override("panel", _panel(Color(0.08, 0.09, 0.13, 0.95)))
+	_interior_bar.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	_interior_bar.offset_left = -150; _interior_bar.offset_right = 150
+	_interior_bar.offset_top = 52; _interior_bar.offset_bottom = 90
+	_interior_bar.visible = false
+	add_child(_interior_bar)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	_interior_bar.add_child(row)
+	var back := Button.new()
+	back.text = "← Leave"
+	back.pressed.connect(func(): emit_signal("leave_interior_pressed"))
+	row.add_child(back)
+	_interior_lbl = Label.new()
+	_interior_lbl.add_theme_font_size_override("font_size", 15)
+	_interior_lbl.add_theme_color_override("font_color", Color(1, 0.9, 0.6))
+	row.add_child(_interior_lbl)
+
+func set_interior_mode(place: String) -> void:
+	if _interior_bar:
+		_interior_lbl.text = "Inside the %s" % place
+		_interior_bar.visible = true
+
+func clear_interior_mode() -> void:
+	if _interior_bar:
+		_interior_bar.visible = false
 
 # ---- public API ----------------------------------------------------------
 func set_town_name(n: String) -> void:

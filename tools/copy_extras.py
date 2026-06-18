@@ -24,17 +24,21 @@ for side in ("Left", "Right"):
             cp(src, os.path.join(ASSETS, "props", f"car_{side.lower()}_{i}.png")); n += 1
 print("side cars copied:", n)
 
-# 2) animated door spritesheets (5 frames, 32x64 each for the single doors)
+# 2) animated door spritesheets (5 frames, 32px wide, closed -> open)
 door_src = os.path.join(INT, "3_Animated_objects/32x32/spritesheets")
-doors = ["animated_door_1_32x32.png", "animated_door_2_32x32.png",
-         "animated_door_3_32x32.png", "animated_door_big_1_32x32.png",
-         "animated_door_condominium_1_32x32.png"]
+doors = {
+    "animated_door_1_32x32.png": "door_1.png",
+    "animated_door_2_32x32.png": "door_2.png",
+    "animated_door_3_32x32.png": "door_3.png",
+    "animated_door_big_1_32x32.png": "door_big_1.png",
+    "animated_door_condominium_1_32x32.png": "door_condo.png",
+}
 dn = 0
-for d in doors:
-    src = os.path.join(door_src, d)
+for src_name, dst_name in doors.items():
+    src = os.path.join(door_src, src_name)
     if os.path.exists(src):
-        cp(src, os.path.join(ASSETS, "doors", d.replace("_32x32", "")))
-        print("  door:", d, Image.open(src).size); dn += 1
+        cp(src, os.path.join(ASSETS, "doors", dst_name))
+        print("  door:", dst_name, Image.open(src).size); dn += 1
 print("doors copied:", dn)
 
 # 3) interior room designs (the furnished "preview" images, 32x32)
