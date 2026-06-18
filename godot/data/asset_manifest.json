@@ -1,565 +1,565 @@
 {
   "ground": {
-    "grass": [
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_1.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_10.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_11.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_12.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_13.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_14.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_15.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_16.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_17.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_18.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_19.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_2.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_20.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_21.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_22.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_3.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_4.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_5.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_6.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_7.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Grass_1_8.png",
+	"grass": [
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_1.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_10.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_11.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_12.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_13.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_14.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_15.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_16.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_17.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_18.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_19.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_2.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_20.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_21.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_22.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_3.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_4.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_5.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_6.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_7.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Grass_1_8.png",
       "ME_Singles_Terrains_and_Fences_32x32_Grass_1_9.png"
-    ],
-    "sidewalk": [
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_1.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_10.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_11.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_12.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_13.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_14.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_15.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_16.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_17.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_18.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_19.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_2.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_20.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_21.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_22.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_23.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_24.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_25.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_26.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_27.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_28.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_29.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_3.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_30.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_31.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_32.png",
-      "ME_Singles_City_Terrains_32x32_Sidewalk_1_33.png",
+	],
+	"sidewalk": [
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_1.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_10.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_11.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_12.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_13.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_14.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_15.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_16.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_17.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_18.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_19.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_2.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_20.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_21.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_22.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_23.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_24.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_25.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_26.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_27.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_28.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_29.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_3.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_30.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_31.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_32.png",
+	  "ME_Singles_City_Terrains_32x32_Sidewalk_1_33.png",
       "ME_Singles_City_Terrains_32x32_Sidewalk_1_34.png"
-    ],
-    "asphalt": [
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_1.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_10.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_11.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_12.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_13.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_14.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_15.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_16.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_17.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_18.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_19.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_2.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_20.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_21.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_22.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_23.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_24.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_25.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_26.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_27.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_3.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_4.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_5.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_6.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_7.png",
-      "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_8.png",
+	],
+	"asphalt": [
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_1.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_10.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_11.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_12.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_13.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_14.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_15.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_16.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_17.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_18.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_19.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_2.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_20.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_21.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_22.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_23.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_24.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_25.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_26.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_27.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_3.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_4.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_5.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_6.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_7.png",
+	  "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_8.png",
       "ME_Singles_City_Terrains_32x32_Asphalt_1_Variation_9.png"
-    ],
-    "water": [
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_1.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_10.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_11.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_12.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_13.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_14.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_15.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_16.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_17.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_18.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_19.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_2.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_20.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_21.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_22.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_3.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_4.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_5.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_6.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_7.png",
-      "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_8.png",
+	],
+	"water": [
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_1.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_10.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_11.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_12.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_13.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_14.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_15.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_16.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_17.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_18.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_19.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_2.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_20.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_21.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_22.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_3.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_4.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_5.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_6.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_7.png",
+	  "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_8.png",
       "ME_Singles_Terrains_and_Fences_32x32_Deep_Water_1_9.png"
-    ],
-    "sand": []
+	],
+	"sand": []
   },
   "props": {
-    "house_victorian_1": {
-      "file": "house_victorian_1.png",
-      "w": 512,
-      "h": 800,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_1_32x32.png"
-    },
-    "house_victorian_2": {
-      "file": "house_victorian_2.png",
-      "w": 192,
-      "h": 800,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_2_32x32.png"
-    },
-    "house_victorian_3": {
-      "file": "house_victorian_3.png",
-      "w": 288,
-      "h": 800,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_3_32x32.png"
-    },
-    "house_victorian_4": {
-      "file": "house_victorian_4.png",
-      "w": 576,
-      "h": 704,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_4_32x32.png"
-    },
-    "house_victorian_5": {
-      "file": "house_victorian_5.png",
-      "w": 576,
-      "h": 512,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_5_32x32.png"
-    },
-    "house_victorian_6": {
-      "file": "house_victorian_6.png",
-      "w": 384,
-      "h": 704,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_6_32x32.png"
-    },
-    "house_victorian_7": {
-      "file": "house_victorian_7.png",
-      "w": 192,
-      "h": 512,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Victorian_House_7_32x32.png"
-    },
-    "house_country": {
-      "file": "house_country.png",
-      "w": 576,
-      "h": 512,
-      "dir": "buildings",
-      "src": "24_Additional_Houses_Country_House_32x32.png"
-    },
-    "fountain_1": {
-      "file": "fountain_1.png",
-      "w": 64,
-      "h": 96,
-      "dir": "props",
-      "src": "ME_Singles_City_Props_32x32_Fountain_1.png"
-    },
-    "fountain_2": {
-      "file": "fountain_2.png",
-      "w": 64,
-      "h": 96,
-      "dir": "props",
-      "src": "ME_Singles_City_Props_32x32_Fountain_2.png"
-    },
-    "bench_1": {
-      "file": "bench_1.png",
-      "w": 64,
-      "h": 64,
-      "dir": "props",
-      "src": "ME_Singles_City_Props_32x32_Bench_1.png"
-    },
-    "bench_2": {
-      "file": "bench_2.png",
-      "w": 96,
-      "h": 64,
-      "dir": "props",
-      "src": "ME_Singles_City_Props_32x32_Bench_2.png"
-    },
-    "tree": [
-      {
-        "file": "tree_1.png",
-        "w": 128,
-        "h": 128,
-        "src": "ME_Singles_Camping_32x32_Tree_1.png"
-      },
-      {
-        "file": "tree_2.png",
-        "w": 128,
-        "h": 128,
-        "src": "ME_Singles_Camping_32x32_Tree_10.png"
-      },
-      {
-        "file": "tree_3.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_100.png"
-      },
-      {
-        "file": "tree_4.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_101.png"
-      },
-      {
-        "file": "tree_5.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_102.png"
-      },
-      {
-        "file": "tree_6.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_103.png"
-      },
-      {
-        "file": "tree_7.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_104.png"
-      },
-      {
-        "file": "tree_8.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_105.png"
-      },
-      {
-        "file": "tree_9.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_106.png"
-      },
-      {
-        "file": "tree_10.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_107.png"
-      },
-      {
-        "file": "tree_11.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_108.png"
-      },
-      {
-        "file": "tree_12.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_109.png"
-      },
-      {
-        "file": "tree_13.png",
-        "w": 128,
-        "h": 128,
-        "src": "ME_Singles_Camping_32x32_Tree_11.png"
-      },
-      {
-        "file": "tree_14.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_110.png"
-      },
-      {
-        "file": "tree_15.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_111.png"
-      },
-      {
-        "file": "tree_16.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_112.png"
-      },
-      {
-        "file": "tree_17.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_113.png"
-      },
-      {
-        "file": "tree_18.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_114.png"
-      },
-      {
-        "file": "tree_19.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_115.png"
-      },
-      {
-        "file": "tree_20.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_116.png"
-      },
-      {
-        "file": "tree_21.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_117.png"
-      },
-      {
-        "file": "tree_22.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_118.png"
-      },
-      {
-        "file": "tree_23.png",
-        "w": 128,
-        "h": 160,
-        "src": "ME_Singles_Camping_32x32_Tree_119.png"
-      },
-      {
-        "file": "tree_24.png",
-        "w": 128,
-        "h": 128,
-        "src": "ME_Singles_Camping_32x32_Tree_12.png"
-      }
-    ],
-    "flower": [
-      {
-        "file": "flower_1.png",
-        "w": 64,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_1.png"
-      },
-      {
-        "file": "flower_2.png",
-        "w": 64,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_2.png"
-      },
-      {
-        "file": "flower_3.png",
-        "w": 64,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_3.png"
-      },
-      {
-        "file": "flower_4.png",
-        "w": 96,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_4.png"
-      },
-      {
-        "file": "flower_5.png",
-        "w": 96,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_5.png"
-      },
-      {
-        "file": "flower_6.png",
-        "w": 96,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_6.png"
-      },
-      {
-        "file": "flower_7.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Flower_Bush_7.png"
-      }
-    ],
-    "lamp": [
-      {
-        "file": "lamp_1.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_City_Props_32x32_Street_Lamp_1.png"
-      },
-      {
-        "file": "lamp_2.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_City_Props_32x32_Street_Lamp_2.png"
-      },
-      {
-        "file": "lamp_3.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_City_Props_32x32_Street_Lamp_3.png"
-      },
-      {
-        "file": "lamp_4.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_City_Props_32x32_Street_Lamp_4.png"
-      },
-      {
-        "file": "lamp_5.png",
-        "w": 32,
-        "h": 128,
-        "src": "ME_Singles_City_Props_32x32_Street_Lamp_5.png"
-      }
-    ],
-    "streetlight": [],
-    "bush": [],
-    "mall": [
-      {
-        "file": "mall_1.png",
-        "w": 576,
-        "h": 384,
-        "src": "ME_Singles_Shopping_Center_and_Markets_32x32_Mall_1.png"
-      }
-    ],
-    "market_stall": [],
-    "car": [
-      {
-        "file": "car_1.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_1.png"
-      },
-      {
-        "file": "car_2.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_2.png"
-      },
-      {
-        "file": "car_3.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_3.png"
-      },
-      {
-        "file": "car_4.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_4.png"
-      },
-      {
-        "file": "car_5.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_5.png"
-      },
-      {
-        "file": "car_6.png",
-        "w": 64,
-        "h": 128,
-        "src": "ME_Singles_Vehicles_32x32_Car_Down_6.png"
-      },
-      {
-        "file": "car_7.png",
-        "w": 128,
-        "h": 96,
-        "src": "ME_Singles_Vehicles_32x32_Car_Left_1.png"
-      },
-      {
-        "file": "car_8.png",
-        "w": 128,
-        "h": 96,
-        "src": "ME_Singles_Vehicles_32x32_Car_Left_2.png"
-      }
-    ],
-    "sign": [
-      {
-        "file": "sign_1.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_1.png"
-      },
-      {
-        "file": "sign_2.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_10.png"
-      },
-      {
-        "file": "sign_3.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_11.png"
-      },
-      {
-        "file": "sign_4.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_12.png"
-      },
-      {
-        "file": "sign_5.png",
-        "w": 32,
-        "h": 32,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_13.png"
-      },
-      {
-        "file": "sign_6.png",
-        "w": 32,
-        "h": 64,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_14.png"
-      },
-      {
-        "file": "sign_7.png",
-        "w": 32,
-        "h": 64,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_15.png"
-      },
-      {
-        "file": "sign_8.png",
-        "w": 32,
-        "h": 64,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_16.png"
-      },
-      {
-        "file": "sign_9.png",
-        "w": 32,
-        "h": 64,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_2.png"
-      },
-      {
-        "file": "sign_10.png",
-        "w": 32,
-        "h": 64,
-        "src": "ME_Singles_City_Props_32x32_Danger_Sign_3.png"
-      }
-    ]
+	"house_victorian_1": {
+	  "file": "house_victorian_1.png",
+	  "w": 512,
+	  "h": 800,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_1_32x32.png"
+	},
+	"house_victorian_2": {
+	  "file": "house_victorian_2.png",
+	  "w": 192,
+	  "h": 800,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_2_32x32.png"
+	},
+	"house_victorian_3": {
+	  "file": "house_victorian_3.png",
+	  "w": 288,
+	  "h": 800,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_3_32x32.png"
+	},
+	"house_victorian_4": {
+	  "file": "house_victorian_4.png",
+	  "w": 576,
+	  "h": 704,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_4_32x32.png"
+	},
+	"house_victorian_5": {
+	  "file": "house_victorian_5.png",
+	  "w": 576,
+	  "h": 512,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_5_32x32.png"
+	},
+	"house_victorian_6": {
+	  "file": "house_victorian_6.png",
+	  "w": 384,
+	  "h": 704,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_6_32x32.png"
+	},
+	"house_victorian_7": {
+	  "file": "house_victorian_7.png",
+	  "w": 192,
+	  "h": 512,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Victorian_House_7_32x32.png"
+	},
+	"house_country": {
+	  "file": "house_country.png",
+	  "w": 576,
+	  "h": 512,
+	  "dir": "buildings",
+	  "src": "24_Additional_Houses_Country_House_32x32.png"
+	},
+	"fountain_1": {
+	  "file": "fountain_1.png",
+	  "w": 64,
+	  "h": 96,
+	  "dir": "props",
+	  "src": "ME_Singles_City_Props_32x32_Fountain_1.png"
+	},
+	"fountain_2": {
+	  "file": "fountain_2.png",
+	  "w": 64,
+	  "h": 96,
+	  "dir": "props",
+	  "src": "ME_Singles_City_Props_32x32_Fountain_2.png"
+	},
+	"bench_1": {
+	  "file": "bench_1.png",
+	  "w": 64,
+	  "h": 64,
+	  "dir": "props",
+	  "src": "ME_Singles_City_Props_32x32_Bench_1.png"
+	},
+	"bench_2": {
+	  "file": "bench_2.png",
+	  "w": 96,
+	  "h": 64,
+	  "dir": "props",
+	  "src": "ME_Singles_City_Props_32x32_Bench_2.png"
+	},
+	"tree": [
+	  {
+		"file": "tree_1.png",
+		"w": 128,
+		"h": 128,
+		"src": "ME_Singles_Camping_32x32_Tree_1.png"
+	  },
+	  {
+		"file": "tree_2.png",
+		"w": 128,
+		"h": 128,
+		"src": "ME_Singles_Camping_32x32_Tree_10.png"
+	  },
+	  {
+		"file": "tree_3.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_100.png"
+	  },
+	  {
+		"file": "tree_4.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_101.png"
+	  },
+	  {
+		"file": "tree_5.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_102.png"
+	  },
+	  {
+		"file": "tree_6.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_103.png"
+	  },
+	  {
+		"file": "tree_7.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_104.png"
+	  },
+	  {
+		"file": "tree_8.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_105.png"
+	  },
+	  {
+		"file": "tree_9.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_106.png"
+	  },
+	  {
+		"file": "tree_10.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_107.png"
+	  },
+	  {
+		"file": "tree_11.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_108.png"
+	  },
+	  {
+		"file": "tree_12.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_109.png"
+	  },
+	  {
+		"file": "tree_13.png",
+		"w": 128,
+		"h": 128,
+		"src": "ME_Singles_Camping_32x32_Tree_11.png"
+	  },
+	  {
+		"file": "tree_14.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_110.png"
+	  },
+	  {
+		"file": "tree_15.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_111.png"
+	  },
+	  {
+		"file": "tree_16.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_112.png"
+	  },
+	  {
+		"file": "tree_17.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_113.png"
+	  },
+	  {
+		"file": "tree_18.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_114.png"
+	  },
+	  {
+		"file": "tree_19.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_115.png"
+	  },
+	  {
+		"file": "tree_20.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_116.png"
+	  },
+	  {
+		"file": "tree_21.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_117.png"
+	  },
+	  {
+		"file": "tree_22.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_118.png"
+	  },
+	  {
+		"file": "tree_23.png",
+		"w": 128,
+		"h": 160,
+		"src": "ME_Singles_Camping_32x32_Tree_119.png"
+	  },
+	  {
+		"file": "tree_24.png",
+		"w": 128,
+		"h": 128,
+		"src": "ME_Singles_Camping_32x32_Tree_12.png"
+	  }
+	],
+	"flower": [
+	  {
+		"file": "flower_1.png",
+		"w": 64,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_1.png"
+	  },
+	  {
+		"file": "flower_2.png",
+		"w": 64,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_2.png"
+	  },
+	  {
+		"file": "flower_3.png",
+		"w": 64,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_3.png"
+	  },
+	  {
+		"file": "flower_4.png",
+		"w": 96,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_4.png"
+	  },
+	  {
+		"file": "flower_5.png",
+		"w": 96,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_5.png"
+	  },
+	  {
+		"file": "flower_6.png",
+		"w": 96,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_6.png"
+	  },
+	  {
+		"file": "flower_7.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Flower_Bush_7.png"
+	  }
+	],
+	"lamp": [
+	  {
+		"file": "lamp_1.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_City_Props_32x32_Street_Lamp_1.png"
+	  },
+	  {
+		"file": "lamp_2.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_City_Props_32x32_Street_Lamp_2.png"
+	  },
+	  {
+		"file": "lamp_3.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_City_Props_32x32_Street_Lamp_3.png"
+	  },
+	  {
+		"file": "lamp_4.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_City_Props_32x32_Street_Lamp_4.png"
+	  },
+	  {
+		"file": "lamp_5.png",
+		"w": 32,
+		"h": 128,
+		"src": "ME_Singles_City_Props_32x32_Street_Lamp_5.png"
+	  }
+	],
+	"streetlight": [],
+	"bush": [],
+	"mall": [
+	  {
+		"file": "mall_1.png",
+		"w": 576,
+		"h": 384,
+		"src": "ME_Singles_Shopping_Center_and_Markets_32x32_Mall_1.png"
+	  }
+	],
+	"market_stall": [],
+	"car": [
+	  {
+		"file": "car_1.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_1.png"
+	  },
+	  {
+		"file": "car_2.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_2.png"
+	  },
+	  {
+		"file": "car_3.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_3.png"
+	  },
+	  {
+		"file": "car_4.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_4.png"
+	  },
+	  {
+		"file": "car_5.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_5.png"
+	  },
+	  {
+		"file": "car_6.png",
+		"w": 64,
+		"h": 128,
+		"src": "ME_Singles_Vehicles_32x32_Car_Down_6.png"
+	  },
+	  {
+		"file": "car_7.png",
+		"w": 128,
+		"h": 96,
+		"src": "ME_Singles_Vehicles_32x32_Car_Left_1.png"
+	  },
+	  {
+		"file": "car_8.png",
+		"w": 128,
+		"h": 96,
+		"src": "ME_Singles_Vehicles_32x32_Car_Left_2.png"
+	  }
+	],
+	"sign": [
+	  {
+		"file": "sign_1.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_1.png"
+	  },
+	  {
+		"file": "sign_2.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_10.png"
+	  },
+	  {
+		"file": "sign_3.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_11.png"
+	  },
+	  {
+		"file": "sign_4.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_12.png"
+	  },
+	  {
+		"file": "sign_5.png",
+		"w": 32,
+		"h": 32,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_13.png"
+	  },
+	  {
+		"file": "sign_6.png",
+		"w": 32,
+		"h": 64,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_14.png"
+	  },
+	  {
+		"file": "sign_7.png",
+		"w": 32,
+		"h": 64,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_15.png"
+	  },
+	  {
+		"file": "sign_8.png",
+		"w": 32,
+		"h": 64,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_16.png"
+	  },
+	  {
+		"file": "sign_9.png",
+		"w": 32,
+		"h": 64,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_2.png"
+	  },
+	  {
+		"file": "sign_10.png",
+		"w": 32,
+		"h": 64,
+		"src": "ME_Singles_City_Props_32x32_Danger_Sign_3.png"
+	  }
+	]
   },
   "characters": [
-    "Premade_Character_48x48_01.png",
-    "Premade_Character_48x48_02.png",
-    "Premade_Character_48x48_03.png",
-    "Premade_Character_48x48_04.png",
-    "Premade_Character_48x48_05.png",
-    "Premade_Character_48x48_06.png",
-    "Premade_Character_48x48_07.png",
-    "Premade_Character_48x48_08.png",
-    "Premade_Character_48x48_09.png",
-    "Premade_Character_48x48_10.png",
-    "Premade_Character_48x48_11.png",
-    "Premade_Character_48x48_12.png",
-    "Premade_Character_48x48_13.png",
-    "Premade_Character_48x48_14.png",
-    "Premade_Character_48x48_15.png",
-    "Premade_Character_48x48_16.png",
-    "Premade_Character_48x48_17.png",
-    "Premade_Character_48x48_18.png",
-    "Premade_Character_48x48_19.png",
+	"Premade_Character_48x48_01.png",
+	"Premade_Character_48x48_02.png",
+	"Premade_Character_48x48_03.png",
+	"Premade_Character_48x48_04.png",
+	"Premade_Character_48x48_05.png",
+	"Premade_Character_48x48_06.png",
+	"Premade_Character_48x48_07.png",
+	"Premade_Character_48x48_08.png",
+	"Premade_Character_48x48_09.png",
+	"Premade_Character_48x48_10.png",
+	"Premade_Character_48x48_11.png",
+	"Premade_Character_48x48_12.png",
+	"Premade_Character_48x48_13.png",
+	"Premade_Character_48x48_14.png",
+	"Premade_Character_48x48_15.png",
+	"Premade_Character_48x48_16.png",
+	"Premade_Character_48x48_17.png",
+	"Premade_Character_48x48_18.png",
+	"Premade_Character_48x48_19.png",
     "Premade_Character_48x48_20.png"
   ]
 }

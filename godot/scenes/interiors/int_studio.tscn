@@ -1,144 +1,144 @@
-[gd_scene load_steps=11 format=3 uid="uid://busyworld_int_studio"]
+[gd_scene format=4 uid="uid://ujb16f7ewc4s"]
 
-[ext_resource type="TileSet" path="res://data/int_tileset.tres" id="ts"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/console.png" id="f0"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/desk_chair.png" id="f1"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/green_screen.png" id="f2"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/monitor.png" id="f3"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/printer.png" id="f4"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/printer2.png" id="f5"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/prod_rack.png" id="f6"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/server_rack.png" id="f7"]
-[ext_resource type="Texture2D" path="res://assets/interiors/furniture/studio_light.png" id="f8"]
+[ext_resource type="Texture2D" uid="uid://cpxyn1ij6lrnf" path="res://assets/interiors/furniture/console.png" id="f0"]
+[ext_resource type="Texture2D" uid="uid://uc5fhquoqvxf" path="res://assets/interiors/furniture/desk_chair.png" id="f1"]
+[ext_resource type="Texture2D" uid="uid://cx7trvtph5s3r" path="res://assets/interiors/furniture/green_screen.png" id="f2"]
+[ext_resource type="Texture2D" uid="uid://cufgsa53sjqym" path="res://assets/interiors/furniture/monitor.png" id="f3"]
+[ext_resource type="Texture2D" uid="uid://tmcnl0883f1" path="res://assets/interiors/furniture/printer.png" id="f4"]
+[ext_resource type="Texture2D" uid="uid://c7jas3ka0uf8a" path="res://assets/interiors/furniture/printer2.png" id="f5"]
+[ext_resource type="Texture2D" uid="uid://cmr70fe5mpeiq" path="res://assets/interiors/furniture/prod_rack.png" id="f6"]
+[ext_resource type="Texture2D" uid="uid://dp23fnfs0djki" path="res://assets/interiors/furniture/server_rack.png" id="f7"]
+[ext_resource type="Texture2D" uid="uid://bqqifiik4s4jj" path="res://assets/interiors/furniture/studio_light.png" id="f8"]
+[ext_resource type="TileSet" uid="uid://coi74acnm552n" path="res://data/int_tileset.tres" id="ts"]
 
-[node name="int_studio" type="Node2D"]
+[node name="int_studio" type="Node2D" unique_id=1249823703]
 metadata/tile = 32
 metadata/tw = 14
 metadata/th = 11
 metadata/entry = Vector2(7, 9)
 
-[node name="Shell" type="TileMapLayer" parent="."]
+[node name="Shell" type="TileMapLayer" parent="." unique_id=778027215]
 z_index = -20
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 2, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 3, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 4, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 5, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 6, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 6, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 7, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 7, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 8, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 8, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 6, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 7, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 9, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 10, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 11, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 9, 0, 0, 0, 2, 0, 0, 0, 0, 0, 13, 0, 9, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 2, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 3, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 4, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 5, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 6, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 7, 0, 10, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 9, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 10, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 11, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 12, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 13, 0, 10, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 1, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 2, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 3, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 4, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 5, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 6, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 7, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 8, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 9, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 10, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 11, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 12, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0, 13, 0, 255, 255, 0, 0, 6, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAABAAAAAAAFAAAAAAACAAAAAAAFAAAAAAADAAAAAAAFAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAFAAAAAAAGAAAAAAAFAAAAAAAHAAAAAAAFAAAAAAAIAAAAAAAFAAAAAAAJAAAAAAAFAAAAAAAKAAAAAAAFAAAAAAALAAAAAAAFAAAAAAAMAAAAAAAFAAAAAAANAAAAAAAFAAAAAAAAAAEAAAAFAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAACAAAAAAAGAAEAAAACAAAAAAAHAAEAAAACAAAAAAAIAAEAAAACAAAAAAAJAAEAAAACAAAAAAAKAAEAAAACAAAAAAALAAEAAAACAAAAAAAMAAEAAAACAAAAAAANAAEAAAAFAAAAAAAAAAIAAAAFAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAAEAAIAAAACAAAAAAAFAAIAAAACAAAAAAAGAAIAAAACAAAAAAAHAAIAAAACAAAAAAAIAAIAAAACAAAAAAAJAAIAAAACAAAAAAAKAAIAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAANAAIAAAAFAAAAAAAAAAMAAAAFAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAMAAAACAAAAAAAFAAMAAAACAAAAAAAGAAMAAAACAAAAAAAHAAMAAAACAAAAAAAIAAMAAAACAAAAAAAJAAMAAAACAAAAAAAKAAMAAAACAAAAAAALAAMAAAACAAAAAAAMAAMAAAACAAAAAAANAAMAAAAFAAAAAAAAAAQAAAAFAAAAAAABAAQAAAACAAAAAAACAAQAAAACAAAAAAADAAQAAAACAAAAAAAEAAQAAAACAAAAAAAFAAQAAAACAAAAAAAGAAQAAAACAAAAAAAHAAQAAAACAAAAAAAIAAQAAAACAAAAAAAJAAQAAAACAAAAAAAKAAQAAAACAAAAAAALAAQAAAACAAAAAAAMAAQAAAACAAAAAAANAAQAAAAFAAAAAAAAAAUAAAAFAAAAAAABAAUAAAACAAAAAAACAAUAAAACAAAAAAADAAUAAAACAAAAAAAEAAUAAAACAAAAAAAFAAUAAAACAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAAIAAUAAAACAAAAAAAJAAUAAAACAAAAAAAKAAUAAAACAAAAAAALAAUAAAACAAAAAAAMAAUAAAACAAAAAAANAAUAAAAFAAAAAAAAAAYAAAAFAAAAAAABAAYAAAACAAAAAAACAAYAAAACAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAAFAAYAAAACAAAAAAAGAAYAAAACAAAAAAAHAAYAAAACAAAAAAAIAAYAAAACAAAAAAAJAAYAAAACAAAAAAAKAAYAAAACAAAAAAALAAYAAAACAAAAAAAMAAYAAAACAAAAAAANAAYAAAAFAAAAAAAAAAcAAAAFAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAAFAAAAAAAAAAgAAAAFAAAAAAABAAgAAAACAAAAAAACAAgAAAACAAAAAAADAAgAAAACAAAAAAAEAAgAAAACAAAAAAAFAAgAAAACAAAAAAAGAAgAAAACAAAAAAAHAAgAAAACAAAAAAAIAAgAAAACAAAAAAAJAAgAAAACAAAAAAAKAAgAAAACAAAAAAALAAgAAAACAAAAAAAMAAgAAAACAAAAAAANAAgAAAAFAAAAAAAAAAkAAAAFAAAAAAABAAkAAAACAAAAAAACAAkAAAACAAAAAAADAAkAAAACAAAAAAAEAAkAAAACAAAAAAAFAAkAAAACAAAAAAAGAAkAAAACAAAAAAAHAAkAAAACAAAAAAAIAAkAAAACAAAAAAAJAAkAAAACAAAAAAAKAAkAAAACAAAAAAALAAkAAAACAAAAAAAMAAkAAAACAAAAAAANAAkAAAAFAAAAAAAAAAoAAAAFAAAAAAABAAoAAAAFAAAAAAACAAoAAAAFAAAAAAADAAoAAAAFAAAAAAAEAAoAAAAFAAAAAAAFAAoAAAAFAAAAAAAGAAoAAAAFAAAAAAAHAAoAAAACAAAAAAAIAAoAAAAFAAAAAAAJAAoAAAAFAAAAAAAKAAoAAAAFAAAAAAALAAoAAAAFAAAAAAAMAAoAAAAFAAAAAAANAAoAAAAFAAAAAAAAAP//AAAGAAAAAAABAP//AAAGAAAAAAACAP//AAAGAAAAAAADAP//AAAGAAAAAAAEAP//AAAGAAAAAAAFAP//AAAGAAAAAAAGAP//AAAGAAAAAAAHAP//AAAGAAAAAAAIAP//AAAGAAAAAAAJAP//AAAGAAAAAAAKAP//AAAGAAAAAAALAP//AAAGAAAAAAAMAP//AAAGAAAAAAANAP//AAAGAAAAAAA=")
 tile_set = ExtResource("ts")
 
-[node name="Furniture" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="Furniture" type="Node2D" parent="." unique_id=1602151788]
 z_index = -10
+y_sort_enabled = true
 
-[node name="console" type="Sprite2D" parent="Furniture"]
+[node name="console" type="Sprite2D" parent="Furniture" unique_id=1674284502]
 position = Vector2(112, 128)
+texture = ExtResource("f0")
 centered = false
 offset = Vector2(-32, -80)
-texture = ExtResource("f0")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-24, -74, 50, 62)
 
-[node name="monitor" type="Sprite2D" parent="Furniture"]
+[node name="monitor" type="Sprite2D" parent="Furniture" unique_id=1802474743]
 position = Vector2(112, 128)
+texture = ExtResource("f3")
 centered = false
 offset = Vector2(-32, -64)
-texture = ExtResource("f3")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-30, -62, 62, 42)
 
-[node name="desk_chair" type="Sprite2D" parent="Furniture"]
+[node name="desk_chair" type="Sprite2D" parent="Furniture" unique_id=1957587008]
 position = Vector2(112, 192)
+texture = ExtResource("f1")
 centered = false
 offset = Vector2(-32, -64)
-texture = ExtResource("f1")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-22, -50, 44, 46)
 
-[node name="console2" type="Sprite2D" parent="Furniture"]
+[node name="console2" type="Sprite2D" parent="Furniture" unique_id=1263181454]
 position = Vector2(240, 128)
+texture = ExtResource("f0")
 centered = false
 offset = Vector2(-32, -80)
-texture = ExtResource("f0")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-24, -74, 50, 62)
 
-[node name="monitor2" type="Sprite2D" parent="Furniture"]
+[node name="monitor2" type="Sprite2D" parent="Furniture" unique_id=1421250241]
 position = Vector2(240, 128)
+texture = ExtResource("f3")
 centered = false
 offset = Vector2(-32, -64)
-texture = ExtResource("f3")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-30, -62, 62, 42)
 
-[node name="desk_chair2" type="Sprite2D" parent="Furniture"]
+[node name="desk_chair2" type="Sprite2D" parent="Furniture" unique_id=1670389072]
 position = Vector2(240, 192)
+texture = ExtResource("f1")
 centered = false
 offset = Vector2(-32, -64)
-texture = ExtResource("f1")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-22, -50, 44, 46)
 
-[node name="printer" type="Sprite2D" parent="Furniture"]
+[node name="printer" type="Sprite2D" parent="Furniture" unique_id=1345243401]
 position = Vector2(368, 96)
+texture = ExtResource("f4")
 centered = false
 offset = Vector2(-16, -48)
-texture = ExtResource("f4")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-16, -44, 32, 40)
 
-[node name="printer2" type="Sprite2D" parent="Furniture"]
+[node name="printer2" type="Sprite2D" parent="Furniture" unique_id=767437648]
 position = Vector2(368, 192)
+texture = ExtResource("f5")
 centered = false
 offset = Vector2(-16, -48)
-texture = ExtResource("f5")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-12, -48, 28, 42)
 
-[node name="server_rack" type="Sprite2D" parent="Furniture"]
+[node name="server_rack" type="Sprite2D" parent="Furniture" unique_id=2054631159]
 position = Vector2(48, 96)
+texture = ExtResource("f7")
 centered = false
 offset = Vector2(-16, -32)
-texture = ExtResource("f7")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-16, -32, 30, 32)
 
-[node name="prod_rack" type="Sprite2D" parent="Furniture"]
+[node name="prod_rack" type="Sprite2D" parent="Furniture" unique_id=819398334]
 position = Vector2(400, 288)
+texture = ExtResource("f6")
 centered = false
 offset = Vector2(-16, -32)
-texture = ExtResource("f6")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-14, -32, 30, 32)
 
-[node name="prod_rack2" type="Sprite2D" parent="Furniture"]
+[node name="prod_rack2" type="Sprite2D" parent="Furniture" unique_id=707973280]
 position = Vector2(80, 288)
+texture = ExtResource("f6")
 centered = false
 offset = Vector2(-16, -32)
-texture = ExtResource("f6")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-14, -32, 30, 32)
 
-[node name="green_screen" type="Sprite2D" parent="Furniture"]
+[node name="green_screen" type="Sprite2D" parent="Furniture" unique_id=1220040725]
 position = Vector2(208, 288)
+texture = ExtResource("f2")
 centered = false
 offset = Vector2(-16, -64)
-texture = ExtResource("f2")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-14, -64, 28, 64)
 
-[node name="studio_light" type="Sprite2D" parent="Furniture"]
+[node name="studio_light" type="Sprite2D" parent="Furniture" unique_id=1459661204]
 position = Vector2(48, 224)
+texture = ExtResource("f8")
 centered = false
 offset = Vector2(-16, -64)
-texture = ExtResource("f8")
 metadata/kind = "furniture"
 metadata/collide = true
 metadata/foot = Rect2(-14, -58, 26, 50)

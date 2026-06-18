@@ -16,37 +16,37 @@
    "h": 416,
    "place": "Town Center",
    "tags": [
-    "a civic building",
-    "where the town meets to plan",
+	"a civic building",
+	"where the town meets to plan",
     "open and welcoming"
    ],
    "role": "coordinator",
    "door": [
-    1178.0,
-    672
+	1178.0,
+	672
    ],
    "door_anim": {
-    "sheet": "doors/door_civic.png",
-    "fw": 64,
-    "fh": 64,
-    "n": 14,
-    "ox": -70,
-    "oy": -64
+	"sheet": "doors/door_civic.png",
+	"fw": 64,
+	"fh": 64,
+	"n": 14,
+	"ox": -70,
+	"oy": -64
    },
    "interior": "int_condo",
    "_front": [
-    1178.0,
-    704
+	1178.0,
+	704
    ],
    "_foot": [
-    -128.0,
-    -416,
-    256,
-    416
+	-128.0,
+	-416,
+	256,
+	416
    ],
    "_front_rel": [
-    -38.0,
-    32
+	-38.0,
+	32
    ]
   },
   {
@@ -58,37 +58,37 @@
    "h": 384,
    "place": "Print Shop",
    "tags": [
-    "workstations and screens",
-    "the hum of a printer",
+	"workstations and screens",
+	"the hum of a printer",
     "racks of finished products"
    ],
    "role": "designer",
    "door": [
-    1216.0,
-    1504
+	1216.0,
+	1504
    ],
    "door_anim": {
-    "sheet": "doors/door_shopping.png",
-    "fw": 64,
-    "fh": 96,
-    "n": 14,
-    "ox": -32,
-    "oy": -96
+	"sheet": "doors/door_shopping.png",
+	"fw": 64,
+	"fh": 96,
+	"n": 14,
+	"ox": -32,
+	"oy": -96
    },
    "interior": "int_studio",
    "_front": [
-    1216.0,
-    1536
+	1216.0,
+	1536
    ],
    "_foot": [
-    -278.0,
-    -358,
-    566,
-    358
+	-278.0,
+	-358,
+	566,
+	358
    ],
    "_front_rel": [
-    0.0,
-    32
+	0.0,
+	32
    ]
   },
   {
@@ -104,31 +104,31 @@
    ],
    "role": null,
    "door": [
-    336.0,
-    640
+	336.0,
+	640
    ],
    "door_anim": {
-    "sheet": "doors/door_japanese.png",
-    "fw": 64,
-    "fh": 64,
-    "n": 22,
-    "ox": -144,
-    "oy": -64
+	"sheet": "doors/door_japanese.png",
+	"fw": 64,
+	"fh": 64,
+	"n": 22,
+	"ox": -144,
+	"oy": -64
    },
    "interior": "int_japanese",
    "_front": [
-    336.0,
-    672
+	336.0,
+	672
    ],
    "_foot": [
-    -240.0,
-    -448,
-    480,
-    448
+	-240.0,
+	-448,
+	480,
+	448
    ],
    "_front_rel": [
-    -112.0,
-    32
+	-112.0,
+	32
    ]
   },
   {
@@ -144,31 +144,31 @@
    ],
    "role": null,
    "door": [
-    1872.0,
-    640
+	1872.0,
+	640
    ],
    "door_anim": {
-    "sheet": "doors/door_japanese.png",
-    "fw": 64,
-    "fh": 64,
-    "n": 22,
-    "ox": -144,
-    "oy": -64
+	"sheet": "doors/door_japanese.png",
+	"fw": 64,
+	"fh": 64,
+	"n": 22,
+	"ox": -144,
+	"oy": -64
    },
    "interior": "int_japanese",
    "_front": [
-    1872.0,
-    672
+	1872.0,
+	672
    ],
    "_foot": [
-    -240.0,
-    -448,
-    480,
-    448
+	-240.0,
+	-448,
+	480,
+	448
    ],
    "_front_rel": [
-    -112.0,
-    32
+	-112.0,
+	32
    ]
   },
   {
@@ -184,31 +184,31 @@
    ],
    "role": null,
    "door": [
-    336.0,
-    1504
+	336.0,
+	1504
    ],
    "door_anim": {
-    "sheet": "doors/door_japanese.png",
-    "fw": 64,
-    "fh": 64,
-    "n": 22,
-    "ox": -144,
-    "oy": -64
+	"sheet": "doors/door_japanese.png",
+	"fw": 64,
+	"fh": 64,
+	"n": 22,
+	"ox": -144,
+	"oy": -64
    },
    "interior": "int_home1",
    "_front": [
-    336.0,
-    1536
+	336.0,
+	1536
    ],
    "_foot": [
-    -240.0,
-    -448,
-    480,
-    448
+	-240.0,
+	-448,
+	480,
+	448
    ],
    "_front_rel": [
-    -112.0,
-    32
+	-112.0,
+	32
    ]
   },
   {
@@ -224,31 +224,31 @@
    ],
    "role": null,
    "door": [
-    1872.0,
-    1504
+	1872.0,
+	1504
    ],
    "door_anim": {
-    "sheet": "doors/door_japanese.png",
-    "fw": 64,
-    "fh": 64,
-    "n": 22,
-    "ox": -144,
-    "oy": -64
+	"sheet": "doors/door_japanese.png",
+	"fw": 64,
+	"fh": 64,
+	"n": 22,
+	"ox": -144,
+	"oy": -64
    },
    "interior": "int_home1",
    "_front": [
-    1872.0,
-    1536
+	1872.0,
+	1536
    ],
    "_foot": [
-    -240.0,
-    -448,
-    480,
-    448
+	-240.0,
+	-448,
+	480,
+	448
    ],
    "_front_rel": [
-    -112.0,
-    32
+	-112.0,
+	32
    ]
   }
  ],
@@ -1413,8 +1413,8 @@
    "y": 704,
    "type": "workplace",
    "tags": [
-    "a civic building",
-    "where the town meets to plan",
+	"a civic building",
+	"where the town meets to plan",
     "open and welcoming"
    ],
    "role": "coordinator"
@@ -1425,8 +1425,8 @@
    "y": 1536,
    "type": "workplace",
    "tags": [
-    "workstations and screens",
-    "the hum of a printer",
+	"workstations and screens",
+	"the hum of a printer",
     "racks of finished products"
    ],
    "role": "designer"
@@ -1477,8 +1477,8 @@
    "y": 864,
    "type": "plaza",
    "tags": [
-    "sunlit",
-    "a splashing fountain",
+	"sunlit",
+	"a splashing fountain",
     "the heart of the town"
    ],
    "role": null
