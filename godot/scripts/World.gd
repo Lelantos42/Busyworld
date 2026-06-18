@@ -133,52 +133,70 @@ func _build_interiors() -> void:
 	interiors_root.y_sort_enabled = true
 	add_child(interiors_root)
 	var ix0 := map_px.x + 600.0
-	var col_w := 760.0
-	var row_h := 840.0
 	var i := 0
 	for b in town.get("buildings", []):
 		var design := String(b.get("interior", ""))
 		var place := String(b.get("place", b.get("name", "")))
-		# exterior door for every building
 		_make_ext_door(place, b)
-		if design == "":
+		if design == "" or not GameConfig.interiors_data.has(design):
 			continue
-		var tex := load("res://assets/interiors/%s.png" % design) as Texture2D
+		var info: Dictionary = GameConfig.interiors_data[design]
+		var tex := load("res://assets/" + String(info.image)) as Texture2D
 		if tex == null:
 			continue
-		var origin := Vector2(ix0 + float(i % 3) * col_w, 200.0 + float(i / 3) * row_h)
+		var origin := Vector2(ix0 + float(i % 3) * 900.0, 200.0 + float(i / 3) * 900.0)
 		var sz := tex.get_size()
 		var room := Node2D.new()
 		room.position = origin
+		room.z_index = -10
 		interiors_root.add_child(room)
 		var floor_spr := Sprite2D.new()
 		floor_spr.texture = tex
 		floor_spr.centered = false
-		floor_spr.z_index = -50
 		room.add_child(floor_spr)
-		# room label
 		var lbl := Label.new()
 		lbl.text = place
-		lbl.position = Vector2(6, -22)
+		lbl.position = Vector2(6, -24)
 		lbl.add_theme_font_size_override("font_size", 16)
 		lbl.add_theme_color_override("font_color", Color(1, 0.9, 0.6))
-		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 		lbl.add_theme_constant_override("outline_size", 5)
 		room.add_child(lbl)
-		# interior exit door at the bottom-centre
+
+		# per-room navigation grid from the walkable floor tiles
+		var tw := int(info.tw)
+		var th := int(info.th)
+		var ra := AStarGrid2D.new()
+		ra.region = Rect2i(0, 0, tw, th)
+		ra.cell_size = Vector2(tile, tile)
+		ra.offset = origin + Vector2(tile, tile) * 0.5
+		ra.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+		ra.update()
+		for ty in range(th):
+			for tx in range(tw):
+				ra.set_point_solid(Vector2i(tx, ty), true)        # solid by default
+		var walk_world: Array = []
+		for c in info.walkable:
+			var cell := Vector2i(int(c[0]), int(c[1]))
+			ra.set_point_solid(cell, false)
+			walk_world.append(origin + Vector2(cell) * tile + Vector2(tile, tile) * 0.5)
+		var spots: Array = []
+		for s in info.spots:
+			spots.append(origin + Vector2(float(s[0]), float(s[1])) * tile + Vector2(tile, tile) * 0.5)
+		var entry: Vector2 = origin + Vector2(float(info.entry[0]), float(info.entry[1])) * tile + Vector2(tile, tile) * 0.5
+
+		# interior exit door at the bottom-centre threshold
 		var idoor: DoorNode = DOOR_SCRIPT.new()
 		var dsheet := load("res://assets/doors/door_1.png") as Texture2D
 		if dsheet:
 			idoor.setup(dsheet)
-			idoor.position = origin + Vector2(sz.x * 0.5, sz.y - 6)
+			idoor.position = origin + Vector2(float(info.door_px[0]), float(info.door_px[1]))
 			interiors_root.add_child(idoor)
-		var inset := Vector2(sz.x * 0.24, sz.y * 0.26)
 		interiors[place] = {
-			"center": origin + sz * 0.5,
-			"entry": origin + Vector2(sz.x * 0.5, sz.y - 40.0),
-			"walk": Rect2(origin + inset, sz - inset * 2.0),
-			"door": idoor,
-			"zoom": clampf(min(1100.0 / sz.x, 640.0 / sz.y), 0.6, 2.0),
+			"origin": origin, "astar": ra, "tw": tw, "th": th,
+			"center": origin + sz * 0.5, "entry": entry,
+			"walk": walk_world, "spots": spots, "door": idoor,
+			"zoom": clampf(min(1180.0 / sz.x, 660.0 / sz.y), 0.55, 2.0),
 		}
 		i += 1
 
@@ -198,9 +216,36 @@ func _make_ext_door(place: String, b: Dictionary) -> void:
 
 func interior_roam_point(place: String) -> Vector2:
 	if interiors.has(place):
-		var r: Rect2 = interiors[place].walk
-		return Vector2(r.position.x + randf() * r.size.x, r.position.y + randf() * r.size.y)
+		var w: Array = interiors[place].walk
+		if w.size() > 0:
+			return w[randi() % w.size()]
 	return Vector2.ZERO
+
+func interior_path(place: String, from_w: Vector2, to_w: Vector2) -> PackedVector2Array:
+	if not interiors.has(place):
+		return PackedVector2Array([from_w, to_w])
+	var info: Dictionary = interiors[place]
+	var ra: AStarGrid2D = info.astar
+	var o: Vector2 = info.origin
+	var a := _room_cell(ra, info, from_w - o)
+	var b := _room_cell(ra, info, to_w - o)
+	if a == b:
+		return PackedVector2Array([from_w, to_w])
+	var p := ra.get_point_path(a, b)
+	return p if p.size() > 1 else PackedVector2Array([from_w, to_w])
+
+func _room_cell(ra: AStarGrid2D, info: Dictionary, local: Vector2) -> Vector2i:
+	var c := Vector2i(int(local.x / tile), int(local.y / tile))
+	c = c.clamp(Vector2i.ZERO, Vector2i(int(info.tw) - 1, int(info.th) - 1))
+	if not ra.is_point_solid(c):
+		return c
+	for r in range(1, 6):
+		for dy in range(-r, r + 1):
+			for dx in range(-r, r + 1):
+				var n := c + Vector2i(dx, dy)
+				if ra.region.has_point(n) and not ra.is_point_solid(n):
+					return n
+	return c
 
 func enter_building(a: Agent, place: String) -> void:
 	if not interiors.has(place):
@@ -210,7 +255,12 @@ func enter_building(a: Agent, place: String) -> void:
 	a.teleport(interiors[place].entry)
 	a.inside = place
 	a.current_action = "working" if place == a.workplace_name else "resting"
-	a.move_direct(interior_roam_point(place))
+	_roam_inside(a)
+
+func _roam_inside(a: Agent) -> void:
+	var tgt := interior_roam_point(a.inside)
+	if tgt != Vector2.ZERO:
+		a.walk_path(interior_path(a.inside, a.position, tgt))
 
 func exit_building(a: Agent) -> void:
 	if a.inside == "":
@@ -555,7 +605,7 @@ func _apply_action(a: Agent, action: Dictionary, m: Dictionary) -> void:
 			interval = 6.0
 		"idle":
 			if a.inside != "":
-				a.move_direct(interior_roam_point(a.inside))
+				_roam_inside(a)
 			else:
 				a.stop()
 			interval = float(act.get("seconds", 5))
@@ -568,7 +618,7 @@ func _go_into(a: Agent, place: String) -> void:
 	if place == "":
 		a.stop(); return
 	if a.inside == place:
-		a.move_direct(interior_roam_point(place))   # already inside; shuffle around
+		_roam_inside(a)                              # already inside; wander the room
 		return
 	if a.inside != "":
 		exit_building(a)

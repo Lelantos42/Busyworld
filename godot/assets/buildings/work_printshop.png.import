@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vlqd5whtux1k"
-path="res://.godot/imported/house_country.png-39075c6218c0a01c2edb864041ac484d.ctex"
+uid="uid://bfdgiwvul2rdh"
+path="res://.godot/imported/work_printshop.png-0e51e2b719434f84299fa30822c57d7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buildings/house_country.png"
-dest_files=["res://.godot/imported/house_country.png-39075c6218c0a01c2edb864041ac484d.ctex"]
+source_file="res://assets/buildings/work_printshop.png"
+dest_files=["res://.godot/imported/work_printshop.png-0e51e2b719434f84299fa30822c57d7b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhvyqk26iq6ll"
-path="res://.godot/imported/house_victorian_3.png-6cf3df6534e19fb389bc29a177ba4559.ctex"
+uid="uid://cy7pg6mkeiq31"
+path="res://.godot/imported/int_home1_furn.png-89b589eb53876723d2fba6b5e29ab697.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buildings/house_victorian_3.png"
-dest_files=["res://.godot/imported/house_victorian_3.png-6cf3df6534e19fb389bc29a177ba4559.ctex"]
+source_file="res://assets/interiors/int_home1_furn.png"
+dest_files=["res://.godot/imported/int_home1_furn.png-89b589eb53876723d2fba6b5e29ab697.ctex"]
 
 [params]
 

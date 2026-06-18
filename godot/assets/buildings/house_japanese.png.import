@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boqw0vn0a4lhv"
-path="res://.godot/imported/house_victorian_2.png-7b2dad3794af70d2c6041784426ea496.ctex"
+uid="uid://3yupuh1joamc"
+path="res://.godot/imported/house_japanese.png-6fb7a2b9ed6e719152b131dabc5147ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buildings/house_victorian_2.png"
-dest_files=["res://.godot/imported/house_victorian_2.png-7b2dad3794af70d2c6041784426ea496.ctex"]
+source_file="res://assets/buildings/house_japanese.png"
+dest_files=["res://.godot/imported/house_japanese.png-6fb7a2b9ed6e719152b131dabc5147ab.ctex"]
 
 [params]
 

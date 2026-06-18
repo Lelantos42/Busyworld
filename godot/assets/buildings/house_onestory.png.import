@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dps5cbfuq74tm"
-path="res://.godot/imported/shop_gym.png-493c948432d4388ce10512cbc1149d06.ctex"
+uid="uid://ct7q3lqwhbgsl"
+path="res://.godot/imported/house_onestory.png-8960aa4010d6d54fb6fa525e476e7720.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interiors/shop_gym.png"
-dest_files=["res://.godot/imported/shop_gym.png-493c948432d4388ce10512cbc1149d06.ctex"]
+source_file="res://assets/buildings/house_onestory.png"
+dest_files=["res://.godot/imported/house_onestory.png-8960aa4010d6d54fb6fa525e476e7720.ctex"]
 
 [params]
 

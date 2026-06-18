@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsht55th1dck0"
-path="res://.godot/imported/shop_icecream.png-38ecb7b04559528551dec7a1f4c68ae7.ctex"
+uid="uid://bmveyomq3fnmk"
+path="res://.godot/imported/int_studio.png-14129b072157babc5e76cad6dfb5db9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interiors/shop_icecream.png"
-dest_files=["res://.godot/imported/shop_icecream.png-38ecb7b04559528551dec7a1f4c68ae7.ctex"]
+source_file="res://assets/interiors/int_studio.png"
+dest_files=["res://.godot/imported/int_studio.png-14129b072157babc5e76cad6dfb5db9e.ctex"]
 
 [params]
 

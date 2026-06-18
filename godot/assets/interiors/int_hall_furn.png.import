@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db8ihtonieg21"
-path="res://.godot/imported/home_condo.png-9f75099f7edba5cc741e7c902912c0df.ctex"
+uid="uid://b0ka44n05e8ml"
+path="res://.godot/imported/int_hall_furn.png-d13c0fe2ee19bdf36e3d55318fc93983.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interiors/home_condo.png"
-dest_files=["res://.godot/imported/home_condo.png-9f75099f7edba5cc741e7c902912c0df.ctex"]
+source_file="res://assets/interiors/int_hall_furn.png"
+dest_files=["res://.godot/imported/int_hall_furn.png-d13c0fe2ee19bdf36e3d55318fc93983.ctex"]
 
 [params]
 

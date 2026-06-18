@@ -1,10 +1,9 @@
-[brain] world='eyetest'  citizens=12  treasury=500  listening on ws://127.0.0.1:8765
+[brain] world='redo'  citizens=4  treasury=500  listening on ws://127.0.0.1:8765
 [brain] game client connected
-[brain] active citizens: ['baker', 'builder', 'doctor', 'mayor', 'shopkeeper', 'teacher']
-[mayor     ] instinct work     Lovely weather for the town.
-[shopkeeper] instinct work     
-[doctor    ] instinct work     
-[builder   ] instinct work     
-[teacher   ] instinct move_to  
-[baker     ] instinct work     
+[brain] active citizens: ['coordinator', 'designer', 'maker', 'seller']
+[seller    ] instinct wander   
+[coordinator] instinct work     
+[maker     ] instinct work     
+[designer  ] instinct work     
+[seller    ] instinct move_to  
 [brain] game client disconnected

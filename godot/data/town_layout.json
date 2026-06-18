@@ -1,234 +1,143 @@
 {
  "tile": 32,
  "map_px": [
-  3328,
-  2816
+  2432,
+  1728
  ],
  "town_name": "Busyworld",
  "ground_texture": "ground/town_ground.png",
  "buildings": [
   {
-   "name": "Town Hall",
-   "file": "buildings/house_victorian_4.png",
-   "bx": 1664,
-   "by": 1056,
+   "name": "Town Center",
+   "file": "buildings/civic_townhall.png",
+   "bx": 1216,
+   "by": 736,
    "w": 576,
    "h": 704,
-   "place": "Town Hall",
+   "place": "Town Center",
    "tags": [
-    "grand",
-    "civic",
-    "the seat of town government",
-    "a clock tower"
+    "a grand civic hall",
+    "where the town meets to plan",
+    "notice boards and a long table"
    ],
-   "role": "mayor",
+   "role": "coordinator",
    "door": [
-    1664,
-    1056
+    1216,
+    736
    ],
    "door_type": "door_big_1",
-   "interior": "shop_museum"
+   "interior": "int_hall"
   },
   {
-   "name": "The Inn",
-   "file": "buildings/house_victorian_1.png",
-   "bx": 896,
-   "by": 1056,
+   "name": "Print Shop",
+   "file": "buildings/work_printshop.png",
+   "bx": 1216,
+   "by": 1504,
+   "w": 576,
+   "h": 384,
+   "place": "Print Shop",
+   "tags": [
+    "workstations and screens",
+    "the hum of a printer",
+    "racks of finished products"
+   ],
+   "role": "designer",
+   "door": [
+    1216,
+    1504
+   ],
+   "door_type": "door_big_1",
+   "interior": "int_studio"
+  },
+  {
+   "name": "House 1",
+   "file": "buildings/house_onestory.png",
+   "bx": 416,
+   "by": 640,
    "w": 512,
-   "h": 800,
-   "place": "The Inn",
+   "h": 448,
+   "place": "House 1",
    "tags": [
-    "lively",
-    "the social heart of town",
-    "music and chatter",
-    "warm lamplight"
-   ],
-   "role": "innkeeper",
-   "door": [
-    896,
-    1056
-   ],
-   "door_type": "door_big_1",
-   "interior": "shop_gym"
-  },
-  {
-   "name": "Maple Residence",
-   "file": "buildings/house_victorian_3.png",
-   "bx": 2432,
-   "by": 1056,
-   "w": 288,
-   "h": 800,
-   "place": "Maple Residence",
-   "tags": [
-    "a tall townhouse",
-    "flower boxes in the windows"
+    "a tidy one-storey home"
    ],
    "role": null,
    "door": [
-    2432,
-    1056
-   ],
-   "door_type": "door_3",
-   "interior": "home_japanese"
-  },
-  {
-   "name": "General Store",
-   "file": "props/mall_1.png",
-   "bx": 832,
-   "by": 2016,
-   "w": 576,
-   "h": 384,
-   "place": "General Store",
-   "tags": [
-    "busy",
-    "shelves of goods",
-    "a welcoming green shopfront"
-   ],
-   "role": "shopkeeper",
-   "door": [
-    832,
-    2016
-   ],
-   "door_type": "door_big_1",
-   "interior": "shop_icecream"
-  },
-  {
-   "name": "Bakery",
-   "file": "buildings/house_country.png",
-   "bx": 1664,
-   "by": 2016,
-   "w": 576,
-   "h": 512,
-   "place": "Bakery",
-   "tags": [
-    "cozy",
-    "smells of fresh bread",
-    "warm light in the windows"
-   ],
-   "role": "baker",
-   "door": [
-    1664,
-    2016
-   ],
-   "door_type": "door_big_1",
-   "interior": "shop_icecream"
-  },
-  {
-   "name": "Clinic",
-   "file": "buildings/house_victorian_5.png",
-   "bx": 2496,
-   "by": 2016,
-   "w": 576,
-   "h": 512,
-   "place": "Clinic",
-   "tags": [
-    "calm",
-    "clean white walls",
-    "a healing place"
-   ],
-   "role": "doctor",
-   "door": [
-    2496,
-    2016
-   ],
-   "door_type": "door_big_1",
-   "interior": "home_generic"
-  },
-  {
-   "name": "Workshop",
-   "file": "buildings/house_victorian_7.png",
-   "bx": 288,
-   "by": 1280,
-   "w": 192,
-   "h": 512,
-   "place": "Workshop",
-   "tags": [
-    "tools and timber",
-    "the sound of sawing"
-   ],
-   "role": "builder",
-   "door": [
-    288,
-    1280
+    416,
+    640
    ],
    "door_type": "door_1",
-   "interior": "shop_tvstudio"
+   "interior": "int_home1"
   },
   {
-   "name": "Schoolhouse",
-   "file": "buildings/house_victorian_6.png",
-   "bx": 3040,
-   "by": 1280,
-   "w": 384,
-   "h": 704,
-   "place": "Schoolhouse",
+   "name": "House 2",
+   "file": "buildings/house_japanese.png",
+   "bx": 2016,
+   "by": 640,
+   "w": 480,
+   "h": 448,
+   "place": "House 2",
    "tags": [
-    "a small bell",
-    "a chalkboard"
+    "a calm home with paper screens"
    ],
-   "role": "teacher",
+   "role": null,
    "door": [
-    3040,
-    1280
+    2016,
+    640
    ],
-   "door_type": "door_2",
-   "interior": "shop_museum"
+   "door_type": "door_1",
+   "interior": "int_japanese"
   },
   {
-   "name": "Farmhouse",
+   "name": "House 3",
    "file": "buildings/house_country.png",
    "bx": 416,
-   "by": 2560,
+   "by": 1536,
    "w": 576,
    "h": 512,
-   "place": "Farm",
+   "place": "House 3",
    "tags": [
-    "fields of crops",
-    "a red barn",
-    "the smell of hay"
+    "a cosy country house"
    ],
-   "role": "farmer",
+   "role": null,
    "door": [
     416,
-    2560
-   ],
-   "door_type": "door_big_1",
-   "interior": "home_generic"
-  },
-  {
-   "name": "Art Studio",
-   "file": "buildings/house_victorian_7.png",
-   "bx": 2944,
-   "by": 2560,
-   "w": 192,
-   "h": 512,
-   "place": "Art Studio",
-   "tags": [
-    "colorful",
-    "canvases drying",
-    "paint-spattered floor"
-   ],
-   "role": "artist",
-   "door": [
-    2944,
-    2560
+    1536
    ],
    "door_type": "door_1",
-   "interior": "shop_tvstudio"
+   "interior": "int_condo"
+  },
+  {
+   "name": "House 4",
+   "file": "buildings/house_terraced.png",
+   "bx": 2016,
+   "by": 1536,
+   "w": 384,
+   "h": 480,
+   "place": "House 4",
+   "tags": [
+    "a snug terraced house"
+   ],
+   "role": null,
+   "door": [
+    2016,
+    1536
+   ],
+   "door_type": "door_1",
+   "interior": "int_home1"
   }
  ],
  "props": [
   {
    "file": "props/fountain_1.png",
-   "bx": 1664,
-   "by": 1416,
+   "bx": 1216,
+   "by": 872,
    "w": 64,
    "h": 96,
    "collide": true,
    "crad": 22
   },
   {
-   "file": "props/tree_8.png",
+   "file": "props/tree_6.png",
    "bx": 176,
    "by": 96,
    "w": 128,
@@ -237,603 +146,9 @@
    "crad": 12
   },
   {
-   "file": "props/tree_7.png",
-   "bx": 368,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 656,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 848,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 1040,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 1136,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 1424,
-   "by": 96,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 1520,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 2288,
-   "by": 96,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 2480,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 2576,
-   "by": 96,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 2672,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2960,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 176,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
    "file": "props/tree_3.png",
    "bx": 272,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 368,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 944,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 1232,
-   "by": 192,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 1904,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 2096,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 2384,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 2576,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 1232,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 1904,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 2192,
-   "by": 288,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 2768,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 2864,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 2960,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 3152,
-   "by": 288,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 3248,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 272,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 2000,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 2864,
-   "by": 384,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 2960,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 3056,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 3152,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 176,
-   "by": 480,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 272,
-   "by": 480,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 2672,
-   "by": 480,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 80,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 272,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 368,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 464,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 560,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 1328,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 2000,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 2096,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 2192,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2768,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 272,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 368,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 1232,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 2672,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 2768,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 464,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 1232,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 1328,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 2192,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 2768,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 1328,
-   "by": 864,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 2096,
-   "by": 864,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_19.png",
-   "bx": 464,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 2672,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 464,
-   "by": 1056,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 560,
-   "by": 1056,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 1232,
-   "by": 1056,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 1328,
-   "by": 1056,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 560,
-   "by": 1152,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -841,134 +156,8 @@
   },
   {
    "file": "props/tree_4.png",
-   "bx": 656,
-   "by": 1152,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 752,
-   "by": 1152,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 848,
-   "by": 1152,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 1520,
-   "by": 1152,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 2288,
-   "by": 1152,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 2480,
-   "by": 1152,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 656,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 752,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 848,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 1136,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 2288,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 2384,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 80,
-   "by": 1344,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 3248,
-   "by": 1440,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 80,
-   "by": 1536,
+   "bx": 368,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -976,80 +165,17 @@
   },
   {
    "file": "props/tree_24.png",
-   "bx": 176,
-   "by": 1536,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 272,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
    "bx": 464,
-   "by": 1536,
+   "by": 96,
    "w": 128,
-   "h": 160,
+   "h": 128,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_22.png",
+   "file": "props/tree_11.png",
    "bx": 560,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 656,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 848,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 1232,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 2960,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 3056,
-   "by": 1536,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -1057,116 +183,8 @@
   },
   {
    "file": "props/tree_11.png",
-   "bx": 3152,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 3248,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 176,
-   "by": 1632,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 2864,
-   "by": 1632,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 3056,
-   "by": 1632,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 3152,
-   "by": 1632,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 272,
-   "by": 1824,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 1328,
-   "by": 1824,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 2000,
-   "by": 1824,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2864,
-   "by": 1824,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 2960,
-   "by": 1824,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 3056,
-   "by": 1824,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 176,
-   "by": 1920,
+   "bx": 752,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -1174,449 +192,71 @@
   },
   {
    "file": "props/tree_4.png",
-   "bx": 80,
-   "by": 2016,
+   "bx": 1616,
+   "by": 96,
    "w": 128,
    "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 368,
-   "by": 2016,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 2864,
-   "by": 2016,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 3248,
-   "by": 2016,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 848,
-   "by": 2112,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 1136,
-   "by": 2112,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 1520,
-   "by": 2112,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 2096,
-   "by": 2112,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 2192,
-   "by": 2112,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 2288,
-   "by": 2112,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 2480,
-   "by": 2112,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 2576,
-   "by": 2112,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 80,
-   "by": 2208,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 752,
-   "by": 2208,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 1136,
-   "by": 2208,
-   "w": 128,
-   "h": 128,
    "collide": true,
    "crad": 12
   },
   {
    "file": "props/tree_16.png",
-   "bx": 1232,
-   "by": 2208,
+   "bx": 1712,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_23.png",
-   "bx": 1520,
-   "by": 2208,
+   "file": "props/tree_4.png",
+   "bx": 2000,
+   "by": 96,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_23.png",
-   "bx": 2096,
-   "by": 2208,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
+   "file": "props/tree_13.png",
    "bx": 2288,
-   "by": 2208,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 3248,
-   "by": 2208,
+   "by": 96,
    "w": 128,
    "h": 128,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_12.png",
+   "bx": 752,
+   "by": 192,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_4.png",
+   "bx": 2288,
+   "by": 192,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_10.png",
+   "bx": 1616,
+   "by": 288,
+   "w": 128,
+   "h": 160,
    "collide": true,
    "crad": 12
   },
   {
    "file": "props/tree_14.png",
-   "bx": 80,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 848,
-   "by": 2304,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 944,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 1040,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_22.png",
-   "bx": 1136,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 1232,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 1808,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 2000,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 2192,
-   "by": 2304,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_21.png",
    "bx": 2288,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 2384,
-   "by": 2304,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2672,
-   "by": 2304,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_19.png",
-   "bx": 80,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 2288,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_19.png",
-   "bx": 2384,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 2480,
-   "by": 2400,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_19.png",
-   "bx": 2672,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_19.png",
-   "bx": 3152,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 3248,
-   "by": 2400,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 944,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 1040,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 1136,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 1328,
-   "by": 2496,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_9.png",
-   "bx": 1520,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 2096,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 2480,
-   "by": 2496,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 3248,
-   "by": 2496,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 176,
-   "by": 2592,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 272,
-   "by": 2592,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 368,
-   "by": 2592,
+   "by": 384,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -1624,8 +264,44 @@
   },
   {
    "file": "props/tree_4.png",
+   "bx": 752,
+   "by": 480,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 752,
+   "by": 576,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_23.png",
+   "bx": 1712,
+   "by": 576,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_3.png",
+   "bx": 176,
+   "by": 672,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_8.png",
    "bx": 464,
-   "by": 2592,
+   "by": 672,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -1633,71 +309,71 @@
   },
   {
    "file": "props/tree_11.png",
-   "bx": 560,
-   "by": 2592,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_2.png",
-   "bx": 752,
-   "by": 2592,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_21.png",
    "bx": 848,
-   "by": 2592,
+   "by": 672,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_17.png",
-   "bx": 944,
-   "by": 2592,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 1808,
-   "by": 2592,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
+   "file": "props/tree_8.png",
    "bx": 1904,
-   "by": 2592,
+   "by": 672,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_12.png",
-   "bx": 2096,
-   "by": 2592,
+   "file": "props/tree_4.png",
+   "bx": 2000,
+   "by": 672,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/tree_10.png",
-   "bx": 2384,
-   "by": 2592,
+   "file": "props/tree_22.png",
+   "bx": 272,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_18.png",
+   "bx": 656,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_16.png",
+   "bx": 752,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1616,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_14.png",
+   "bx": 176,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
@@ -1705,152 +381,197 @@
   },
   {
    "file": "props/tree_7.png",
-   "bx": 3056,
-   "by": 2592,
+   "bx": 272,
+   "by": 960,
    "w": 128,
    "h": 160,
    "collide": true,
    "crad": 12
   },
   {
-   "file": "props/lamp_3.png",
-   "bx": 1776,
-   "by": 224,
-   "w": 64,
-   "h": 128,
+   "file": "props/tree_23.png",
+   "bx": 368,
+   "by": 960,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_2.png",
-   "bx": 1776,
-   "by": 2144,
-   "w": 64,
-   "h": 128,
+   "file": "props/tree_18.png",
+   "bx": 560,
+   "by": 960,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_2.png",
-   "bx": 1776,
-   "by": 2336,
-   "w": 64,
-   "h": 128,
+   "file": "props/tree_21.png",
+   "bx": 656,
+   "by": 960,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_3.png",
-   "bx": 1776,
-   "by": 2528,
-   "w": 64,
+   "file": "props/tree_13.png",
+   "bx": 944,
+   "by": 960,
+   "w": 128,
    "h": 128,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_4.png",
-   "bx": 272,
-   "by": 1536,
-   "w": 64,
+   "file": "props/tree_7.png",
+   "bx": 1904,
+   "by": 960,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 2096,
+   "by": 960,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_23.png",
+   "bx": 2192,
+   "by": 960,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_11.png",
+   "bx": 80,
+   "by": 1056,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_5.png",
+   "bx": 944,
+   "by": 1056,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1520,
+   "by": 1056,
+   "w": 128,
    "h": 128,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_5.png",
-   "bx": 528,
-   "by": 1536,
-   "w": 32,
-   "h": 128,
+   "file": "props/tree_15.png",
+   "bx": 752,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_3.png",
-   "bx": 784,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
+   "file": "props/tree_17.png",
+   "bx": 1616,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 6
+   "crad": 12
   },
   {
-   "file": "props/lamp_2.png",
-   "bx": 1040,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/lamp_3.png",
-   "bx": 1296,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/lamp_4.png",
-   "bx": 2064,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/lamp_1.png",
-   "bx": 2832,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/lamp_4.png",
-   "bx": 3088,
-   "by": 1536,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/bench_1.png",
-   "bx": 1408,
+   "file": "props/tree_23.png",
+   "bx": 752,
    "by": 1248,
-   "w": 64,
-   "h": 64,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 10
+   "crad": 12
   },
   {
-   "file": "props/bench_1.png",
-   "bx": 1408,
-   "by": 1600,
-   "w": 64,
-   "h": 64,
-   "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_1.png",
-   "bx": 1568,
+   "file": "props/tree_12.png",
+   "bx": 2288,
    "by": 1248,
-   "w": 64,
-   "h": 64,
+   "w": 128,
+   "h": 160,
    "collide": true,
-   "crad": 10
+   "crad": 12
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 2288,
+   "by": 1344,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 80,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_16.png",
+   "bx": 944,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_16.png",
+   "bx": 1328,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_16.png",
+   "bx": 1712,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 2288,
+   "by": 1632,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 12
   },
   {
    "file": "props/bench_2.png",
-   "bx": 1568,
-   "by": 1600,
+   "bx": 992,
+   "by": 768,
    "w": 96,
    "h": 64,
    "collide": true,
@@ -1858,8 +579,8 @@
   },
   {
    "file": "props/bench_2.png",
-   "bx": 1728,
-   "by": 1248,
+   "bx": 992,
+   "by": 1024,
    "w": 96,
    "h": 64,
    "collide": true,
@@ -1867,8 +588,17 @@
   },
   {
    "file": "props/bench_1.png",
-   "bx": 1728,
-   "by": 1600,
+   "bx": 1152,
+   "by": 768,
+   "w": 64,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_1.png",
+   "bx": 1152,
+   "by": 1024,
    "w": 64,
    "h": 64,
    "collide": true,
@@ -1876,8 +606,8 @@
   },
   {
    "file": "props/bench_2.png",
-   "bx": 1888,
-   "by": 1248,
+   "bx": 1312,
+   "by": 768,
    "w": 96,
    "h": 64,
    "collide": true,
@@ -1885,44 +615,53 @@
   },
   {
    "file": "props/bench_2.png",
-   "bx": 1888,
-   "by": 1600,
+   "bx": 1312,
+   "by": 1024,
    "w": 96,
    "h": 64,
    "collide": true,
    "crad": 10
   },
   {
-   "file": "props/flower_1.png",
-   "bx": 1376,
-   "by": 1184,
+   "file": "props/bench_2.png",
+   "bx": 1472,
+   "by": 768,
+   "w": 96,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_1.png",
+   "bx": 1472,
+   "by": 1024,
    "w": 64,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_6.png",
+   "bx": 960,
+   "by": 736,
+   "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
    "file": "props/flower_5.png",
-   "bx": 1376,
-   "by": 1664,
+   "bx": 960,
+   "by": 1088,
    "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_2.png",
-   "bx": 1472,
-   "by": 1184,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_2.png",
-   "bx": 1472,
-   "by": 1664,
+   "file": "props/flower_3.png",
+   "bx": 1056,
+   "by": 736,
    "w": 64,
    "h": 32,
    "collide": false,
@@ -1930,80 +669,26 @@
   },
   {
    "file": "props/flower_4.png",
-   "bx": 1568,
-   "by": 1184,
+   "bx": 1056,
+   "by": 1088,
    "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
-   "bx": 1568,
-   "by": 1664,
-   "w": 96,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_3.png",
-   "bx": 1664,
-   "by": 1184,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_3.png",
-   "bx": 1664,
-   "by": 1664,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_3.png",
-   "bx": 1760,
-   "by": 1184,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_3.png",
-   "bx": 1760,
-   "by": 1664,
-   "w": 64,
+   "file": "props/flower_7.png",
+   "bx": 1152,
+   "by": 736,
+   "w": 32,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
    "file": "props/flower_6.png",
-   "bx": 1856,
-   "by": 1184,
-   "w": 96,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_6.png",
-   "bx": 1856,
-   "by": 1664,
-   "w": 96,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_6.png",
-   "bx": 1952,
-   "by": 1184,
+   "bx": 1152,
+   "by": 1088,
    "w": 96,
    "h": 32,
    "collide": false,
@@ -2011,8 +696,53 @@
   },
   {
    "file": "props/flower_3.png",
-   "bx": 1952,
-   "by": 1664,
+   "bx": 1248,
+   "by": 736,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_3.png",
+   "bx": 1248,
+   "by": 1088,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_1.png",
+   "bx": 1344,
+   "by": 736,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_2.png",
+   "bx": 1344,
+   "by": 1088,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_1.png",
+   "bx": 1440,
+   "by": 736,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_2.png",
+   "bx": 1440,
+   "by": 1088,
    "w": 64,
    "h": 32,
    "collide": false,
@@ -2020,8 +750,8 @@
   },
   {
    "file": "props/lamp_4.png",
-   "bx": 1392,
-   "by": 1216,
+   "bx": 976,
+   "by": 736,
    "w": 64,
    "h": 128,
    "collide": true,
@@ -2029,8 +759,8 @@
   },
   {
    "file": "props/lamp_2.png",
-   "bx": 1936,
-   "by": 1216,
+   "bx": 1488,
+   "by": 736,
    "w": 64,
    "h": 128,
    "collide": true,
@@ -2038,80 +768,44 @@
   },
   {
    "file": "props/lamp_3.png",
-   "bx": 1392,
-   "by": 1632,
+   "bx": 976,
+   "by": 1056,
    "w": 64,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/lamp_4.png",
-   "bx": 1936,
-   "by": 1632,
+   "file": "props/lamp_2.png",
+   "bx": 1488,
+   "by": 1056,
    "w": 64,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/tree_3.png",
-   "bx": 1280,
-   "by": 1120,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 2048,
-   "by": 1120,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 1280,
-   "by": 1760,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 2048,
-   "by": 1760,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/car_left_2.png",
+   "file": "props/car_left_4.png",
    "bx": 384,
-   "by": 2656,
+   "by": 1600,
    "w": 128,
    "h": 96,
    "collide": true,
    "crad": 20
   },
   {
-   "file": "props/car_right_6.png",
-   "bx": 736,
-   "by": 2656,
+   "file": "props/car_right_5.png",
+   "bx": 768,
+   "by": 1600,
    "w": 128,
    "h": 96,
    "collide": true,
    "crad": 20
   },
   {
-   "file": "props/car_left_2.png",
-   "bx": 1088,
-   "by": 2656,
+   "file": "props/car_left_5.png",
+   "bx": 1152,
+   "by": 1600,
    "w": 128,
    "h": 96,
    "collide": true,
@@ -2119,26 +813,8 @@
   },
   {
    "file": "props/car_right_1.png",
-   "bx": 1440,
-   "by": 2656,
-   "w": 128,
-   "h": 96,
-   "collide": true,
-   "crad": 20
-  },
-  {
-   "file": "props/car_left_2.png",
-   "bx": 1792,
-   "by": 2656,
-   "w": 128,
-   "h": 96,
-   "collide": true,
-   "crad": 20
-  },
-  {
-   "file": "props/car_right_5.png",
-   "bx": 2144,
-   "by": 2656,
+   "bx": 1536,
+   "by": 1600,
    "w": 128,
    "h": 96,
    "collide": true,
@@ -2146,17 +822,8 @@
   },
   {
    "file": "props/car_left_4.png",
-   "bx": 2496,
-   "by": 2656,
-   "w": 128,
-   "h": 96,
-   "collide": true,
-   "crad": 20
-  },
-  {
-   "file": "props/car_right_5.png",
-   "bx": 2848,
-   "by": 2656,
+   "bx": 1920,
+   "by": 1600,
    "w": 128,
    "h": 96,
    "collide": true,
@@ -2165,260 +832,154 @@
  ],
  "places": [
   {
-   "name": "Town Hall",
-   "x": 1664,
-   "y": 1078,
+   "name": "Town Center",
+   "x": 1216,
+   "y": 760,
    "type": "workplace",
    "tags": [
-    "grand",
-    "civic",
-    "the seat of town government",
-    "a clock tower"
+    "a grand civic hall",
+    "where the town meets to plan",
+    "notice boards and a long table"
    ],
-   "role": "mayor"
+   "role": "coordinator"
   },
   {
-   "name": "The Inn",
-   "x": 896,
-   "y": 1078,
+   "name": "Print Shop",
+   "x": 1216,
+   "y": 1528,
    "type": "workplace",
    "tags": [
-    "lively",
-    "the social heart of town",
-    "music and chatter",
-    "warm lamplight"
+    "workstations and screens",
+    "the hum of a printer",
+    "racks of finished products"
    ],
-   "role": "innkeeper"
+   "role": "designer"
   },
   {
-   "name": "Maple Residence",
-   "x": 2432,
-   "y": 1078,
+   "name": "House 1",
+   "x": 416,
+   "y": 664,
    "type": "building",
    "tags": [
-    "a tall townhouse",
-    "flower boxes in the windows"
+    "a tidy one-storey home"
    ],
    "role": null
   },
   {
-   "name": "General Store",
-   "x": 832,
-   "y": 2038,
-   "type": "workplace",
+   "name": "House 2",
+   "x": 2016,
+   "y": 664,
+   "type": "building",
    "tags": [
-    "busy",
-    "shelves of goods",
-    "a welcoming green shopfront"
+    "a calm home with paper screens"
    ],
-   "role": "shopkeeper"
+   "role": null
   },
   {
-   "name": "Bakery",
-   "x": 1664,
-   "y": 2038,
-   "type": "workplace",
-   "tags": [
-    "cozy",
-    "smells of fresh bread",
-    "warm light in the windows"
-   ],
-   "role": "baker"
-  },
-  {
-   "name": "Clinic",
-   "x": 2496,
-   "y": 2038,
-   "type": "workplace",
-   "tags": [
-    "calm",
-    "clean white walls",
-    "a healing place"
-   ],
-   "role": "doctor"
-  },
-  {
-   "name": "Workshop",
-   "x": 288,
-   "y": 1302,
-   "type": "workplace",
-   "tags": [
-    "tools and timber",
-    "the sound of sawing"
-   ],
-   "role": "builder"
-  },
-  {
-   "name": "Schoolhouse",
-   "x": 3040,
-   "y": 1302,
-   "type": "workplace",
-   "tags": [
-    "a small bell",
-    "a chalkboard"
-   ],
-   "role": "teacher"
-  },
-  {
-   "name": "Farm",
+   "name": "House 3",
    "x": 416,
-   "y": 2582,
-   "type": "workplace",
+   "y": 1560,
+   "type": "building",
    "tags": [
-    "fields of crops",
-    "a red barn",
-    "the smell of hay"
+    "a cosy country house"
    ],
-   "role": "farmer"
+   "role": null
   },
   {
-   "name": "Art Studio",
-   "x": 2944,
-   "y": 2582,
-   "type": "workplace",
+   "name": "House 4",
+   "x": 2016,
+   "y": 1560,
+   "type": "building",
    "tags": [
-    "colorful",
-    "canvases drying",
-    "paint-spattered floor"
+    "a snug terraced house"
    ],
-   "role": "artist"
+   "role": null
   },
   {
    "name": "Town Plaza",
-   "x": 1664,
-   "y": 1408,
+   "x": 1216,
+   "y": 864,
    "type": "plaza",
    "tags": [
     "sunlit",
     "a splashing fountain",
-    "the gathering place of the town"
+    "the heart of the town"
    ],
    "role": null
   },
   {
-   "name": "The Park",
-   "x": 704,
-   "y": 640,
-   "type": "park",
-   "role": "gardener",
-   "tags": [
-    "green and shady",
-    "birdsong",
-    "benches under the trees"
-   ]
-  },
-  {
    "name": "Market Road",
-   "x": 1664,
-   "y": 2656,
+   "x": 1216,
+   "y": 1600,
    "type": "road",
    "tags": [
-    "the main road into town"
+    "the road out of town"
    ],
    "role": null
   }
  ],
  "homes": [
   {
-   "x": 896,
-   "y": 1080,
-   "building": "The Inn"
+   "x": 416,
+   "y": 666,
+   "building": "House 1"
   },
   {
-   "x": 2432,
-   "y": 1080,
-   "building": "Maple Residence"
-  },
-  {
-   "x": 832,
-   "y": 2040,
-   "building": "General Store"
-  },
-  {
-   "x": 1664,
-   "y": 2040,
-   "building": "Bakery"
-  },
-  {
-   "x": 2496,
-   "y": 2040,
-   "building": "Clinic"
+   "x": 2016,
+   "y": 666,
+   "building": "House 2"
   },
   {
    "x": 416,
-   "y": 2584,
-   "building": "Farmhouse"
+   "y": 1562,
+   "building": "House 3"
   },
   {
-   "x": 2944,
-   "y": 2584,
-   "building": "Art Studio"
+   "x": 2016,
+   "y": 1562,
+   "building": "House 4"
   }
  ],
  "collisions": [
   {
-   "x": 1422.08,
-   "y": 906,
-   "w": 483.84,
-   "h": 150
-  },
-  {
-   "x": 680.96,
-   "y": 906,
-   "w": 430.08,
-   "h": 150
-  },
-  {
-   "x": 2311.04,
-   "y": 906,
-   "w": 241.92,
-   "h": 150
-  },
-  {
-   "x": 590.08,
-   "y": 1886,
+   "x": 974.08,
+   "y": 606,
    "w": 483.84,
    "h": 130
   },
   {
-   "x": 1422.08,
-   "y": 1866,
+   "x": 974.08,
+   "y": 1382,
    "w": 483.84,
-   "h": 150
+   "h": 122
   },
   {
-   "x": 2254.08,
-   "y": 1866,
-   "w": 483.84,
-   "h": 150
+   "x": 200.96,
+   "y": 510,
+   "w": 430.08,
+   "h": 130
   },
   {
-   "x": 207.36,
-   "y": 1130,
-   "w": 161.28,
-   "h": 150
-  },
-  {
-   "x": 2878.72,
-   "y": 1130,
-   "w": 322.56,
-   "h": 150
+   "x": 1814.4,
+   "y": 510,
+   "w": 403.2,
+   "h": 130
   },
   {
    "x": 174.08,
-   "y": 2410,
+   "y": 1406,
    "w": 483.84,
-   "h": 150
+   "h": 130
   },
   {
-   "x": 2863.36,
-   "y": 2410,
-   "w": 161.28,
-   "h": 150
+   "x": 1854.72,
+   "y": 1406,
+   "w": 322.56,
+   "h": 130
   }
  ],
  "spawn": [
-  1664,
-  1468
+  1216,
+  904
  ]
 }

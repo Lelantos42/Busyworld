@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5xa2l8k0b6mr"
-path="res://.godot/imported/shop_tvstudio.png-e7f0fed591e683bd136f51093610511d.ctex"
+uid="uid://b8hlyqb8hn1c7"
+path="res://.godot/imported/int_condo_furn.png-fd3c048c741fbd655d90abb2081094da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interiors/shop_tvstudio.png"
-dest_files=["res://.godot/imported/shop_tvstudio.png-e7f0fed591e683bd136f51093610511d.ctex"]
+source_file="res://assets/interiors/int_condo_furn.png"
+dest_files=["res://.godot/imported/int_condo_furn.png-fd3c048c741fbd655d90abb2081094da.ctex"]
 
 [params]
 

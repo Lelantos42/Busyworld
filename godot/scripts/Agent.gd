@@ -164,10 +164,20 @@ func go_to(target: Vector2) -> void:
 	current_action = "walking"
 
 func move_direct(target: Vector2) -> void:
-	# straight-line move with no pathfinding (used inside rooms)
+	# straight-line move with no pathfinding
 	_path = PackedVector2Array([position, target])
 	_path_i = 1
 	_moving = true
+
+func walk_path(points: PackedVector2Array) -> void:
+	# follow a pre-computed path (used for indoor navigation)
+	if points.size() <= 1:
+		_stop_moving()
+		return
+	_path = points
+	_path_i = 1
+	_moving = true
+	current_action = "walking" if inside == "" else current_action
 
 func teleport(target: Vector2) -> void:
 	position = target

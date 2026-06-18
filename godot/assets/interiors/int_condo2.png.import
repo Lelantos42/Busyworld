@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vlqd5whtux1k"
-path="res://.godot/imported/house_country.png-39075c6218c0a01c2edb864041ac484d.ctex"
+uid="uid://bqe6pj8e3v2kd"
+path="res://.godot/imported/int_condo2.png-a1d1dd8702c5973d46713d29c4ee94b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buildings/house_country.png"
-dest_files=["res://.godot/imported/house_country.png-39075c6218c0a01c2edb864041ac484d.ctex"]
+source_file="res://assets/interiors/int_condo2.png"
+dest_files=["res://.godot/imported/int_condo2.png-a1d1dd8702c5973d46713d29c4ee94b4.ctex"]
 
 [params]
 

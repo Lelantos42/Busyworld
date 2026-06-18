@@ -4,6 +4,7 @@ extends Node
 var world: Dictionary = {}
 var town: Dictionary = {}
 var citizens: Array = []
+var interiors_data: Dictionary = {}
 
 # runtime / CLI
 var agent_count: int = 6
@@ -21,6 +22,7 @@ func _ready() -> void:
 	town = _load_json("res://data/town_layout.json")
 	var c := _load_json("res://data/citizens.json")
 	citizens = c.get("citizens", [])
+	interiors_data = _load_json("res://data/interiors.json")
 	agent_count = int(world.get("default_agent_count", 6))
 	_parse_cli()
 	agent_count = clampi(agent_count, 1, citizens.size())

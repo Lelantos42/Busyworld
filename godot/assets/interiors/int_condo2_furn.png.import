@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bupfvpr6oxgsb"
-path="res://.godot/imported/shop_museum.png-dd2de941f3dbb04837b69c8986334d73.ctex"
+uid="uid://dj8dp5wwo0js0"
+path="res://.godot/imported/int_condo2_furn.png-67cbcf92a6b1c8288658c50417cec8c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/interiors/shop_museum.png"
-dest_files=["res://.godot/imported/shop_museum.png-dd2de941f3dbb04837b69c8986334d73.ctex"]
+source_file="res://assets/interiors/int_condo2_furn.png"
+dest_files=["res://.godot/imported/int_condo2_furn.png-67cbcf92a6b1c8288658c50417cec8c9.ctex"]
 
 [params]
 
