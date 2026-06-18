@@ -104,6 +104,10 @@ arrive.
 
 ## 3. How to live well
 
+- **Mind your needs.** You get hungry as the day wears on. Eat at your home or at
+  The Inn when the town's larder has food (the founder keeps it stocked). Going
+  hungry will sour your mood. You also hold **coins** — earn them by working, spend
+  and share them as the town grows.
 - **Keep your routine.** Work in the day, gather in the plaza or the inn, go home
   at night. A town runs because everyone plays their part.
 - **Be a neighbour.** Greet people. Remember what they tell you. Build

@@ -60,6 +60,11 @@ class Memory:
                 );
                 """
             )
+            # migration: add the hunger need to existing worlds
+            try:
+                self._db.execute("ALTER TABLE agents ADD COLUMN hunger REAL DEFAULT 20")
+            except sqlite3.OperationalError:
+                pass
             self._db.commit()
 
     # ---- agents ----------------------------------------------------------
@@ -144,6 +149,55 @@ class Memory:
                 (str(amount), str(amount)),
             )
             self._db.commit()
+
+    # ---- needs: hunger & the town food stock ----------------------------
+    def hunger(self, cid: str) -> float:
+        with self._lock:
+            row = self._db.execute("SELECT hunger FROM agents WHERE id=?", (cid,)).fetchone()
+            return float(row["hunger"]) if row and row["hunger"] is not None else 20.0
+
+    def set_hunger(self, cid: str, value: float) -> None:
+        with self._lock:
+            self._db.execute("UPDATE agents SET hunger=? WHERE id=?",
+                             (max(0.0, min(100.0, value)), cid))
+            self._db.commit()
+
+    def food(self) -> int:
+        with self._lock:
+            row = self._db.execute("SELECT value FROM world WHERE key='food'").fetchone()
+            return int(row["value"]) if row else 12
+
+    def add_food(self, delta: int) -> int:
+        with self._lock:
+            new = max(0, self.food() + delta)
+            self._db.execute(
+                "INSERT INTO world (key,value) VALUES ('food',?) "
+                "ON CONFLICT(key) DO UPDATE SET value=?", (str(new), str(new)))
+            self._db.commit()
+            return new
+
+    # ---- relationships ---------------------------------------------------
+    def adjust_relationship(self, cid: str, other: str, delta: int, note: str = "") -> None:
+        if cid == other or not other:
+            return
+        with self._lock:
+            row = self._db.execute(
+                "SELECT sentiment FROM relationships WHERE agent_id=? AND other=?",
+                (cid, other)).fetchone()
+            sent = (int(row["sentiment"]) if row else 0) + delta
+            sent = max(-100, min(100, sent))
+            self._db.execute(
+                "INSERT INTO relationships (agent_id,other,sentiment,note) VALUES (?,?,?,?) "
+                "ON CONFLICT(agent_id,other) DO UPDATE SET sentiment=?, note=?",
+                (cid, other, sent, note, sent, note))
+            self._db.commit()
+
+    def friends(self, cid: str, n: int = 4) -> list[tuple[str, int]]:
+        with self._lock:
+            rows = self._db.execute(
+                "SELECT other, sentiment FROM relationships WHERE agent_id=? "
+                "ORDER BY sentiment DESC LIMIT ?", (cid, n)).fetchall()
+        return [(r["other"], int(r["sentiment"])) for r in rows]
 
     # ---- directives & enterprises ---------------------------------------
     def add_directive(self, text: str) -> int:

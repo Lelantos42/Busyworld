@@ -31,13 +31,26 @@ def _system_prompt(c: Citizen, mem: Memory, directives: list[str]) -> str:
     facts = mem.important_facts(c.id, 6)
     state = mem.agent(c.id)
     goal = state.get("goal") or (c.goals[0] if c.goals else "live a good life")
+    hunger = mem.hunger(c.id)
+    coins = state.get("coins", 100)
+    food = mem.food()
+    friends = mem.friends(c.id, 4)
+    hunger_word = ("starving" if hunger > 80 else "very hungry" if hunger > 60
+                   else "peckish" if hunger > 40 else "well-fed")
     parts = [
         WORLD_GUIDE,
         "\n\n# Who you are\n",
         f"You are {c.name}, the {c.title} of Busyworld. {c.personality}\n",
         f"Your home is {c.home}. Your workplace is {c.workplace}.\n",
         f"Your lasting goal right now: {goal}\n",
+        "\n# Your body & purse\n",
+        f"- You feel {hunger_word} (hunger {int(hunger)}/100). Eat at your home or The Inn when food is in the town stores.\n",
+        f"- You have {int(coins)} coins. The town's larder holds {food} meals (the founder restocks it).\n",
     ]
+    if friends:
+        rel = ", ".join(f"{n} ({'friend' if s > 15 else 'rival' if s < -15 else 'acquaintance'})"
+                        for n, s in friends)
+        parts.append(f"- People you know: {rel}\n")
     if facts:
         parts.append("\n# Things you know\n" + "\n".join(f"- {f}" for f in facts) + "\n")
     if recent:
@@ -124,9 +137,35 @@ async def decide(c: Citizen, perception: dict[str, Any], mem: Memory,
         decision = {}
 
     if not decision:
-        decision = _heuristic(c, perception, directives)
+        decision = _heuristic(c, perception, directives, mem.hunger(c.id))
 
     decision = _normalize(decision)
+
+    # ---- needs: hunger, eating, the town larder ----------------------
+    self_p = perception.get("self", {})
+    hunger = mem.hunger(c.id) + 4.0
+    loc = str(self_p.get("at", "")).lower()
+    at_food_place = self_p.get("indoors") and (c.home.lower() in loc or "inn" in loc)
+    if at_food_place and hunger > 40 and mem.food() > 0:
+        mem.add_food(-1)
+        hunger = max(0.0, hunger - 45.0)
+        mem.remember(c.id, "Had a meal at home.", kind="event")
+    mem.set_hunger(c.id, hunger)
+    if hunger > 75 and not decision.get("mood"):
+        decision["mood"] = "hungry"
+
+    # ---- relationships: warm to whoever is right beside you ----------
+    for p in perception.get("nearby_people", []):
+        if p.get("can_talk"):
+            delta = 2 if decision.get("say") else 1
+            mem.adjust_relationship(c.id, p.get("name", ""), delta)
+
+    # ---- nightly reflection into long-term memory --------------------
+    if perception.get("phase") == "night" and self_p.get("indoors"):
+        recents = perception.get("recent_events", [])
+        if recents:
+            mem.remember(c.id, "Reflecting tonight: " + "; ".join(recents[-2:]),
+                         kind="fact", importance=2)
 
     # ---- persist the inner life --------------------------------------
     if decision.get("thought"):
@@ -182,11 +221,18 @@ def _incentive(c: Citizen, decision: dict[str, Any], directives: list[str]) -> i
 
 
 # ---------------------------------------------------------------------------
-def _heuristic(c: Citizen, perception: dict[str, Any], directives: list[str]) -> dict[str, Any]:
+def _heuristic(c: Citizen, perception: dict[str, Any], directives: list[str],
+               hunger: float = 20.0) -> dict[str, Any]:
     phase = perception.get("phase", "midday")
     self_ = perception.get("self", {})
     near = perception.get("nearby_people", [])
     out: dict[str, Any] = {"thought": f"({c.title} going about the day)"}
+
+    if hunger > 65:
+        out["thought"] = "I'm famished — time to head home for a bite."
+        out["action"] = {"type": "go_home"}
+        out["mood"] = "hungry"
+        return out
 
     talkable = [p for p in near if p.get("can_talk")]
     if talkable and random.random() < 0.35:

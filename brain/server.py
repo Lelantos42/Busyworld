@@ -65,10 +65,38 @@ ENTERPRISE_HINTS = {
 }
 
 
+def _parse_amount(text: str, default: int) -> int:
+    import re
+    m = re.search(r"(\d+)", text)
+    return int(m.group(1)) if m else default
+
+
 async def handle_player_request(ws, msg: dict[str, Any]) -> None:
     text = str(msg.get("text", "")).strip()
     if not text:
         return
+    low = text.lower()
+
+    # the founder provides for the town: food and virtual money
+    if "food" in low or "meal" in low or "feed" in low:
+        amt = _parse_amount(text, 20)
+        total = MEM.add_food(amt)
+        await send(ws, {"type": "announce",
+                        "text": f"[founder] restocked the larder with {amt} meals ({total} in store)."})
+        return
+    if any(w in low for w in ("coin", "money", "pay", "reward", "wage")):
+        amt = _parse_amount(text, 50)
+        for cid in (ACTIVE or set(CITIZENS)):
+            MEM.add_coins(cid, amt, "a gift from the founder")
+        MEM.set_treasury(MEM.treasury() + amt * max(1, len(ACTIVE)))
+        await send(ws, {"type": "announce",
+                        "text": f"[founder] granted {amt} coins to every citizen."})
+        await send(ws, {"type": "treasury", "amount": MEM.treasury()})
+        if "mayor" in CITIZENS:
+            await send(ws, {"type": "say", "agent_id": "mayor",
+                            "text": f"The founder has blessed us with {amt} coins each. Generous!"})
+        return
+
     MEM.add_directive(text)
     print(f"[founder] {text}")
     # detect a possible enterprise and record it (scaffold for real ventures)
