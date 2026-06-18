@@ -8,23 +8,24 @@ Where the town is headed, and how today's architecture already supports it.
 - Embodied perception, spatial awareness, conversation.
 - Persistent memory (SQLite) — citizens live indefinitely.
 - "Ask your town" directives + a coin/treasury incentive loop.
+- **Enterable interiors** with animated doors; citizens go indoors to work/rest.
 - Cross-platform; runs with or without models.
 
-## Milestone 1 — Richer inner lives
-- **Relationships & social memory**: track sentiment between citizens; let
-  friendships, rivalries and gossip emerge and persist (tables already exist).
-- **Schedules & needs**: hunger, rest, money pressure shaping daily routines.
-- **Better dialogue**: true two-party exchanges when citizens meet (the brain
+## ◐ Milestone 1 — Richer inner lives (in progress)
+- ✅ **Relationships**: citizens warm to whoever they talk with; friends/rivals
+  surface in their prompts and persist.
+- ✅ **Needs**: hunger + a town food larder; eating at home/inn; the founder
+  provides food and virtual coins.
+- ✅ **Reflection**: nightly, the day's events fold into long-term memory.
+- ☐ **Better dialogue**: true two-party exchanges when citizens meet (the brain
   already knows who is within earshot), shown as back-and-forth bubbles.
-- **Reflection**: nightly, each citizen summarizes its day into long-term memory
-  (a cheap "sleep" model call) to keep memory compact as lives get long.
+- ☐ **Schedules**: fuller daily routines and money pressure shaping behavior.
 
-## Milestone 2 — Real eyesight (multimodality)
-- Godot renders each citizen's local view to a small PNG; the brain attaches it to
-  the prompt for **vision models** (`vision: true` in `agents.yaml`). The hook is
-  already in the protocol (`image`) and `mind.decide()`.
-- Citizens reason about what is *pretty*, what is crowded, how near a door is —
-  from a real picture, not coordinates.
+## ◐ Milestone 2 — Real eyesight (plumbing done)
+- ✅ Godot renders a vision-citizen's local view to a PNG and the brain attaches it
+  to that citizen's prompt for **vision models** (`vision: true` in `agents.yaml`).
+- ☐ Tune POV framing; have citizens visibly act on what they *see* (aesthetics,
+  crowds, distance to a door) rather than only on the structured perception.
 
 ## Milestone 3 — Reaching the internet
 - Add brain-side **tools** the minds can call ("look up", "fetch", "post"),

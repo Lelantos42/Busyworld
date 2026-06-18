@@ -33,7 +33,14 @@ many towns, cities and countries with thousands of citizens.
   who is nearby and within earshot, the time of day, and recent events — optionally
   including a **rendered image** of their surroundings for vision-capable models.
 - **Spatial awareness & conversation**: citizens know who is close enough to talk
-  to, and speak in bubbles you can read.
+  to, and speak in bubbles you can read; they form **relationships** over time.
+- **Enterable interiors**: click any building to step inside a furnished home or
+  shop and see the citizens who live and work there; animated doors throughout.
+- **Needs & economy**: citizens get hungry and eat from a town larder, hold coins,
+  and rest at home — the founder provides **food** and **virtual money** to keep
+  them going.
+- **Eyesight (optional)**: vision-capable citizens are sent a rendered image of
+  their surroundings, so they truly *see* the town.
 - **Ask your town**: type a request ("open a bakery stall in the plaza") and the
   town takes it on. Good work earns the town's coin, which is shared back to the
   citizens as a **simulated incentive**.
@@ -112,7 +119,9 @@ Ollama and the same citizens begin thinking for themselves.
 ### Controls
 - **Drag** to pan, **scroll** to zoom.
 - **Click a citizen** to inspect their role, mood, goal, last thought and coins.
-- Type in the **"Ask your town…"** box to send the town a request.
+- **Click a building** to step inside; **Leave** returns to town.
+- Type in the **"Ask your town…"** box to send a request, or provide for the town:
+  e.g. *"give 30 food"* restocks the larder, *"give 50 coins"* pays every citizen.
 
 ---
 
@@ -157,6 +166,11 @@ agents:
 
 Citizens are matched to `citizens.json` by `id`. Anyone without an entry uses
 `defaults`. Unreachable models fall back to instinct automatically.
+
+**Which models?** See [`docs/MODELS.md`](docs/MODELS.md) — small models like
+`qwen2.5:3b` (the default) run the whole town well; give the mayor a bigger one;
+Raspberry Pis can run 1–3B models. Picking up the project in a new session?
+Start with [`docs/HANDOFF.md`](docs/HANDOFF.md).
 
 ---
 

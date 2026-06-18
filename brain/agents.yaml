@@ -12,14 +12,14 @@
 defaults:
   host: "127.0.0.1"
   port: 11434
-  model: "llama3.2:3b"      # any Ollama chat model
+  model: "qwen2.5:3b"       # small + very reliable at JSON replies. See docs/MODELS.md
   vision: false             # set true + a vision model (e.g. llama3.2-vision) for eyesight
   temperature: 0.8
   timeout: 30
 
 agents:
   mayor:
-    # e.g. a beefier model for the town's leader
+    # a beefier "hero" model for the town's leader (the one you'll talk to most)
     model: "llama3.1:8b"
   shopkeeper: {}
   baker: {}
