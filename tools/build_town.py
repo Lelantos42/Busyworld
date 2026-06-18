@@ -11,6 +11,7 @@ Shop (the print-on-demand venture they work), and four homes — one per citizen
 Run:  python3 tools/build_town.py
 """
 import os, json, random, glob
+import numpy as np
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 random.seed(7)
@@ -104,18 +105,43 @@ add_building("Town Center", "buildings/civic_townhall.png", CX, 21,
 add_building("Print Shop", "buildings/work_printshop.png", CX, 47,
              place="Print Shop", role="designer", interior="int_studio",
              tags=["workstations and screens", "the hum of a printer", "racks of finished products"])
-# Four homes, one per citizen (all with matching animated doors)
-add_building("House 1", "buildings/house_onestory.png", 13, 20,
-             place="House 1", home=True, interior="int_home1", tags=["a tidy one-storey home"])
-add_building("House 2", "buildings/house_japanese.png", 63, 20,
+# Four homes — identical garage-free townhouses, mirror-placed for symmetry
+add_building("House 1", "buildings/house_japanese.png", 14, 20,
+             place="House 1", home=True, interior="int_japanese", tags=["a calm home with paper screens"])
+add_building("House 2", "buildings/house_japanese.png", 62, 20,
              place="House 2", home=True, interior="int_japanese", tags=["a calm home with paper screens"])
-add_building("House 3", "buildings/house_modern.png", 14, 47,
-             place="House 3", home=True, interior="int_home1", tags=["a bright modern home"])
-add_building("House 4", "buildings/house_onestory.png", 62, 47,
-             place="House 4", home=True, interior="int_japanese", tags=["a snug little home"])
+add_building("House 3", "buildings/house_japanese.png", 14, 47,
+             place="House 3", home=True, interior="int_home1", tags=["a calm home with paper screens"])
+add_building("House 4", "buildings/house_japanese.png", 62, 47,
+             place="House 4", home=True, interior="int_home1", tags=["a calm home with paper screens"])
 
-# --- carve sidewalk spurs to every door ---
-def nearest_sidewalk(start, max_r=24):
+# ---- per-building geometry: solid wall footprint + the door's front tile ----
+def opaque_bbox(file):
+    a = np.array(load(os.path.join(ASSETS, file)))[..., 3]
+    ys, xs = np.where(a > 40)
+    return int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1
+
+for b in buildings:
+    da = DOORS.get(b["file"], {})
+    ol, otp, orr, obt = opaque_bbox(b["file"])
+    ground_img = int(da.get("ground_y", b["h"]))            # door bottom (image coords)
+    left, top = b["bx"] - b["w"] / 2, b["by"] - b["h"]
+    # SOLID = full wall footprint, top down to the door's ground; the porch /
+    # threshold below the door stays walkable so citizens can reach the door.
+    collisions.append({"x": left + ol, "y": top + otp,
+                       "w": orr - ol, "h": max(TILE, ground_img - otp)})
+    door_cx = left + int(da.get("cx", b["w"] / 2))
+    front_y = top + ground_img + TILE                       # walkable tile in front of door
+    b["_front"] = (door_cx, front_y)
+    for p in places:                                        # enter at the door, not the base
+        if p["name"] == b["place"]:
+            p["x"], p["y"] = door_cx, front_y
+    for hm in homes:
+        if hm["building"] == b["name"]:
+            hm["x"], hm["y"] = door_cx, front_y + 4
+
+# ---- carve a clean sidewalk from each door straight to the network ----
+def nearest_path(start, max_r=30):
     sx, sy = start
     for r in range(1, max_r):
         for dy in range(-r, r + 1):
@@ -136,61 +162,92 @@ def carve(a, b):
         if grid[y][x] != 'r': grid[y][x] = 's'
         x += 1 if bx_ > x else -1
 
+door_corridors = []     # (tx, ty0, ty1) keep-clear strips in front of each door
 for b in buildings:
-    dtx = int(b["door"][0] // TILE)
-    dty = min(int(b["door"][1] // TILE) + 1, MH - 1)
-    if grid[dty][dtx] != 's':
-        near = nearest_sidewalk((dtx, dty))
-        if near: carve((dtx, dty), near)
-        grid[dty][dtx] = 's'
+    fx, fy = b["_front"]
+    dtx, fty = int(fx // TILE), int(fy // TILE)
+    if grid[fty][dtx] != 's':
+        near = nearest_path((dtx, fty))
+        if near:
+            carve((dtx, fty), near)
+    grid[fty][dtx] = 's'
+    door_corridors.append((dtx, fty - 1, fty + 2))
 
-# --- props ---
+# ---- props: deliberate + symmetric, never blocking paths or doors ----
 props = []
 def add_prop(rel, bx, by, collide=False, crad=10):
     w, h = size(rel)
     props.append({"file": rel, "bx": bx, "by": by, "w": w, "h": h, "collide": collide, "crad": crad})
 
-tree_rel = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/tree_*.png"))]
-flower_rel = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/flower_*.png"))]
-lamp_rel = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/lamp_*.png"))]
-bench_rel = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/bench_*.png"))]
+trees = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/tree_*.png"))]
+flowers = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/flower_*.png"))]
+lamp, bench = "props/lamp_1.png", "props/bench_1.png"
 car_left = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/car_left_*.png"))]
 car_right = ["props/" + os.path.basename(f) for f in sorted(glob.glob(ASSETS + "/props/car_right_*.png"))]
 
 def is_grass(tx, ty): return 0 <= tx < MW and 0 <= ty < MH and grid[ty][tx] == 'g'
-def brects():
-    return [(b["bx"] - b["w"]/2, b["by"] - b["h"], b["w"], b["h"]) for b in buildings]
-def overlaps(x, y, pad, rects):
-    return any((rx-pad) < x < (rx+rw+pad) and (ry-pad) < y < (ry+rh+pad) for rx, ry, rw, rh in rects)
+BR = [(b["bx"]-b["w"]/2, b["by"]-b["h"], b["w"], b["h"]) for b in buildings]
+def on_building(px, py, pad):
+    return any((rx-pad) < px < (rx+rw+pad) and (ry-pad) < py < (ry+rh+pad) for rx, ry, rw, rh in BR)
+def TP(tx, ty): return tx*TILE + TILE//2, ty*TILE + TILE     # prop baseline at a tile
 
+# fountain dead-centre
 add_prop("props/fountain_1.png", CX*TILE, CY*TILE + 8, collide=True, crad=22)
-BR = brects()
 
-# trees scattered on grass, off paths and buildings
-for ty in range(2, MH-2, 3):
-    for tx in range(2, MW-2, 3):
-        x, y = tx*TILE + 16, ty*TILE + TILE
-        if not is_grass(tx, ty) or overlaps(x, y, 26, BR): continue
-        near_path = any(grid[min(MH-1,max(0,ty+dy))][min(MW-1,max(0,tx+dx))] in 'sr'
-                        for dy in (-1,0,1) for dx in (-1,0,1))
-        if (near_path and random.random() < 0.4) or (not near_path and random.random() < 0.25):
-            add_prop(random.choice(tree_rel), x, y, collide=True, crad=12)
+# plaza benches — one per quadrant, facing the fountain (symmetric)
+for sx in (-5, 5):
+    for sy in (-3, 3):
+        add_prop(bench, *TP(CX+sx, CY+sy), collide=True, crad=12)
 
-# plaza furnishings: benches, flowers, corner lamps
-for tx in (CX-7, CX-2, CX+3, CX+8):
-    for ty in (CY-4, CY+4):
-        add_prop(random.choice(bench_rel), tx*TILE, ty*TILE+TILE, collide=True, crad=10)
-for tx in range(CX-8, CX+9, 3):
-    add_prop(random.choice(flower_rel), tx*TILE, (CY-5)*TILE+TILE, collide=False)
-    add_prop(random.choice(flower_rel), tx*TILE, (CY+6)*TILE+TILE, collide=False)
-for (lx, ly) in [(CX-8, CY-5), (CX+8, CY-5), (CX-8, CY+5), (CX+8, CY+5)]:
-    add_prop(random.choice(lamp_rel), lx*TILE+16, ly*TILE+TILE, collide=True, crad=6)
+# plaza flowers — neat rows along the top & bottom edges (planters only, symmetric)
+planters = [f for f in flowers if not f.endswith("flower_7.png")] or flowers
+for tx in (CX-7, CX-5, CX-3, CX+3, CX+5, CX+7):
+    fl = planters[abs(tx-CX) % len(planters)]       # mirror sides use the same planter
+    add_prop(fl, *TP(tx, CY-5), collide=False)
+    add_prop(fl, *TP(tx, CY+5), collide=False)
 
-# side-view cars along the south road
+# lamps — symmetric: 4 plaza corners + evenly spaced pairs along the avenues
+def put_lamp(tx, ty):
+    bx, by = tx*TILE+16, ty*TILE+TILE
+    if is_grass(tx, ty) and not on_building(bx, by, 6):
+        add_prop(lamp, bx, by, collide=True, crad=6)
+for (lx, ly) in [(CX-9, CY-6), (CX+9, CY-6), (CX-9, CY+6), (CX+9, CY+6)]:
+    put_lamp(lx, ly)
+for ly in (10, 16, 38, 44):
+    put_lamp(CX-4, ly); put_lamp(CX+4, ly)
+for lx in (10, 22, 54, 66):
+    put_lamp(lx, CY-4); put_lamp(lx, CY+4)
+
+# trees — symmetric, framing the town; sparse, never on paths/doors/buildings,
+# and kept a couple of tiles back from the plaza so it stays open
+def near_path(tx, ty):
+    return any(0 <= tx+dx < MW and 0 <= ty+dy < MH and grid[ty+dy][tx+dx] in 'sr'
+               for dy in (-1, 0, 1) for dx in (-1, 0, 1))
+def in_corridor(tx, ty):
+    return any(abs(tx-cx) <= 1 and y0-1 <= ty <= y1 for (cx, y0, y1) in door_corridors)
+def tree_ok(tx, ty):
+    if not is_grass(tx, ty) or near_path(tx, ty) or in_corridor(tx, ty):
+        return False
+    if on_building(*TP(tx, ty), 14):
+        return False
+    return abs(tx-CX) > 6 or abs(ty-CY) > 8        # keep the plaza surroundings open
+placed = set()
+for ty in range(3, MH-2, 4):
+    for tx in range(3, CX-1, 4):
+        rx = 2*CX - tx
+        if tree_ok(tx, ty) and tree_ok(rx, ty) and (tx, ty) not in placed:
+            idx = (tx*5 + ty*7) % len(trees)
+            add_prop(trees[idx], *TP(tx, ty), collide=True, crad=13)
+            add_prop(trees[idx], *TP(rx, ty), collide=True, crad=13)
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    placed.add((tx+dx, ty+dy))
+
+# side-view cars parked along the south road (symmetric)
 road_y = (MH-4) * TILE
-for k, tx in enumerate(range(12, MW-12, 12)):
-    pool = car_right if k % 2 else car_left
-    if pool: add_prop(random.choice(pool), tx*TILE, road_y, collide=True, crad=20)
+for tx in (12, 24):
+    add_prop(car_right[tx % len(car_right)], tx*TILE, road_y, collide=True, crad=20)
+    add_prop(car_left[tx % len(car_left)], (MW-tx)*TILE, road_y, collide=True, crad=20)
 
 # --- named places ---
 places.append({"name": "Town Plaza", "x": CX*TILE, "y": CY*TILE, "type": "plaza",
@@ -198,11 +255,6 @@ places.append({"name": "Town Plaza", "x": CX*TILE, "y": CY*TILE, "type": "plaza"
 places.append({"name": "Market Road", "x": CX*TILE, "y": (MH-4)*TILE, "type": "road",
                "tags": ["the road out of town"], "role": None})
 spawn = [CX*TILE, CY*TILE + 40]
-
-# --- building collision slabs ---
-for b in buildings:
-    slab = min(int(b["h"] * 0.32), 130)
-    collisions.append({"x": b["bx"] - b["w"]*0.42, "y": b["by"] - slab, "w": b["w"]*0.84, "h": slab})
 
 layout = {"tile": TILE, "map_px": [W, H], "town_name": "Busyworld",
           "ground_texture": "ground/town_ground.png", "buildings": buildings, "props": props,

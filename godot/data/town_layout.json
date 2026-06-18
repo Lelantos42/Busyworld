@@ -33,7 +33,11 @@
     "ox": -70,
     "oy": -64
    },
-   "interior": "int_condo"
+   "interior": "int_condo",
+   "_front": [
+    1178.0,
+    704
+   ]
   },
   {
    "name": "Print Shop",
@@ -61,48 +65,26 @@
     "ox": -32,
     "oy": -96
    },
-   "interior": "int_studio"
+   "interior": "int_studio",
+   "_front": [
+    1216.0,
+    1536
+   ]
   },
   {
    "name": "House 1",
-   "file": "buildings/house_onestory.png",
-   "bx": 416,
-   "by": 640,
-   "w": 512,
-   "h": 448,
-   "place": "House 1",
-   "tags": [
-    "a tidy one-storey home"
-   ],
-   "role": null,
-   "door": [
-    448.0,
-    640
-   ],
-   "door_anim": {
-    "sheet": "doors/door_onestory.png",
-    "fw": 64,
-    "fh": 96,
-    "n": 14,
-    "ox": 0,
-    "oy": -128
-   },
-   "interior": "int_home1"
-  },
-  {
-   "name": "House 2",
    "file": "buildings/house_japanese.png",
-   "bx": 2016,
+   "bx": 448,
    "by": 640,
    "w": 480,
    "h": 448,
-   "place": "House 2",
+   "place": "House 1",
    "tags": [
     "a calm home with paper screens"
    ],
    "role": null,
    "door": [
-    1904.0,
+    336.0,
     640
    ],
    "door_anim": {
@@ -113,59 +95,101 @@
     "ox": -144,
     "oy": -64
    },
-   "interior": "int_japanese"
+   "interior": "int_japanese",
+   "_front": [
+    336.0,
+    672
+   ]
+  },
+  {
+   "name": "House 2",
+   "file": "buildings/house_japanese.png",
+   "bx": 1984,
+   "by": 640,
+   "w": 480,
+   "h": 448,
+   "place": "House 2",
+   "tags": [
+    "a calm home with paper screens"
+   ],
+   "role": null,
+   "door": [
+    1872.0,
+    640
+   ],
+   "door_anim": {
+    "sheet": "doors/door_japanese.png",
+    "fw": 64,
+    "fh": 64,
+    "n": 22,
+    "ox": -144,
+    "oy": -64
+   },
+   "interior": "int_japanese",
+   "_front": [
+    1872.0,
+    672
+   ]
   },
   {
    "name": "House 3",
-   "file": "buildings/house_modern.png",
+   "file": "buildings/house_japanese.png",
    "bx": 448,
    "by": 1504,
-   "w": 736,
+   "w": 480,
    "h": 448,
    "place": "House 3",
    "tags": [
-    "a bright modern home"
+    "a calm home with paper screens"
    ],
    "role": null,
    "door": [
-    656.0,
+    336.0,
     1504
    ],
    "door_anim": {
-    "sheet": "doors/door_modern.png",
+    "sheet": "doors/door_japanese.png",
     "fw": 64,
-    "fh": 96,
-    "n": 14,
-    "ox": 176,
-    "oy": -160
+    "fh": 64,
+    "n": 22,
+    "ox": -144,
+    "oy": -64
    },
-   "interior": "int_home1"
+   "interior": "int_home1",
+   "_front": [
+    336.0,
+    1536
+   ]
   },
   {
    "name": "House 4",
-   "file": "buildings/house_onestory.png",
+   "file": "buildings/house_japanese.png",
    "bx": 1984,
    "by": 1504,
-   "w": 512,
+   "w": 480,
    "h": 448,
    "place": "House 4",
    "tags": [
-    "a snug little home"
+    "a calm home with paper screens"
    ],
    "role": null,
    "door": [
-    2016.0,
+    1872.0,
     1504
    ],
    "door_anim": {
-    "sheet": "doors/door_onestory.png",
+    "sheet": "doors/door_japanese.png",
     "fw": 64,
-    "fh": 96,
-    "n": 14,
-    "ox": 0,
-    "oy": -128
+    "fh": 64,
+    "n": 22,
+    "ox": -144,
+    "oy": -64
    },
-   "interior": "int_japanese"
+   "interior": "int_home1",
+   "_front": [
+    1872.0,
+    1536
+   ]
   }
  ],
  "props": [
@@ -179,530 +203,62 @@
    "crad": 22
   },
   {
-   "file": "props/tree_6.png",
-   "bx": 176,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 272,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_4.png",
-   "bx": 368,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 464,
-   "by": 96,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 560,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_11.png",
-   "bx": 752,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_4.png",
-   "bx": 944,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 1040,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_4.png",
-   "bx": 1424,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_13.png",
-   "bx": 1712,
-   "by": 96,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 1904,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_4.png",
-   "bx": 2288,
-   "by": 96,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_10.png",
-   "bx": 944,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_14.png",
-   "bx": 2288,
-   "by": 192,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_4.png",
-   "bx": 752,
-   "by": 288,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 1616,
-   "by": 288,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 80,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 944,
-   "by": 384,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_8.png",
-   "bx": 1424,
-   "by": 480,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 1616,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 1712,
-   "by": 576,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 272,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_14.png",
-   "bx": 1520,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 1616,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 1712,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_18.png",
-   "bx": 1904,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_21.png",
-   "bx": 2000,
-   "by": 672,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 80,
-   "by": 768,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 1520,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 1616,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 1808,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 2096,
-   "by": 768,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_1.png",
-   "bx": 2192,
-   "by": 768,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 272,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 464,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 848,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_12.png",
-   "bx": 1712,
-   "by": 960,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 2288,
-   "by": 960,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_17.png",
-   "bx": 1616,
-   "by": 1152,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_3.png",
-   "bx": 2288,
-   "by": 1248,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 2288,
-   "by": 1344,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_24.png",
-   "bx": 80,
-   "by": 1536,
-   "w": 128,
-   "h": 128,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_5.png",
-   "bx": 656,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_16.png",
-   "bx": 1328,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_23.png",
-   "bx": 1424,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_15.png",
-   "bx": 1520,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 1904,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_6.png",
-   "bx": 2000,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_7.png",
-   "bx": 2096,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
-   "collide": true,
-   "crad": 12
-  },
-  {
-   "file": "props/tree_20.png",
-   "bx": 2192,
-   "by": 1536,
-   "w": 128,
-   "h": 160,
+   "file": "props/bench_1.png",
+   "bx": 1072,
+   "by": 800,
+   "w": 64,
+   "h": 64,
    "collide": true,
    "crad": 12
   },
   {
    "file": "props/bench_1.png",
-   "bx": 992,
-   "by": 768,
+   "bx": 1072,
+   "by": 992,
    "w": 64,
    "h": 64,
    "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_2.png",
-   "bx": 992,
-   "by": 1024,
-   "w": 96,
-   "h": 64,
-   "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_2.png",
-   "bx": 1152,
-   "by": 768,
-   "w": 96,
-   "h": 64,
-   "collide": true,
-   "crad": 10
+   "crad": 12
   },
   {
    "file": "props/bench_1.png",
-   "bx": 1152,
-   "by": 1024,
+   "bx": 1392,
+   "by": 800,
    "w": 64,
    "h": 64,
    "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_2.png",
-   "bx": 1312,
-   "by": 768,
-   "w": 96,
-   "h": 64,
-   "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_2.png",
-   "bx": 1312,
-   "by": 1024,
-   "w": 96,
-   "h": 64,
-   "collide": true,
-   "crad": 10
-  },
-  {
-   "file": "props/bench_2.png",
-   "bx": 1472,
-   "by": 768,
-   "w": 96,
-   "h": 64,
-   "collide": true,
-   "crad": 10
+   "crad": 12
   },
   {
    "file": "props/bench_1.png",
-   "bx": 1472,
-   "by": 1024,
+   "bx": 1392,
+   "by": 992,
    "w": 64,
    "h": 64,
    "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/flower_2.png",
+   "bx": 1008,
+   "by": 736,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_2.png",
+   "bx": 1008,
+   "by": 1056,
+   "w": 64,
+   "h": 32,
+   "collide": false,
    "crad": 10
   },
   {
    "file": "props/flower_6.png",
-   "bx": 960,
+   "bx": 1072,
    "by": 736,
    "w": 96,
    "h": 32,
@@ -710,53 +266,17 @@
    "crad": 10
   },
   {
-   "file": "props/flower_2.png",
-   "bx": 960,
-   "by": 1088,
-   "w": 64,
+   "file": "props/flower_6.png",
+   "bx": 1072,
+   "by": 1056,
+   "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_2.png",
-   "bx": 1056,
-   "by": 736,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_2.png",
-   "bx": 1056,
-   "by": 1088,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_1.png",
-   "bx": 1152,
-   "by": 736,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_2.png",
-   "bx": 1152,
-   "by": 1088,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_5.png",
-   "bx": 1248,
+   "file": "props/flower_4.png",
+   "bx": 1136,
    "by": 736,
    "w": 96,
    "h": 32,
@@ -765,26 +285,44 @@
   },
   {
    "file": "props/flower_4.png",
-   "bx": 1248,
-   "by": 1088,
+   "bx": 1136,
+   "by": 1056,
    "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_7.png",
-   "bx": 1344,
+   "file": "props/flower_4.png",
+   "bx": 1328,
    "by": 736,
-   "w": 32,
+   "w": 96,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_4.png",
+   "bx": 1328,
+   "by": 1056,
+   "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
    "file": "props/flower_6.png",
-   "bx": 1344,
-   "by": 1088,
+   "bx": 1392,
+   "by": 736,
+   "w": 96,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_6.png",
+   "bx": 1392,
+   "by": 1056,
    "w": 96,
    "h": 32,
    "collide": false,
@@ -792,7 +330,7 @@
   },
   {
    "file": "props/flower_2.png",
-   "bx": 1440,
+   "bx": 1456,
    "by": 736,
    "w": 64,
    "h": 32,
@@ -800,52 +338,979 @@
    "crad": 10
   },
   {
-   "file": "props/flower_5.png",
-   "bx": 1440,
+   "file": "props/flower_2.png",
+   "bx": 1456,
+   "by": 1056,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 944,
+   "by": 704,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 1520,
+   "by": 704,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 944,
    "by": 1088,
-   "w": 96,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/lamp_5.png",
-   "bx": 976,
-   "by": 736,
-   "w": 32,
-   "h": 128,
-   "collide": true,
-   "crad": 6
-  },
-  {
-   "file": "props/lamp_4.png",
-   "bx": 1488,
-   "by": 736,
    "w": 64,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/lamp_3.png",
-   "bx": 976,
-   "by": 1056,
+   "file": "props/lamp_1.png",
+   "bx": 1520,
+   "by": 1088,
    "w": 64,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/lamp_2.png",
-   "bx": 1488,
-   "by": 1056,
+   "file": "props/lamp_1.png",
+   "bx": 1360,
+   "by": 352,
    "w": 64,
    "h": 128,
    "collide": true,
    "crad": 6
   },
   {
-   "file": "props/car_left_5.png",
+   "file": "props/lamp_1.png",
+   "bx": 1360,
+   "by": 544,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 336,
+   "by": 1024,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 720,
+   "by": 768,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 720,
+   "by": 1024,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 1744,
+   "by": 768,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 1744,
+   "by": 1024,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 2128,
+   "by": 768,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_1.png",
+   "bx": 2128,
+   "by": 1024,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 112,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 2352,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 240,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 2224,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 368,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 2096,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 496,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1968,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 624,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1840,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 752,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 1712,
+   "by": 128,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 880,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1584,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 1008,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 1456,
+   "by": 128,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 112,
+   "by": 256,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 2352,
+   "by": 256,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 752,
+   "by": 256,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1712,
+   "by": 256,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 880,
+   "by": 256,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 1584,
+   "by": 256,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1008,
+   "by": 256,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1456,
+   "by": 256,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 112,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 2352,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 752,
+   "by": 384,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1712,
+   "by": 384,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 880,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1584,
+   "by": 384,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 1008,
+   "by": 384,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 1456,
+   "by": 384,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 112,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 2352,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 752,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 1712,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 880,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1584,
+   "by": 512,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1008,
+   "by": 512,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1456,
+   "by": 512,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 112,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 2352,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 752,
+   "by": 640,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 1712,
+   "by": 640,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 880,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 1584,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1008,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1456,
+   "by": 640,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 112,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 2352,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 240,
+   "by": 768,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 2224,
+   "by": 768,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 496,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1968,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 752,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1712,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 880,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 1584,
+   "by": 768,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 112,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 2352,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 240,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 2224,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 368,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 2096,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 496,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 1968,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 624,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1840,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 752,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1712,
+   "by": 1024,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 880,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_24.png",
+   "bx": 1584,
+   "by": 1024,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 112,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 2352,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 752,
+   "by": 1152,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1712,
+   "by": 1152,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 880,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_6.png",
+   "bx": 1584,
+   "by": 1152,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 112,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 2352,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 752,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 1712,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 880,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_1.png",
+   "bx": 1584,
+   "by": 1280,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 112,
+   "by": 1408,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 2352,
+   "by": 1408,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 752,
+   "by": 1408,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 1712,
+   "by": 1408,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 880,
+   "by": 1408,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_13.png",
+   "bx": 1584,
+   "by": 1408,
+   "w": 128,
+   "h": 128,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 112,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_17.png",
+   "bx": 2352,
+   "by": 1536,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 112,
+   "by": 1664,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 2352,
+   "by": 1664,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 13
+  },
+  {
+   "file": "props/car_right_1.png",
    "bx": 384,
    "by": 1600,
    "w": 128,
@@ -854,17 +1319,8 @@
    "crad": 20
   },
   {
-   "file": "props/car_right_5.png",
-   "bx": 768,
-   "by": 1600,
-   "w": 128,
-   "h": 96,
-   "collide": true,
-   "crad": 20
-  },
-  {
-   "file": "props/car_left_2.png",
-   "bx": 1152,
+   "file": "props/car_left_1.png",
+   "bx": 2048,
    "by": 1600,
    "w": 128,
    "h": 96,
@@ -873,7 +1329,7 @@
   },
   {
    "file": "props/car_right_1.png",
-   "bx": 1536,
+   "bx": 768,
    "by": 1600,
    "w": 128,
    "h": 96,
@@ -882,7 +1338,7 @@
   },
   {
    "file": "props/car_left_1.png",
-   "bx": 1920,
+   "bx": 1664,
    "by": 1600,
    "w": 128,
    "h": 96,
@@ -894,7 +1350,7 @@
   {
    "name": "Town Center",
    "x": 1178.0,
-   "y": 696,
+   "y": 704,
    "type": "workplace",
    "tags": [
     "a civic building",
@@ -906,7 +1362,7 @@
   {
    "name": "Print Shop",
    "x": 1216.0,
-   "y": 1528,
+   "y": 1536,
    "type": "workplace",
    "tags": [
     "workstations and screens",
@@ -917,18 +1373,18 @@
   },
   {
    "name": "House 1",
-   "x": 448.0,
-   "y": 664,
+   "x": 336.0,
+   "y": 672,
    "type": "building",
    "tags": [
-    "a tidy one-storey home"
+    "a calm home with paper screens"
    ],
    "role": null
   },
   {
    "name": "House 2",
-   "x": 1904.0,
-   "y": 664,
+   "x": 1872.0,
+   "y": 672,
    "type": "building",
    "tags": [
     "a calm home with paper screens"
@@ -937,21 +1393,21 @@
   },
   {
    "name": "House 3",
-   "x": 656.0,
-   "y": 1528,
+   "x": 336.0,
+   "y": 1536,
    "type": "building",
    "tags": [
-    "a bright modern home"
+    "a calm home with paper screens"
    ],
    "role": null
   },
   {
    "name": "House 4",
-   "x": 2016.0,
-   "y": 1528,
+   "x": 1872.0,
+   "y": 1536,
    "type": "building",
    "tags": [
-    "a snug little home"
+    "a calm home with paper screens"
    ],
    "role": null
   },
@@ -980,62 +1436,62 @@
  ],
  "homes": [
   {
-   "x": 448.0,
-   "y": 666,
+   "x": 336.0,
+   "y": 676,
    "building": "House 1"
   },
   {
-   "x": 1904.0,
-   "y": 666,
+   "x": 1872.0,
+   "y": 676,
    "building": "House 2"
   },
   {
-   "x": 656.0,
-   "y": 1530,
+   "x": 336.0,
+   "y": 1540,
    "building": "House 3"
   },
   {
-   "x": 2016.0,
-   "y": 1530,
+   "x": 1872.0,
+   "y": 1540,
    "building": "House 4"
   }
  ],
  "collisions": [
   {
-   "x": 1108.48,
-   "y": 542,
-   "w": 215.04,
-   "h": 130
+   "x": 1088.0,
+   "y": 256,
+   "w": 256,
+   "h": 416
   },
   {
-   "x": 974.08,
-   "y": 1382,
-   "w": 483.84,
-   "h": 122
+   "x": 938.0,
+   "y": 1146,
+   "w": 566,
+   "h": 358
   },
   {
-   "x": 200.96,
-   "y": 510,
-   "w": 430.08,
-   "h": 130
+   "x": 208.0,
+   "y": 192,
+   "w": 480,
+   "h": 448
   },
   {
-   "x": 1814.4,
-   "y": 510,
-   "w": 403.2,
-   "h": 130
+   "x": 1744.0,
+   "y": 192,
+   "w": 480,
+   "h": 448
   },
   {
-   "x": 138.88,
-   "y": 1374,
-   "w": 618.24,
-   "h": 130
+   "x": 208.0,
+   "y": 1056,
+   "w": 480,
+   "h": 448
   },
   {
-   "x": 1768.96,
-   "y": 1374,
-   "w": 430.08,
-   "h": 130
+   "x": 1744.0,
+   "y": 1056,
+   "w": 480,
+   "h": 448
   }
  ],
  "spawn": [
