@@ -20,12 +20,16 @@ many towns, cities and countries with thousands of citizens.
 
 ## What works today
 
-- A handcrafted **pixel-art town** — plaza & fountain, town hall, shops, an inn,
-  a clinic, a school, a workshop, a farm, homes, tree-lined streets and a day/night
-  cycle.
-- **12 citizens with essential roles** — mayor, shopkeeper, baker, doctor, teacher,
-  builder, farmer, innkeeper, gardener, constable, artist, engineer. Start as few
-  or as many as you like.
+- A coherent **pixel-art town** — a plaza & fountain, a grand **Town Center**, a
+  **Print Shop** (the venture they work), and **four homes**, all on tree-lined
+  streets with a day/night cycle.
+- **Four founding citizens** (two women, two men) who run a print-on-demand
+  venture — Mara (Coordinator), Theo (Designer), Iris (Maker), Sam (Seller) — and
+  **gather in the Town Center to plan** (daily, and whenever you ask something).
+  Start as few or as many as you like (`--agents N`).
+- **Enterable interiors with correct collision** — step into any building and the
+  citizens walk *around* the furniture (each room's walkable floor is derived from
+  the design), not over it.
 - Each citizen is a **local LLM** (via Ollama) with **persistent memory** that
   outlives any context window — they remember across restarts and live indefinitely.
 - **Embodied perception**: citizens don't get "you hit a wall." They sense named
@@ -34,8 +38,8 @@ many towns, cities and countries with thousands of citizens.
   including a **rendered image** of their surroundings for vision-capable models.
 - **Spatial awareness & conversation**: citizens know who is close enough to talk
   to, and speak in bubbles you can read; they form **relationships** over time.
-- **Enterable interiors**: click any building to step inside a furnished home or
-  shop and see the citizens who live and work there; animated doors throughout.
+- **Animated doors** at every entrance and on each interior, with sidewalks that
+  lead to them.
 - **Needs & economy**: citizens get hungry and eat from a town larder, hold coins,
   and rest at home — the founder provides **food** and **virtual money** to keep
   them going.

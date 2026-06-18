@@ -18,7 +18,7 @@
    "tags": [
     "a grand civic hall",
     "where the town meets to plan",
-    "notice boards and a long table"
+    "open and welcoming"
    ],
    "role": "coordinator",
    "door": [
@@ -26,7 +26,7 @@
     736
    ],
    "door_type": "door_big_1",
-   "interior": "int_hall"
+   "interior": "int_condo"
   },
   {
    "name": "Print Shop",
@@ -104,7 +104,7 @@
     1536
    ],
    "door_type": "door_1",
-   "interior": "int_condo"
+   "interior": "int_condo2"
   },
   {
    "name": "House 4",
@@ -839,7 +839,7 @@
    "tags": [
     "a grand civic hall",
     "where the town meets to plan",
-    "notice boards and a long table"
+    "open and welcoming"
    ],
    "role": "coordinator"
   },

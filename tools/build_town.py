@@ -88,8 +88,8 @@ def add_building(name, file, cx, by_ty, place=None, role=None, tags=None,
 
 # Town Center (grand civic hall) — north of the plaza
 add_building("Town Center", "buildings/civic_townhall.png", CX, 23,
-             place="Town Center", role="coordinator", door_type="door_big_1", interior="int_hall",
-             tags=["a grand civic hall", "where the town meets to plan", "notice boards and a long table"])
+             place="Town Center", role="coordinator", door_type="door_big_1", interior="int_condo",
+             tags=["a grand civic hall", "where the town meets to plan", "open and welcoming"])
 # Print Shop (the print-on-demand venture) — south of the plaza
 add_building("Print Shop", "buildings/work_printshop.png", CX, 47,
              place="Print Shop", role="designer", door_type="door_big_1", interior="int_studio",
@@ -100,7 +100,7 @@ add_building("House 1", "buildings/house_onestory.png", 13, 20,
 add_building("House 2", "buildings/house_japanese.png", 63, 20,
              place="House 2", home=True, interior="int_japanese", tags=["a calm home with paper screens"])
 add_building("House 3", "buildings/house_country.png", 13, 48,
-             place="House 3", home=True, interior="int_condo", tags=["a cosy country house"])
+             place="House 3", home=True, interior="int_condo2", tags=["a cosy country house"])
 add_building("House 4", "buildings/house_terraced.png", 63, 48,
              place="House 4", home=True, interior="int_home1", tags=["a snug terraced house"])
 

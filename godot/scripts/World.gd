@@ -40,6 +40,11 @@ var day := 1
 var day_length := 300.0
 var treasury := 500                    # founder's simulated incentive pool
 
+# town meetings (citizens gather in the Town Center to plan)
+var _met_today := 0
+var _meeting_until := 0.0
+const MEETING_PLACE := "Town Center"
+
 # screenshots
 var _shot_accum := 0.0
 var _shots_taken := 0
@@ -85,6 +90,10 @@ func _ready() -> void:
 		_demo_interior(GameConfig.demo_interior)
 	if GameConfig.povtest != "":
 		_run_povtest(GameConfig.povtest)
+	if GameConfig.demo_meeting:
+		start_meeting("a planning session")
+		await get_tree().create_timer(11.0).timeout
+		focus_interior(MEETING_PLACE)
 
 func _run_povtest(id: String) -> void:
 	await get_tree().create_timer(1.5).timeout
@@ -278,7 +287,7 @@ func focus_interior(place: String) -> void:
 		_town_cam_pos = camera.position
 		_town_cam_zoom = camera.zoom
 	focused_interior = place
-	camera.position = interiors[place].center
+	camera.position = interiors[place].center.lerp(interiors[place].entry, 0.45)
 	camera.zoom = Vector2(interiors[place].zoom, interiors[place].zoom)
 	if interiors[place].door:
 		interiors[place].door.open(2.0)
@@ -446,11 +455,26 @@ func _process(dt: float) -> void:
 	_update_daynight()
 	hud.set_clock(_clock_string(), day)
 
+	# a daily town meeting at midday
+	if int(hour) == 12 and _met_today != day:
+		start_meeting("the daily town meeting")
 	_decision_loop()
 	_screenshot_logic(dt)
 
 	if GameConfig.quit_after > 0.0 and _life >= GameConfig.quit_after:
 		get_tree().quit()
+
+func start_meeting(reason: String) -> void:
+	_met_today = day
+	_meeting_until = _life + 45.0
+	hud.log_line("[meeting] The citizens gather in the Town Center for %s." % reason)
+	for id in agents.keys():
+		_push_event(id, "It's time to meet the others in the Town Center for %s." % reason)
+		meta[id].next_think = min(meta[id].next_think, _life + randf() * 2.0)
+		meta[id].awaiting = false
+
+func _meeting_active() -> bool:
+	return _life < _meeting_until and interiors.has(MEETING_PLACE)
 
 func _decision_loop() -> void:
 	for id in agents.keys():
@@ -465,7 +489,31 @@ func _decision_loop() -> void:
 			continue
 		if _life < m.next_think:
 			continue
+		if _meeting_active():
+			_attend_meeting(a, m)
+			continue
 		_request_decision(a, m)
+
+func _attend_meeting(a: Agent, m: Dictionary) -> void:
+	# during a meeting everyone convenes in the Town Center and mingles
+	if a.inside == MEETING_PLACE:
+		_roam_inside(a)
+		if randf() < 0.4:
+			a.speak(_meeting_line(a))
+	else:
+		_go_into(a, MEETING_PLACE)
+	m.next_think = _life + randf_range(4.0, 8.0)
+
+func _meeting_line(a: Agent) -> String:
+	var lines := [
+		"How are the orders looking this week?",
+		"I think we can do better on the designs.",
+		"Sales were up — let's keep that going.",
+		"What does the founder want us to build next?",
+		"We should plan for growth.",
+		"Good meeting, everyone.",
+	]
+	return lines[randi() % lines.size()]
 
 func _request_decision(a: Agent, m: Dictionary) -> void:
 	if Net.is_open():
@@ -728,10 +776,12 @@ func _on_player_request(text: String) -> void:
 	Net.send({"type": "player_request", "text": text})
 	for id in agents.keys():
 		_push_event(id, "The town's founder asks: \"%s\"" % text)
-		meta[id].next_think = min(meta[id].next_think, _life + 1.0 + randf() * 3.0)
-	# in autopilot, have the mayor acknowledge
-	if not Net.is_open() and agents.has("mayor"):
-		agents["mayor"].speak("You heard the founder — let's make it happen!", 6.0)
+	# the citizens convene in the Town Center to discuss the founder's request
+	var low := text.to_lower()
+	if not (low.begins_with("give") or "food" in low or "coin" in low):
+		start_meeting("the founder's request")
+	if not Net.is_open() and agents.has("coordinator"):
+		agents["coordinator"].speak("You heard the founder — let's talk it through.", 6.0)
 
 # ---------------------------------------------------------------- input (pan/zoom)
 func _unhandled_input(e: InputEvent) -> void:
