@@ -21,6 +21,7 @@ ASSETS = os.path.join(ROOT, "godot/assets")
 GROUND = os.path.join(ASSETS, "ground")
 OUTPNG = os.path.join(GROUND, "town_ground.png")
 LAYOUT = os.path.join(ROOT, "godot/data/town_layout.json")
+SCENE = os.path.join(ROOT, "godot/scenes/Main.tscn")
 PREVIEW = os.path.join(ROOT, "tools/_montages/town_preview.png")
 
 TILE = 32
@@ -133,6 +134,11 @@ for b in buildings:
     door_cx = left + int(da.get("cx", b["w"] / 2))
     front_y = top + ground_img + TILE                       # walkable tile in front of door
     b["_front"] = (door_cx, front_y)
+    # the same geometry, but stored *relative to the baseline* so the scene nodes
+    # (which the founder can drag in the editor) carry it and the game recomputes
+    # collision / door / entry from each node's live position.
+    b["_foot"] = (ol - b["w"] / 2.0, otp - b["h"], orr - ol, max(TILE, ground_img - otp))
+    b["_front_rel"] = (door_cx - b["bx"], front_y - b["by"])
     for p in places:                                        # enter at the door, not the base
         if p["name"] == b["place"]:
             p["x"], p["y"] = door_cx, front_y
@@ -260,6 +266,131 @@ layout = {"tile": TILE, "map_px": [W, H], "town_name": "Busyworld",
           "ground_texture": "ground/town_ground.png", "buildings": buildings, "props": props,
           "places": places, "homes": homes, "collisions": collisions, "spawn": spawn}
 
+# --- editable Godot scene ---------------------------------------------------
+# Emit scenes/Main.tscn with a real, hand-editable node for every building and
+# prop (a Sprite2D placed at its baseline). The game (World.gd) reads each node's
+# live position + metadata, so the founder can nudge anything in the Godot editor
+# and it takes effect on the next run — no need to touch Python for fine placement.
+def _num(v):
+    f = float(v)
+    return str(int(f)) if f == int(f) else ("%g" % f)
+def _vec2(x, y): return "Vector2(%s, %s)" % (_num(x), _num(y))
+def _rect2(x, y, w, h): return "Rect2(%s, %s, %s, %s)" % (_num(x), _num(y), _num(w), _num(h))
+def _qs(s): return '"' + str(s).replace("\\", "\\\\").replace('"', '\\"') + '"'
+def _qarr(items): return "[" + ", ".join(_qs(i) for i in items) + "]"
+
+def _prop_base(rel):
+    stem = os.path.splitext(os.path.basename(rel))[0]
+    for key, name in (("tree", "Tree"), ("flower", "Flower"), ("lamp", "Lamp"),
+                      ("bench", "Bench"), ("car", "Car"), ("fountain", "Fountain")):
+        if stem.startswith(key):
+            return name
+    return "".join(c for c in stem.title() if c.isalnum()) or "Prop"
+
+def _sanitize(name):
+    out = name
+    for ch in '.:@/"%':
+        out = out.replace(ch, "_")
+    return out.strip() or "Node"
+
+def write_scene():
+    # unique textures -> ext_resource ids (ground first, then buildings, then props)
+    texids, order = {}, []
+    def texid(rel):
+        if rel not in texids:
+            texids[rel] = "tex%d" % len(texids)
+            order.append(rel)
+        return texids[rel]
+    gid = texid("ground/town_ground.png")
+    for b in buildings: texid(b["file"])
+    for p in props: texid(p["file"])
+
+    ext = ['[ext_resource type="Script" path="res://scripts/World.gd" id="1_world"]']
+    for rel in order:
+        ext.append('[ext_resource type="Texture2D" path="res://assets/%s" id="%s"]'
+                    % (rel, texids[rel]))
+
+    used = {}
+    def uniq(base):
+        base = _sanitize(base)
+        n = used.get(base, 0); used[base] = n + 1
+        return base if n == 0 else "%s%d" % (base, n + 1)
+
+    L = ['[gd_scene load_steps=%d format=3 uid="uid://busyworld_main"]' % (len(ext) + 1), ""]
+    L += ext + [""]
+
+    # root World node carries the map-wide constants
+    L += ['[node name="World" type="Node2D"]',
+          'script = ExtResource("1_world")',
+          "metadata/tile = %d" % TILE,
+          "metadata/map_px = %s" % _vec2(W, H),
+          "metadata/town_name = %s" % _qs("Busyworld"),
+          "metadata/spawn = %s" % _vec2(spawn[0], spawn[1]), ""]
+
+    # baked ground (paths/roads/grass) sits behind everything
+    L += ['[node name="Ground" type="Sprite2D" parent="."]',
+          "z_index = -100", "centered = false",
+          'texture = ExtResource("%s")' % gid, ""]
+
+    # Y-sorted layer holding every building, prop and (at runtime) citizen
+    L += ['[node name="Entities" type="Node2D" parent="."]', "y_sort_enabled = true", ""]
+
+    home_names = set(hm["building"] for hm in homes)
+    bld_places = set(b["place"] for b in buildings)
+    for b in buildings:
+        rx, ry, fw, fh = b["_foot"]
+        frx, fry = b["_front_rel"]
+        da = b.get("door_anim", {})
+        L += ['[node name="%s" type="Sprite2D" parent="Entities"]' % uniq(b["place"]),
+              "position = %s" % _vec2(b["bx"], b["by"]),
+              "centered = false",
+              "offset = %s" % _vec2(-b["w"] / 2.0, -b["h"]),
+              'texture = ExtResource("%s")' % texids[b["file"]],
+              'metadata/kind = "building"',
+              "metadata/place = %s" % _qs(b["place"]),
+              "metadata/role = %s" % _qs(b.get("role") or ""),
+              "metadata/interior = %s" % _qs(b.get("interior", "")),
+              "metadata/home = %s" % ("true" if b["name"] in home_names else "false"),
+              "metadata/w = %s" % _num(b["w"]),
+              "metadata/h = %s" % _num(b["h"]),
+              "metadata/foot = %s" % _rect2(rx, ry, fw, fh),
+              "metadata/front = %s" % _vec2(frx, fry),
+              "metadata/tags = %s" % _qarr(b.get("tags", []))]
+        if da:
+            L += ["metadata/door_sheet = %s" % _qs(da["sheet"]),
+                  "metadata/door_fw = %s" % _num(da["fw"]),
+                  "metadata/door_fh = %s" % _num(da["fh"]),
+                  "metadata/door_n = %s" % _num(da["n"]),
+                  "metadata/door_ox = %s" % _num(da["ox"]),
+                  "metadata/door_oy = %s" % _num(da["oy"])]
+        L.append("")
+
+    for p in props:
+        L += ['[node name="%s" type="Sprite2D" parent="Entities"]' % uniq(_prop_base(p["file"])),
+              "position = %s" % _vec2(p["bx"], p["by"]),
+              "centered = false",
+              "offset = %s" % _vec2(-p["w"] / 2.0, -p["h"]),
+              'texture = ExtResource("%s")' % texids[p["file"]],
+              'metadata/kind = "prop"',
+              "metadata/collide = %s" % ("true" if p.get("collide") else "false"),
+              "metadata/crad = %s" % _num(p.get("crad", 10)), ""]
+
+    # standalone named places (plaza, roads…) — Marker2D the founder can move too
+    L += ['[node name="Places" type="Node2D" parent="."]', ""]
+    for p in places:
+        if p["name"] in bld_places:
+            continue
+        L += ['[node name="%s" type="Marker2D" parent="Places"]' % uniq(p["name"]),
+              "position = %s" % _vec2(p["x"], p["y"]),
+              'metadata/kind = "place"',
+              "metadata/place = %s" % _qs(p["name"]),
+              "metadata/ptype = %s" % _qs(p.get("type", "")),
+              "metadata/role = %s" % _qs(p.get("role") or ""),
+              "metadata/tags = %s" % _qarr(p.get("tags", [])), ""]
+
+    open(SCENE, "w").write("\n".join(L))
+    print("scene:", SCENE, "| (overwrites hand edits — re-run resets placement)")
+
 def render_preview(ground):
     img = ground.copy()
     items = [(b["by"], b["file"], b["bx"], b["by"], b["w"], b["h"]) for b in buildings]
@@ -272,7 +403,10 @@ def render_preview(ground):
     print("preview:", PREVIEW)
 
 if __name__ == "__main__":
+    import sys
     g = bake_ground()
     json.dump(layout, open(LAYOUT, "w"), indent=1)
     print("layout:", LAYOUT, "| buildings", len(buildings), "props", len(props), "homes", len(homes))
+    if "--no-scene" not in sys.argv:        # pass --no-scene to keep your editor edits
+        write_scene()
     render_preview(g)

@@ -1,6 +1,1338 @@
-[gd_scene load_steps=2 format=3 uid="uid://busyworld_main"]
+[gd_scene load_steps=20 format=3 uid="uid://busyworld_main"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_world"]
+[ext_resource type="Texture2D" path="res://assets/ground/town_ground.png" id="tex0"]
+[ext_resource type="Texture2D" path="res://assets/buildings/civic_townhall.png" id="tex1"]
+[ext_resource type="Texture2D" path="res://assets/buildings/work_printshop.png" id="tex2"]
+[ext_resource type="Texture2D" path="res://assets/buildings/house_japanese.png" id="tex3"]
+[ext_resource type="Texture2D" path="res://assets/props/fountain_1.png" id="tex4"]
+[ext_resource type="Texture2D" path="res://assets/props/bench_1.png" id="tex5"]
+[ext_resource type="Texture2D" path="res://assets/props/flower_2.png" id="tex6"]
+[ext_resource type="Texture2D" path="res://assets/props/flower_6.png" id="tex7"]
+[ext_resource type="Texture2D" path="res://assets/props/flower_4.png" id="tex8"]
+[ext_resource type="Texture2D" path="res://assets/props/lamp_1.png" id="tex9"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_20.png" id="tex10"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_17.png" id="tex11"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_13.png" id="tex12"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_1.png" id="tex13"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_6.png" id="tex14"]
+[ext_resource type="Texture2D" path="res://assets/props/tree_24.png" id="tex15"]
+[ext_resource type="Texture2D" path="res://assets/props/car_right_1.png" id="tex16"]
+[ext_resource type="Texture2D" path="res://assets/props/car_left_1.png" id="tex17"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_world")
+metadata/tile = 32
+metadata/map_px = Vector2(2432, 1728)
+metadata/town_name = "Busyworld"
+metadata/spawn = Vector2(1216, 904)
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -100
+centered = false
+texture = ExtResource("tex0")
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Town Center" type="Sprite2D" parent="Entities"]
+position = Vector2(1216, 672)
+centered = false
+offset = Vector2(-128, -416)
+texture = ExtResource("tex1")
+metadata/kind = "building"
+metadata/place = "Town Center"
+metadata/role = "coordinator"
+metadata/interior = "int_condo"
+metadata/home = false
+metadata/w = 256
+metadata/h = 416
+metadata/foot = Rect2(-128, -416, 256, 416)
+metadata/front = Vector2(-38, 32)
+metadata/tags = ["a civic building", "where the town meets to plan", "open and welcoming"]
+metadata/door_sheet = "doors/door_civic.png"
+metadata/door_fw = 64
+metadata/door_fh = 64
+metadata/door_n = 14
+metadata/door_ox = -70
+metadata/door_oy = -64
+
+[node name="Print Shop" type="Sprite2D" parent="Entities"]
+position = Vector2(1216, 1504)
+centered = false
+offset = Vector2(-288, -384)
+texture = ExtResource("tex2")
+metadata/kind = "building"
+metadata/place = "Print Shop"
+metadata/role = "designer"
+metadata/interior = "int_studio"
+metadata/home = false
+metadata/w = 576
+metadata/h = 384
+metadata/foot = Rect2(-278, -358, 566, 358)
+metadata/front = Vector2(0, 32)
+metadata/tags = ["workstations and screens", "the hum of a printer", "racks of finished products"]
+metadata/door_sheet = "doors/door_shopping.png"
+metadata/door_fw = 64
+metadata/door_fh = 96
+metadata/door_n = 14
+metadata/door_ox = -32
+metadata/door_oy = -96
+
+[node name="House 1" type="Sprite2D" parent="Entities"]
+position = Vector2(448, 640)
+centered = false
+offset = Vector2(-240, -448)
+texture = ExtResource("tex3")
+metadata/kind = "building"
+metadata/place = "House 1"
+metadata/role = ""
+metadata/interior = "int_japanese"
+metadata/home = true
+metadata/w = 480
+metadata/h = 448
+metadata/foot = Rect2(-240, -448, 480, 448)
+metadata/front = Vector2(-112, 32)
+metadata/tags = ["a calm home with paper screens"]
+metadata/door_sheet = "doors/door_japanese.png"
+metadata/door_fw = 64
+metadata/door_fh = 64
+metadata/door_n = 22
+metadata/door_ox = -144
+metadata/door_oy = -64
+
+[node name="House 2" type="Sprite2D" parent="Entities"]
+position = Vector2(1984, 640)
+centered = false
+offset = Vector2(-240, -448)
+texture = ExtResource("tex3")
+metadata/kind = "building"
+metadata/place = "House 2"
+metadata/role = ""
+metadata/interior = "int_japanese"
+metadata/home = true
+metadata/w = 480
+metadata/h = 448
+metadata/foot = Rect2(-240, -448, 480, 448)
+metadata/front = Vector2(-112, 32)
+metadata/tags = ["a calm home with paper screens"]
+metadata/door_sheet = "doors/door_japanese.png"
+metadata/door_fw = 64
+metadata/door_fh = 64
+metadata/door_n = 22
+metadata/door_ox = -144
+metadata/door_oy = -64
+
+[node name="House 3" type="Sprite2D" parent="Entities"]
+position = Vector2(448, 1504)
+centered = false
+offset = Vector2(-240, -448)
+texture = ExtResource("tex3")
+metadata/kind = "building"
+metadata/place = "House 3"
+metadata/role = ""
+metadata/interior = "int_home1"
+metadata/home = true
+metadata/w = 480
+metadata/h = 448
+metadata/foot = Rect2(-240, -448, 480, 448)
+metadata/front = Vector2(-112, 32)
+metadata/tags = ["a calm home with paper screens"]
+metadata/door_sheet = "doors/door_japanese.png"
+metadata/door_fw = 64
+metadata/door_fh = 64
+metadata/door_n = 22
+metadata/door_ox = -144
+metadata/door_oy = -64
+
+[node name="House 4" type="Sprite2D" parent="Entities"]
+position = Vector2(1984, 1504)
+centered = false
+offset = Vector2(-240, -448)
+texture = ExtResource("tex3")
+metadata/kind = "building"
+metadata/place = "House 4"
+metadata/role = ""
+metadata/interior = "int_home1"
+metadata/home = true
+metadata/w = 480
+metadata/h = 448
+metadata/foot = Rect2(-240, -448, 480, 448)
+metadata/front = Vector2(-112, 32)
+metadata/tags = ["a calm home with paper screens"]
+metadata/door_sheet = "doors/door_japanese.png"
+metadata/door_fw = 64
+metadata/door_fh = 64
+metadata/door_n = 22
+metadata/door_ox = -144
+metadata/door_oy = -64
+
+[node name="Fountain" type="Sprite2D" parent="Entities"]
+position = Vector2(1216, 872)
+centered = false
+offset = Vector2(-32, -96)
+texture = ExtResource("tex4")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 22
+
+[node name="Bench" type="Sprite2D" parent="Entities"]
+position = Vector2(1072, 800)
+centered = false
+offset = Vector2(-32, -64)
+texture = ExtResource("tex5")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 12
+
+[node name="Bench2" type="Sprite2D" parent="Entities"]
+position = Vector2(1072, 992)
+centered = false
+offset = Vector2(-32, -64)
+texture = ExtResource("tex5")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 12
+
+[node name="Bench3" type="Sprite2D" parent="Entities"]
+position = Vector2(1392, 800)
+centered = false
+offset = Vector2(-32, -64)
+texture = ExtResource("tex5")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 12
+
+[node name="Bench4" type="Sprite2D" parent="Entities"]
+position = Vector2(1392, 992)
+centered = false
+offset = Vector2(-32, -64)
+texture = ExtResource("tex5")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 12
+
+[node name="Flower" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 736)
+centered = false
+offset = Vector2(-32, -32)
+texture = ExtResource("tex6")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower2" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 1056)
+centered = false
+offset = Vector2(-32, -32)
+texture = ExtResource("tex6")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower3" type="Sprite2D" parent="Entities"]
+position = Vector2(1072, 736)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex7")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower4" type="Sprite2D" parent="Entities"]
+position = Vector2(1072, 1056)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex7")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower5" type="Sprite2D" parent="Entities"]
+position = Vector2(1136, 736)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex8")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower6" type="Sprite2D" parent="Entities"]
+position = Vector2(1136, 1056)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex8")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower7" type="Sprite2D" parent="Entities"]
+position = Vector2(1328, 736)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex8")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower8" type="Sprite2D" parent="Entities"]
+position = Vector2(1328, 1056)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex8")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower9" type="Sprite2D" parent="Entities"]
+position = Vector2(1392, 736)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex7")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower10" type="Sprite2D" parent="Entities"]
+position = Vector2(1392, 1056)
+centered = false
+offset = Vector2(-48, -32)
+texture = ExtResource("tex7")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower11" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 736)
+centered = false
+offset = Vector2(-32, -32)
+texture = ExtResource("tex6")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Flower12" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 1056)
+centered = false
+offset = Vector2(-32, -32)
+texture = ExtResource("tex6")
+metadata/kind = "prop"
+metadata/collide = false
+metadata/crad = 10
+
+[node name="Lamp" type="Sprite2D" parent="Entities"]
+position = Vector2(944, 704)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp2" type="Sprite2D" parent="Entities"]
+position = Vector2(1520, 704)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp3" type="Sprite2D" parent="Entities"]
+position = Vector2(944, 1088)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp4" type="Sprite2D" parent="Entities"]
+position = Vector2(1520, 1088)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp5" type="Sprite2D" parent="Entities"]
+position = Vector2(1360, 352)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp6" type="Sprite2D" parent="Entities"]
+position = Vector2(1360, 544)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp7" type="Sprite2D" parent="Entities"]
+position = Vector2(336, 1024)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp8" type="Sprite2D" parent="Entities"]
+position = Vector2(720, 768)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp9" type="Sprite2D" parent="Entities"]
+position = Vector2(720, 1024)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp10" type="Sprite2D" parent="Entities"]
+position = Vector2(1744, 768)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp11" type="Sprite2D" parent="Entities"]
+position = Vector2(1744, 1024)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp12" type="Sprite2D" parent="Entities"]
+position = Vector2(2128, 768)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Lamp13" type="Sprite2D" parent="Entities"]
+position = Vector2(2128, 1024)
+centered = false
+offset = Vector2(-32, -128)
+texture = ExtResource("tex9")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 6
+
+[node name="Tree" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree2" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree3" type="Sprite2D" parent="Entities"]
+position = Vector2(240, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree4" type="Sprite2D" parent="Entities"]
+position = Vector2(2224, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree5" type="Sprite2D" parent="Entities"]
+position = Vector2(368, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree6" type="Sprite2D" parent="Entities"]
+position = Vector2(2096, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree7" type="Sprite2D" parent="Entities"]
+position = Vector2(496, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree8" type="Sprite2D" parent="Entities"]
+position = Vector2(1968, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree9" type="Sprite2D" parent="Entities"]
+position = Vector2(624, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree10" type="Sprite2D" parent="Entities"]
+position = Vector2(1840, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree11" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree12" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 128)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree13" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree14" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree15" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree16" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 128)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree17" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 256)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree18" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 256)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree19" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 256)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree20" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 256)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree21" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 256)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree22" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 256)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree23" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 256)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree24" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 256)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree25" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 384)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree26" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 384)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree27" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 384)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree28" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 384)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree29" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 384)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree30" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 384)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree31" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 384)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree32" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 384)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree33" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree34" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree35" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree36" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree37" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree38" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 512)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree39" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 512)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree40" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 512)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree41" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree42" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree43" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 640)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree44" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 640)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree45" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree46" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree47" type="Sprite2D" parent="Entities"]
+position = Vector2(1008, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree48" type="Sprite2D" parent="Entities"]
+position = Vector2(1456, 640)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree49" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree50" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree51" type="Sprite2D" parent="Entities"]
+position = Vector2(240, 768)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree52" type="Sprite2D" parent="Entities"]
+position = Vector2(2224, 768)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree53" type="Sprite2D" parent="Entities"]
+position = Vector2(496, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree54" type="Sprite2D" parent="Entities"]
+position = Vector2(1968, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree55" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree56" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree57" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree58" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 768)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree59" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree60" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree61" type="Sprite2D" parent="Entities"]
+position = Vector2(240, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree62" type="Sprite2D" parent="Entities"]
+position = Vector2(2224, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree63" type="Sprite2D" parent="Entities"]
+position = Vector2(368, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree64" type="Sprite2D" parent="Entities"]
+position = Vector2(2096, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree65" type="Sprite2D" parent="Entities"]
+position = Vector2(496, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree66" type="Sprite2D" parent="Entities"]
+position = Vector2(1968, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree67" type="Sprite2D" parent="Entities"]
+position = Vector2(624, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree68" type="Sprite2D" parent="Entities"]
+position = Vector2(1840, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree69" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree70" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 1024)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree71" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree72" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 1024)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex15")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree73" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1152)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree74" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1152)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree75" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 1152)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree76" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 1152)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree77" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 1152)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree78" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 1152)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex14")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree79" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree80" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree81" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree82" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree83" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree84" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 1280)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex13")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree85" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1408)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree86" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1408)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree87" type="Sprite2D" parent="Entities"]
+position = Vector2(752, 1408)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree88" type="Sprite2D" parent="Entities"]
+position = Vector2(1712, 1408)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree89" type="Sprite2D" parent="Entities"]
+position = Vector2(880, 1408)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree90" type="Sprite2D" parent="Entities"]
+position = Vector2(1584, 1408)
+centered = false
+offset = Vector2(-64, -128)
+texture = ExtResource("tex12")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree91" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1536)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree92" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1536)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex11")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree93" type="Sprite2D" parent="Entities"]
+position = Vector2(112, 1664)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Tree94" type="Sprite2D" parent="Entities"]
+position = Vector2(2352, 1664)
+centered = false
+offset = Vector2(-64, -160)
+texture = ExtResource("tex10")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 13
+
+[node name="Car" type="Sprite2D" parent="Entities"]
+position = Vector2(384, 1600)
+centered = false
+offset = Vector2(-64, -96)
+texture = ExtResource("tex16")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 20
+
+[node name="Car2" type="Sprite2D" parent="Entities"]
+position = Vector2(2048, 1600)
+centered = false
+offset = Vector2(-64, -96)
+texture = ExtResource("tex17")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 20
+
+[node name="Car3" type="Sprite2D" parent="Entities"]
+position = Vector2(768, 1600)
+centered = false
+offset = Vector2(-64, -96)
+texture = ExtResource("tex16")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 20
+
+[node name="Car4" type="Sprite2D" parent="Entities"]
+position = Vector2(1664, 1600)
+centered = false
+offset = Vector2(-64, -96)
+texture = ExtResource("tex17")
+metadata/kind = "prop"
+metadata/collide = true
+metadata/crad = 20
+
+[node name="Places" type="Node2D" parent="."]
+
+[node name="Town Plaza" type="Marker2D" parent="Places"]
+position = Vector2(1216, 864)
+metadata/kind = "place"
+metadata/place = "Town Plaza"
+metadata/ptype = "plaza"
+metadata/role = ""
+metadata/tags = ["sunlit", "a splashing fountain", "the heart of the town"]
+
+[node name="Market Road" type="Marker2D" parent="Places"]
+position = Vector2(1216, 1600)
+metadata/kind = "place"
+metadata/place = "Market Road"
+metadata/ptype = "road"
+metadata/role = ""
+metadata/tags = ["the road out of town"]

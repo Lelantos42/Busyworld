@@ -21,6 +21,7 @@ var agents: Dictionary = {}            # id -> Agent
 var meta: Dictionary = {}              # id -> per-agent decision bookkeeping
 var places: Array = []
 var place_by_name: Dictionary = {}
+var _buildings: Array = []             # building dicts (built from the scene nodes)
 
 const DOOR_SCRIPT := preload("res://scripts/DoorNode.gd")
 var interiors: Dictionary = {}         # place name -> {bounds, walk, entry, center, door, zoom}
@@ -55,22 +56,17 @@ var _drag := false
 
 func _ready() -> void:
 	randomize()
-	town = GameConfig.town
-	tile = int(town.get("tile", 32))
-	var mp: Array = town.get("map_px", [3328, 2816])
-	map_px = Vector2(mp[0], mp[1])
 	earshot = float(GameConfig.get_w("earshot_px", 130.0))
 	move_speed = float(GameConfig.get_w("move_speed", 64.0))
 	day_length = float(GameConfig.get_w("day_length_sec", 300.0))
 	hour = float(GameConfig.get_w("start_hour", 8.0))
 
+	# The town lives in this scene as editable nodes (see tools/build_town.py).
+	# We read each node's live position + metadata, so anything the founder drags
+	# in the Godot editor takes effect here. If the scene has no Entities layer
+	# (an older/empty Main.tscn), fall back to building it from town_layout.json.
+	var solids: Array = _load_town_from_scene() if has_node("Entities") else _load_town_legacy()
 	_build_places()
-	entities = Node2D.new()
-	entities.name = "Entities"
-	entities.y_sort_enabled = true
-	add_child(entities)
-
-	var solids: Array = TownBuilder.build(self, entities, town)
 	_build_navgrid(solids)
 	_build_interiors()
 	_setup_camera()
@@ -113,9 +109,94 @@ func _demo_interior(place: String) -> void:
 			enter_building(a, place)
 	focus_interior(place)
 
+# ---------------------------------------------------------------- town loading
+func _load_town_from_scene() -> Array:
+	# Reconstruct the town (buildings, props, places, solid cells) from the live
+	# scene nodes. Positions come straight from the nodes; the fixed geometry
+	# (collision footprint, door, entry point) rides along as node metadata.
+	entities = $Entities
+	tile = int(get_meta("tile", 32))
+	map_px = get_meta("map_px", Vector2(2432, 1728))
+	town = {"town_name": String(get_meta("town_name", "Busyworld")),
+		"tile": tile, "map_px": [map_px.x, map_px.y]}
+
+	var solids: Array = []
+	_buildings.clear()
+	places = []
+	for n in entities.get_children():
+		match String(n.get_meta("kind", "")):
+			"building":
+				var b := _building_from_node(n)
+				_buildings.append(b)
+				var foot: Rect2 = b["foot"]
+				_solid_rect(solids, n.position.x + foot.position.x,
+					n.position.y + foot.position.y, foot.size.x, foot.size.y)
+				places.append({"name": b["place"],
+					"x": n.position.x + b["front"].x, "y": n.position.y + b["front"].y,
+					"type": ("workplace" if b["role"] != "" else "building"),
+					"tags": b["tags"], "role": b["role"]})
+			"prop":
+				if bool(n.get_meta("collide", false)):
+					_solid_circle(solids, n.position.x, n.position.y - 6.0,
+						float(n.get_meta("crad", 10)))
+	if has_node("Places"):
+		for m in $Places.get_children():
+			places.append({"name": String(m.get_meta("place", m.name)),
+				"x": m.position.x, "y": m.position.y,
+				"type": String(m.get_meta("ptype", "")),
+				"tags": m.get_meta("tags", []),
+				"role": String(m.get_meta("role", ""))})
+	return solids
+
+func _building_from_node(n: Node2D) -> Dictionary:
+	var door_anim := {}
+	var ds := String(n.get_meta("door_sheet", ""))
+	if ds != "":
+		door_anim = {"sheet": ds, "fw": int(n.get_meta("door_fw", 64)),
+			"fh": int(n.get_meta("door_fh", 64)), "n": int(n.get_meta("door_n", 1)),
+			"ox": float(n.get_meta("door_ox", 0)), "oy": float(n.get_meta("door_oy", 0))}
+	return {
+		"place": String(n.get_meta("place", n.name)),
+		"role": String(n.get_meta("role", "")),
+		"interior": String(n.get_meta("interior", "")),
+		"home": bool(n.get_meta("home", false)),
+		"tags": n.get_meta("tags", []),
+		"w": float(n.get_meta("w", 64.0)), "h": float(n.get_meta("h", 64.0)),
+		"foot": n.get_meta("foot", Rect2()), "front": n.get_meta("front", Vector2.ZERO),
+		"door_anim": door_anim, "bx": n.position.x, "by": n.position.y,
+	}
+
+func _load_town_legacy() -> Array:
+	# fallback for an older Main.tscn that doesn't carry the town nodes
+	town = GameConfig.town
+	tile = int(town.get("tile", 32))
+	var mp: Array = town.get("map_px", [3328, 2816])
+	map_px = Vector2(mp[0], mp[1])
+	entities = Node2D.new()
+	entities.name = "Entities"
+	entities.y_sort_enabled = true
+	add_child(entities)
+	places = town.get("places", [])
+	_buildings = town.get("buildings", [])
+	return TownBuilder.build(self, entities, town)
+
+func _solid_rect(solids: Array, x: float, y: float, w: float, h: float) -> void:
+	var cx0 := int(floor(x / tile)); var cy0 := int(floor(y / tile))
+	var cx1 := int(floor((x + w) / tile)); var cy1 := int(floor((y + h) / tile))
+	for cy in range(cy0, cy1 + 1):
+		for cx in range(cx0, cx1 + 1):
+			solids.append(Vector2i(cx, cy))
+
+func _solid_circle(solids: Array, cx: float, cy: float, r: float) -> void:
+	var c0 := Vector2i(int(floor((cx - r) / tile)), int(floor((cy - r) / tile)))
+	var c1 := Vector2i(int(floor((cx + r) / tile)), int(floor((cy + r) / tile)))
+	for y in range(c0.y, c1.y + 1):
+		for x in range(c0.x, c1.x + 1):
+			solids.append(Vector2i(x, y))
+
 # ---------------------------------------------------------------- places
 func _build_places() -> void:
-	places = town.get("places", [])
+	place_by_name.clear()
 	for p in places:
 		place_by_name[p.get("name", "")] = p
 
@@ -143,9 +224,9 @@ func _build_interiors() -> void:
 	add_child(interiors_root)
 	var ix0 := map_px.x + 600.0
 	var i := 0
-	for b in town.get("buildings", []):
+	for b in _buildings:
 		var design := String(b.get("interior", ""))
-		var place := String(b.get("place", b.get("name", "")))
+		var place := String(b.get("place", ""))
 		_make_ext_door(place, b)
 		if design == "" or not GameConfig.interiors_data.has(design):
 			continue
@@ -843,7 +924,7 @@ func _try_select(screen_pos: Vector2) -> void:
 func _building_at(world_pos: Vector2) -> String:
 	var hit := ""
 	var best_by := -INF
-	for b in town.get("buildings", []):
+	for b in _buildings:
 		var rect := Rect2(float(b.bx) - float(b.w) / 2.0, float(b.by) - float(b.h),
 			float(b.w), float(b.h))
 		if rect.has_point(world_pos) and interiors.has(String(b.get("place", ""))):
