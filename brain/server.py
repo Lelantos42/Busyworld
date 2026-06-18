@@ -129,6 +129,8 @@ async def handler(ws) -> None:
                 ACTIVE.clear()
                 ACTIVE.update(msg.get("active", []))
                 print(f"[brain] active citizens: {sorted(ACTIVE)}")
+                vids = [cid for cid in ACTIVE if CITIZENS.get(cid) and CITIZENS[cid].vision]
+                await send(ws, {"type": "vision", "ids": vids})
             elif mtype == "decide":
                 asyncio.create_task(handle_decide(ws, msg))
             elif mtype == "player_request":

@@ -30,6 +30,10 @@ var focused_interior := ""
 var _town_cam_pos := Vector2.ZERO
 var _town_cam_zoom := Vector2.ONE
 
+var vision_ids: Array = []             # citizens whose models can see (from the brain)
+var _pov_vp: SubViewport
+var _pov_cam: Camera2D
+
 # clock
 var hour := 8.0
 var day := 1
@@ -65,6 +69,7 @@ func _ready() -> void:
 	_build_navgrid(solids)
 	_build_interiors()
 	_setup_camera()
+	_setup_pov()
 	_setup_daynight()
 	_setup_hud()
 
@@ -78,6 +83,19 @@ func _ready() -> void:
 		hud.log_line("[autopilot] running without the brain server.")
 	if GameConfig.demo_interior != "":
 		_demo_interior(GameConfig.demo_interior)
+	if GameConfig.povtest != "":
+		_run_povtest(GameConfig.povtest)
+
+func _run_povtest(id: String) -> void:
+	await get_tree().create_timer(1.5).timeout
+	if agents.has(id):
+		var b64: String = await _render_pov(agents[id])
+		var img := Image.new()
+		img.load_png_from_buffer(Marshalls.base64_to_raw(b64))
+		var path := GameConfig.screenshot_path if GameConfig.screenshot_path != "" else "user://pov.png"
+		img.save_png(path)
+		print("[povtest] saved %s POV (%d bytes b64) -> %s" % [id, b64.length(), path])
+	get_tree().quit()
 
 func _demo_interior(place: String) -> void:
 	for id in agents.keys():
@@ -281,6 +299,27 @@ func _setup_camera() -> void:
 	add_child(camera)
 	camera.make_current()
 
+func _setup_pov() -> void:
+	# an off-screen viewport that shares the town world, used to render a
+	# citizen's first-person-ish view for vision-capable models
+	_pov_vp = SubViewport.new()
+	_pov_vp.size = Vector2i(240, 176)
+	_pov_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	add_child(_pov_vp)
+	_pov_vp.world_2d = get_viewport().world_2d
+	_pov_cam = Camera2D.new()
+	_pov_cam.zoom = Vector2(1.15, 1.15)
+	_pov_vp.add_child(_pov_cam)
+	_pov_cam.make_current()
+
+func _render_pov(a: Agent) -> String:
+	_pov_cam.global_position = a.position - Vector2(0, 20)
+	_pov_vp.render_target_update_mode = SubViewport.UPDATE_ONCE
+	await RenderingServer.frame_post_draw
+	var img := _pov_vp.get_texture().get_image()
+	_pov_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	return Marshalls.raw_to_base64(img.save_png_to_buffer())
+
 func _setup_daynight() -> void:
 	canvas_mod = CanvasModulate.new()
 	add_child(canvas_mod)
@@ -379,11 +418,14 @@ func _decision_loop() -> void:
 		_request_decision(a, m)
 
 func _request_decision(a: Agent, m: Dictionary) -> void:
-	var perc := _build_perception(a, m)
 	if Net.is_open():
-		Net.send({"type": "decide", "agent_id": a.id, "perception": perc})
 		m.awaiting = true
 		m.deadline = _life + 20.0
+		var msg := {"type": "decide", "agent_id": a.id}
+		if a.id in vision_ids:
+			msg["image"] = await _render_pov(a)     # the citizen's eyesight
+		msg["perception"] = _build_perception(a, m)
+		Net.send(msg)
 	else:
 		_apply_action(a, _heuristic_decide(a, m), m)
 
@@ -626,6 +668,10 @@ func _on_net_message(msg: Dictionary) -> void:
 		"treasury":
 			treasury = int(msg.get("amount", treasury))
 			hud.set_treasury(treasury)
+		"vision":
+			vision_ids = msg.get("ids", [])
+			if vision_ids.size() > 0:
+				hud.log_line("[brain] %d citizen(s) can see their surroundings." % vision_ids.size())
 
 func _on_player_request(text: String) -> void:
 	hud.log_line("[You ask the town] " + text)

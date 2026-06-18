@@ -14,6 +14,7 @@ var autopilot: bool = false             # force local heuristic movement (ignore
 var quit_after: float = 0.0             # seconds; 0 = never
 var overview: bool = false              # zoom camera to fit the whole town
 var demo_interior: String = ""          # auto-focus this interior on start (debug)
+var povtest: String = ""                # render this citizen's POV to screenshot, then quit
 
 func _ready() -> void:
 	world = _load_json("res://data/world_config.json")
@@ -47,6 +48,8 @@ func _parse_cli() -> void:
 				overview = true
 			"--interior":
 				if i + 1 < args.size(): demo_interior = args[i + 1]; i += 1
+			"--povtest":
+				if i + 1 < args.size(): povtest = args[i + 1]; i += 1
 			"--quit-after":
 				if i + 1 < args.size(): quit_after = float(args[i + 1]); i += 1
 		i += 1
