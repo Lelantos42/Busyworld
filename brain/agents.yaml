@@ -1,0 +1,47 @@
+# Per-citizen Ollama endpoints.
+#
+# This is the ONLY place infrastructure lives: which model runs each mind, and on
+# which machine. Point each citizen at a different IP:port (e.g. a Raspberry Pi,
+# a desktop, a server) and they will each think on their own hardware. The cast
+# (names, roles, personalities) lives in ../godot/data/citizens.json and is shared
+# with the game client.
+#
+# Any citizen without an entry here uses `defaults`. If a model is unreachable,
+# that citizen falls back to the built-in heuristic mind so the town keeps living.
+
+defaults:
+  host: "127.0.0.1"
+  port: 11434
+  model: "llama3.2:3b"      # any Ollama chat model
+  vision: false             # set true + a vision model (e.g. llama3.2-vision) for eyesight
+  temperature: 0.8
+  timeout: 30
+
+agents:
+  mayor:
+    # e.g. a beefier model for the town's leader
+    model: "llama3.1:8b"
+  shopkeeper: {}
+  baker: {}
+  doctor: {}
+  teacher: {}
+  builder: {}
+  farmer: {}
+  innkeeper: {}
+  gardener: {}
+  officer: {}
+  artist: {}
+  engineer: {}
+
+# Example of distributing minds across a network of machines / Raspberry Pis:
+#
+# agents:
+#   mayor:
+#     host: "192.168.1.50"
+#     port: 11434
+#     model: "llama3.1:8b"
+#     vision: true
+#     model_vision: "llama3.2-vision:11b"
+#   baker:
+#     host: "192.168.1.51"
+#     model: "qwen2.5:3b"

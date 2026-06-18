@@ -1,0 +1,24 @@
+# Godot
+godot/.godot/
+godot/android/
+*.import.log
+# Tooling / heavy local binaries
+tools/godot.zip
+tools/bin/
+tools/_run/
+# Python
+brain/__pycache__/
+brain/**/__pycache__/
+*.pyc
+.venv/
+venv/
+# Persistence (per-AI memory DBs are runtime state)
+brain/state/
+*.sqlite
+*.sqlite3
+# OS
+.DS_Store
+**/.DS_Store
+# Screenshots & scratch montages from verification runs
+tools/screenshots/
+tools/_montages/

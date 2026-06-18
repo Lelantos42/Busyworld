@@ -1,0 +1,10 @@
+{
+  "town_name": "Busyworld",
+  "brain_url": "ws://127.0.0.1:8765",
+  "default_agent_count": 6,
+  "connect_timeout_sec": 5.0,
+  "day_length_sec": 300,
+  "start_hour": 8.0,
+  "move_speed": 64.0,
+  "earshot_px": 130.0
+}
