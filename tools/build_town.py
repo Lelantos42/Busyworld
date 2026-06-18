@@ -103,21 +103,24 @@ collisions = []  # extra rect collisions [x,y,w,h]
 def px(tx, ty):  # tile center-ish to px
     return tx * TILE, ty * TILE
 
-def add_building(name, file, center_tx, base_ty, place=None, tags=None, role=None, home=False):
+def add_building(name, file, center_tx, base_ty, place=None, tags=None, role=None,
+                 home=False, door_dx=0, door_type="door_1", interior=""):
     rel = file
     w, h = size(rel)
     bx = center_tx * TILE
     by = base_ty * TILE
+    door_x = bx + door_dx
     b = {"name": name, "file": rel, "bx": bx, "by": by, "w": w, "h": h,
-         "place": place or name, "tags": tags or [], "role": role}
+         "place": place or name, "tags": tags or [], "role": role,
+         "door": [door_x, by], "door_type": door_type, "interior": interior}
     buildings.append(b)
-    # named place at the door (bottom-center, a bit in front)
+    # named place at the door (a step in front of it)
     if place or role:
-        places.append({"name": place or name, "x": bx, "y": by + 18,
+        places.append({"name": place or name, "x": door_x, "y": by + 22,
                        "type": "workplace" if role else "building",
                        "tags": tags or [], "role": role})
     if home:
-        homes.append({"x": bx, "y": by + 22, "building": name})
+        homes.append({"x": door_x, "y": by + 24, "building": name})
     return b
 
 # NORTH ROW: civic + residences (tall buildings ok, plaza sits in front/south) ---
@@ -153,7 +156,55 @@ add_building("Art Studio", "buildings/house_victorian_7.png", 92, 80,
              place="Art Studio", role="artist", home=True,
              tags=["colorful", "canvases drying", "paint-spattered floor"])
 
-# ---------- scatter props (trees, lamps, flowers, benches, cars) ----------
+# ---------- assign interior room designs + door styles ----------
+INTERIOR_BY_PLACE = {
+    "Town Hall": "shop_museum", "General Store": "shop_icecream", "Bakery": "shop_icecream",
+    "Clinic": "home_generic", "Schoolhouse": "shop_museum", "Workshop": "shop_tvstudio",
+    "The Inn": "shop_gym", "Art Studio": "shop_tvstudio", "Farm": "home_generic",
+    "Maple Residence": "home_japanese",
+}
+_home_designs = ["home_generic", "home_japanese", "home_condo"]
+for i, b in enumerate(buildings):
+    b["interior"] = INTERIOR_BY_PLACE.get(b["place"], _home_designs[i % len(_home_designs)])
+    # wider buildings get a wider/big door
+    b["door_type"] = "door_big_1" if b["w"] >= 480 else ["door_1", "door_2", "door_3"][i % 3]
+
+# ---------- carve sidewalk spurs so every door connects to the network ----------
+def _nearest_sidewalk_cell(start, max_r=26):
+    sx, sy = start
+    for r in range(1, max_r):
+        for dy in range(-r, r + 1):
+            for dx in range(-r, r + 1):
+                if abs(dx) != r and abs(dy) != r:
+                    continue
+                x, y = sx + dx, sy + dy
+                if 0 <= x < MW and 0 <= y < MH and grid[y][x] == 's':
+                    return (x, y)
+    return None
+
+def _carve_line(a, b):
+    (ax, ay), (bx_, by_) = a, b
+    x, y = ax, ay
+    while y != by_:
+        if grid[y][x] != 'r':
+            grid[y][x] = 's'
+        y += 1 if by_ > y else -1
+    while x != bx_:
+        if grid[y][x] != 'r':
+            grid[y][x] = 's'
+        x += 1 if bx_ > x else -1
+
+for b in buildings:
+    dtx = int(b["door"][0] // TILE)
+    dty = int(b["door"][1] // TILE) + 1            # one tile in front of the door
+    dty = min(dty, MH - 1)
+    if grid[dty][dtx] != 's':
+        near = _nearest_sidewalk_cell((dtx, dty))
+        if near:
+            _carve_line((dtx, dty), near)
+        grid[dty][dtx] = 's'                        # a doorstep tile
+
+
 props = []
 import glob
 tree_files = sorted(glob.glob(os.path.join(ASSETS, "props/tree_*.png")))
@@ -236,9 +287,14 @@ for (ox, oy) in [(CX-12, CY-10), (CX+12, CY-10), (CX-12, CY+10), (CX+12, CY+10)]
     if is_grass(ox, oy):
         add_prop(random.choice(tree_rel), ox*TILE, oy*TILE+TILE, collide=True, crad=12)
 
-# A few parked cars along the south road
-for tx in range(14, MW - 14, 12):
-    add_prop(random.choice(car_rel), tx*TILE, (MH-4)*TILE, collide=True, crad=14)
+# Side-view cars parked along the south road (parallel to it, not nose-in)
+car_left = ["props/" + os.path.basename(f) for f in sorted(glob.glob(os.path.join(ASSETS, "props/car_left_*.png")))]
+car_right = ["props/" + os.path.basename(f) for f in sorted(glob.glob(os.path.join(ASSETS, "props/car_right_*.png")))]
+road_y = (MH - 5) * TILE
+for k, tx in enumerate(range(12, MW - 12, 11)):
+    pool = car_right if k % 2 else car_left
+    if pool:
+        add_prop(random.choice(pool), tx * TILE, road_y, collide=True, crad=20)
 
 # ---------- named non-building places ----------
 places.append({"name": "Town Plaza", "x": CX*TILE, "y": CY*TILE, "type": "plaza",
@@ -275,6 +331,16 @@ def render_preview(ground):
     for _, file, bx, by, w, h in items:
         im = load(os.path.join(ASSETS, file))
         img.alpha_composite(im, (int(bx - w/2), int(by - h)))
+    # closed-door frame at each building door (first frame of the door sheet)
+    for b in buildings:
+        dpath = os.path.join(ASSETS, "doors", b["door_type"] + ".png")
+        if os.path.exists(dpath):
+            ds = load(dpath)
+            fw = ds.height if ds.width >= ds.height else ds.width // 5
+            fw = 32
+            frame = ds.crop((0, 0, fw, ds.height))
+            dx, dy = b["door"]
+            img.alpha_composite(frame, (int(dx - fw / 2), int(dy - ds.height)))
     # downscale for quick viewing
     prev = img.resize((img.width//2, img.height//2), Image.NEAREST)
     prev.convert("RGB").save(PREVIEW)
