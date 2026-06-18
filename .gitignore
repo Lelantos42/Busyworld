@@ -22,3 +22,4 @@ brain/state/
 # Screenshots & scratch montages from verification runs
 tools/screenshots/
 tools/_montages/
+tools/_*.log

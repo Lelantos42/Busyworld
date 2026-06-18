@@ -1,9 +1,0 @@
-[brain] world='redo'  citizens=4  treasury=500  listening on ws://127.0.0.1:8765
-[brain] game client connected
-[brain] active citizens: ['coordinator', 'designer', 'maker', 'seller']
-[seller    ] instinct wander   
-[coordinator] instinct work     
-[maker     ] instinct work     
-[designer  ] instinct work     
-[seller    ] instinct move_to  
-[brain] game client disconnected

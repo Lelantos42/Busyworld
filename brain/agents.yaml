@@ -18,20 +18,12 @@ defaults:
   timeout: 30
 
 agents:
-  mayor:
-    # a beefier "hero" model for the town's leader (the one you'll talk to most)
+  coordinator:
+    # the citizen you'll talk to most — give her a beefier "hero" model
     model: "llama3.1:8b"
-  shopkeeper: {}
-  baker: {}
-  doctor: {}
-  teacher: {}
-  builder: {}
-  farmer: {}
-  innkeeper: {}
-  gardener: {}
-  officer: {}
-  artist: {}
-  engineer: {}
+  designer: {}
+  maker: {}
+  seller: {}
 
 # Example of distributing minds across a network of machines / Raspberry Pis:
 #
