@@ -223,12 +223,18 @@ for tx in range(8, MW - 6, 8):
             add_prop(random.choice(lamp_rel), x, y, collide=True, crad=6)
 
 # Benches + flowers framing the plaza (plaza is CX+-10, CY+-8)
-for tx in (CX - 8, CX + 7):
+for tx in (CX - 8, CX - 3, CX + 2, CX + 7):
     for ty in (CY - 6, CY + 5):
         add_prop(random.choice(bench_rel), tx*TILE, ty*TILE+TILE, collide=True, crad=10)
 for tx in range(CX - 9, CX + 10, 3):
     add_prop(random.choice(flower_rel), tx*TILE, (CY-8)*TILE+TILE, collide=False)
     add_prop(random.choice(flower_rel), tx*TILE, (CY+7)*TILE+TILE, collide=False)
+# lamps at the plaza's inner corners, trees framing its outer corners
+for (lx, ly) in [(CX-9, CY-7), (CX+8, CY-7), (CX-9, CY+6), (CX+8, CY+6)]:
+    add_prop(random.choice(lamp_rel), lx*TILE+16, ly*TILE+TILE, collide=True, crad=6)
+for (ox, oy) in [(CX-12, CY-10), (CX+12, CY-10), (CX-12, CY+10), (CX+12, CY+10)]:
+    if is_grass(ox, oy):
+        add_prop(random.choice(tree_rel), ox*TILE, oy*TILE+TILE, collide=True, crad=12)
 
 # A few parked cars along the south road
 for tx in range(14, MW - 14, 12):

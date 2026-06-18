@@ -1771,9 +1771,45 @@
   },
   {
    "file": "props/bench_1.png",
-   "bx": 1888,
+   "bx": 1568,
    "by": 1248,
    "w": 64,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_2.png",
+   "bx": 1568,
+   "by": 1600,
+   "w": 96,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_2.png",
+   "bx": 1728,
+   "by": 1248,
+   "w": 96,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_1.png",
+   "bx": 1728,
+   "by": 1600,
+   "w": 64,
+   "h": 64,
+   "collide": true,
+   "crad": 10
+  },
+  {
+   "file": "props/bench_2.png",
+   "bx": 1888,
+   "by": 1248,
+   "w": 96,
    "h": 64,
    "collide": true,
    "crad": 10
@@ -1788,10 +1824,10 @@
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
+   "file": "props/flower_1.png",
    "bx": 1376,
    "by": 1184,
-   "w": 96,
+   "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
@@ -1806,10 +1842,10 @@
    "crad": 10
   },
   {
-   "file": "props/flower_7.png",
+   "file": "props/flower_2.png",
    "bx": 1472,
    "by": 1184,
-   "w": 32,
+   "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
@@ -1824,7 +1860,7 @@
    "crad": 10
   },
   {
-   "file": "props/flower_6.png",
+   "file": "props/flower_4.png",
    "bx": 1568,
    "by": 1184,
    "w": 96,
@@ -1833,10 +1869,10 @@
    "crad": 10
   },
   {
-   "file": "props/flower_7.png",
+   "file": "props/flower_4.png",
    "bx": 1568,
    "by": 1664,
-   "w": 32,
+   "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
@@ -1851,16 +1887,16 @@
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
+   "file": "props/flower_3.png",
    "bx": 1664,
    "by": 1664,
-   "w": 96,
+   "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_1.png",
+   "file": "props/flower_3.png",
    "bx": 1760,
    "by": 1184,
    "w": 64,
@@ -1869,34 +1905,34 @@
    "crad": 10
   },
   {
-   "file": "props/flower_5.png",
+   "file": "props/flower_3.png",
    "bx": 1760,
    "by": 1664,
+   "w": 64,
+   "h": 32,
+   "collide": false,
+   "crad": 10
+  },
+  {
+   "file": "props/flower_6.png",
+   "bx": 1856,
+   "by": 1184,
    "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_2.png",
-   "bx": 1856,
-   "by": 1184,
-   "w": 64,
-   "h": 32,
-   "collide": false,
-   "crad": 10
-  },
-  {
-   "file": "props/flower_2.png",
+   "file": "props/flower_6.png",
    "bx": 1856,
    "by": 1664,
-   "w": 64,
+   "w": 96,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
+   "file": "props/flower_6.png",
    "bx": 1952,
    "by": 1184,
    "w": 96,
@@ -1905,16 +1941,88 @@
    "crad": 10
   },
   {
-   "file": "props/flower_4.png",
+   "file": "props/flower_3.png",
    "bx": 1952,
    "by": 1664,
-   "w": 96,
+   "w": 64,
    "h": 32,
    "collide": false,
    "crad": 10
   },
   {
-   "file": "props/car_6.png",
+   "file": "props/lamp_4.png",
+   "bx": 1392,
+   "by": 1216,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_2.png",
+   "bx": 1936,
+   "by": 1216,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_3.png",
+   "bx": 1392,
+   "by": 1632,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/lamp_4.png",
+   "bx": 1936,
+   "by": 1632,
+   "w": 64,
+   "h": 128,
+   "collide": true,
+   "crad": 6
+  },
+  {
+   "file": "props/tree_3.png",
+   "bx": 1280,
+   "by": 1120,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_7.png",
+   "bx": 2048,
+   "by": 1120,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_20.png",
+   "bx": 1280,
+   "by": 1760,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/tree_12.png",
+   "bx": 2048,
+   "by": 1760,
+   "w": 128,
+   "h": 160,
+   "collide": true,
+   "crad": 12
+  },
+  {
+   "file": "props/car_3.png",
    "bx": 448,
    "by": 2688,
    "w": 64,
@@ -1923,7 +2031,7 @@
    "crad": 14
   },
   {
-   "file": "props/car_5.png",
+   "file": "props/car_3.png",
    "bx": 832,
    "by": 2688,
    "w": 64,
@@ -1932,7 +2040,7 @@
    "crad": 14
   },
   {
-   "file": "props/car_5.png",
+   "file": "props/car_2.png",
    "bx": 1216,
    "by": 2688,
    "w": 64,
@@ -1941,7 +2049,7 @@
    "crad": 14
   },
   {
-   "file": "props/car_5.png",
+   "file": "props/car_4.png",
    "bx": 1600,
    "by": 2688,
    "w": 64,
@@ -1950,17 +2058,8 @@
    "crad": 14
   },
   {
-   "file": "props/car_5.png",
+   "file": "props/car_8.png",
    "bx": 1984,
-   "by": 2688,
-   "w": 64,
-   "h": 128,
-   "collide": true,
-   "crad": 14
-  },
-  {
-   "file": "props/car_7.png",
-   "bx": 2368,
    "by": 2688,
    "w": 128,
    "h": 96,
@@ -1969,10 +2068,19 @@
   },
   {
    "file": "props/car_4.png",
-   "bx": 2752,
+   "bx": 2368,
    "by": 2688,
    "w": 64,
    "h": 128,
+   "collide": true,
+   "crad": 14
+  },
+  {
+   "file": "props/car_8.png",
+   "bx": 2752,
+   "by": 2688,
+   "w": 128,
+   "h": 96,
    "collide": true,
    "crad": 14
   }

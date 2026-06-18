@@ -46,7 +46,16 @@ func setup(data: Dictionary, sheet: Texture2D, move_speed: float) -> void:
 	speed = move_speed
 	_build_visual(sheet)
 
+func _draw() -> void:
+	# soft ground shadow under the feet (drawn before children -> sits beneath sprite)
+	var pts := PackedVector2Array()
+	for i in range(18):
+		var a := TAU * i / 18.0
+		pts.append(Vector2(cos(a) * 11.0, sin(a) * 4.5 - 3.0))
+	draw_colored_polygon(pts, Color(0, 0, 0, 0.22))
+
 func _build_visual(sheet: Texture2D) -> void:
+	queue_redraw()
 	_spr = AnimatedSprite2D.new()
 	_spr.sprite_frames = CharacterFrames.build(sheet)
 	_spr.centered = false

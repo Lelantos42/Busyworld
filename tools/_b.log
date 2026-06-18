@@ -1,0 +1,14 @@
+[brain] world='polish'  citizens=12  treasury=500  listening on ws://127.0.0.1:8765
+[brain] game client connected
+[brain] active citizens: ['baker', 'builder', 'doctor', 'mayor', 'shopkeeper', 'teacher']
+[teacher   ] instinct move_to  
+[mayor     ] instinct wander   Good day, Gus.
+[baker     ] instinct wander   
+[doctor    ] instinct work     
+[shopkeeper] instinct wander   
+[builder   ] instinct work     How fares the mayor?
+[mayor     ] instinct wander   
+[baker     ] instinct work     
+[shopkeeper] instinct work     
+[doctor    ] instinct work     
+[brain] game client disconnected
