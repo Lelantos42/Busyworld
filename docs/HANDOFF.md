@@ -31,6 +31,11 @@ Claude-Session trailers (see existing commits).
   startup, so your edits take effect on the next run — no Python needed for fine
   placement. (Collision/door/entry geometry rides along as node metadata and is
   recomputed from the node's position, so it follows what you move.)
+- **Paintable ground**: the ground is a `TileMapLayer` (`Ground` node in
+  `Main.tscn`) over `town_tileset.tres` — select it in the editor and paint
+  sidewalks/roads/grass tile-by-tile with the 14-tile palette, with the buildings
+  visible for alignment. (`build_town.py` writes the atlas + tileset and bakes the
+  initial cells straight into the scene's `tile_map_data`.)
 - **Citizens**: 4 in `godot/data/citizens.json` (shared by Godot + brain) — Mara
   (Coordinator), Theo (Designer), Iris (Maker), Sam (Seller); 2 women, 2 men.
   Animated from LimeZu premade sheets, A* pathfinding, nameplates, speech bubbles,
@@ -81,8 +86,9 @@ Asset pipeline order (re-run after changing buildings/doors/interiors):
   select_assets.py / copy_extras.py / copy_interiors.py   (curate sprites)
   build_doors.py        -> doors.json     (match animated doors to buildings)
   build_interiors.py    -> interiors.json (walkable floors)
-  build_town.py         -> town_layout.json + baked ground + scenes/Main.tscn
-                           (reads doors.json; pass --no-scene to keep editor edits)
+  build_town.py         -> town_layout.json + baked ground + ground atlas/tileset
+                           + scenes/Main.tscn (paintable TileMapLayer ground;
+                           reads doors.json; pass --no-scene to keep editor edits)
 ```
 
 ## 4. How to run & verify (this is the important part)
@@ -125,12 +131,12 @@ Python deps for the brain: `pip install -r brain/requirements.txt`
   (the from-scratch source of truth), but it now emits `scenes/Main.tscn` as real
   nodes you can nudge in the editor. Two ways to change the town: (a) for sweeping
   or structural changes, edit `build_town.py` and regenerate; (b) for fine
-  placement, just drag nodes in the editor. **Re-running `build_town.py` overwrites
-  `Main.tscn`** (it resets hand placement) — pass `--no-scene` to regenerate the
-  ground/JSON while keeping your editor edits. Caveat: the ground (paths, roads,
-  driveways, door spurs) is *baked* into `town_ground.png`, so nudging props is
-  free but moving a *building* far won't move its sidewalk — re-run `build_town.py`
-  to re-bake the paths to the new position.
+  placement, just drag nodes (or paint the ground tilemap) in the editor.
+  **Re-running `build_town.py` overwrites `Main.tscn`** (it resets hand placement
+  *and* the painted ground) — pass `--no-scene` to regenerate the JSON/atlas while
+  keeping your editor edits. Note: moving a building won't auto-move its baked
+  sidewalk spur, but you can just paint a new spur to the door in the editor (or
+  re-run `build_town.py` to re-bake every path from scratch).
 - **Coordinates**: props/buildings are positioned by their baseline (bottom-centre)
   for Y-sorting. Interiors live in an off-map region the camera visits.
 - **Authority split**: Godot owns space/time/positions; the brain owns

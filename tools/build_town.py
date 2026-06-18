@@ -22,6 +22,8 @@ GROUND = os.path.join(ASSETS, "ground")
 OUTPNG = os.path.join(GROUND, "town_ground.png")
 LAYOUT = os.path.join(ROOT, "godot/data/town_layout.json")
 SCENE = os.path.join(ROOT, "godot/scenes/Main.tscn")
+ATLAS = os.path.join(GROUND, "town_atlas.png")
+TILESET = os.path.join(ROOT, "godot/data/town_tileset.tres")
 PREVIEW = os.path.join(ROOT, "tools/_montages/town_preview.png")
 
 TILE = 32
@@ -53,23 +55,74 @@ fill_rect(3, CY - 2, MW - 3, CY + 2, 's')          # horizontal avenue
 fill_rect(5, MH - 5, MW - 5, MH - 3, 'r')          # south road (cars)
 fill_rect(5, MH - 6, MW - 5, MH - 5, 's')
 
+# The ground is both baked to a PNG (preview + legacy fallback) AND emitted as a
+# paintable TileMapLayer. Both share ONE atlas of terrain tiles so they look
+# identical; bake_ground records the atlas cell (col,row,flip flags) it chose for
+# every tile as it composites, and that same mapping is written into the TileMap.
+#   atlas columns: 0..7 = grass variants, 8 = sidewalk, 9 = sidewalk-alt, 10..13 = road
+ATLAS_TILES = grass_tiles + [walk_tile, walk_tile2] + road_tiles
+GRASS0, WALK0, WALK1, ROAD0 = 0, len(grass_tiles), len(grass_tiles) + 1, len(grass_tiles) + 2
+
 def bake_ground():
     img = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    cells = []      # (tx, ty, atlas_col, atlas_row, flip_flags) for the TileMapLayer
     for ty in range(MH):
         for tx in range(MW):
             m = grid[ty][tx]
+            flags = 0
             if m == 'g':
-                t = grass_tiles[(tx * 7 + ty * 13) % len(grass_tiles)]
-                if (tx * 5 + ty * 3) % 2: t = t.transpose(Image.FLIP_LEFT_RIGHT)
-                if (tx * 3 + ty * 7) % 2: t = t.transpose(Image.FLIP_TOP_BOTTOM)
+                gi = (tx * 7 + ty * 13) % len(grass_tiles)
+                t = grass_tiles[gi]
+                if (tx * 5 + ty * 3) % 2: t = t.transpose(Image.FLIP_LEFT_RIGHT); flags |= 1
+                if (tx * 3 + ty * 7) % 2: t = t.transpose(Image.FLIP_TOP_BOTTOM); flags |= 2
+                col = GRASS0 + gi
             elif m == 's':
-                t = walk_tile if (tx + ty) % 5 else walk_tile2
+                if (tx + ty) % 5: t = walk_tile; col = WALK0
+                else: t = walk_tile2; col = WALK1
             else:
-                t = road_tiles[(tx * 3 + ty) % len(road_tiles)]
+                ri = (tx * 3 + ty) % len(road_tiles)
+                t = road_tiles[ri]; col = ROAD0 + ri
             img.alpha_composite(t, (tx * TILE, ty * TILE))
+            cells.append((tx, ty, col, 0, flags))
     img.save(OUTPNG)
     print("baked ground:", OUTPNG, img.size)
-    return img
+    return img, cells
+
+def build_atlas():
+    # one horizontal strip of every terrain tile, addressed by atlas column
+    atlas = Image.new("RGBA", (len(ATLAS_TILES) * TILE, TILE), (0, 0, 0, 0))
+    for i, t in enumerate(ATLAS_TILES):
+        atlas.alpha_composite(t, (i * TILE, 0))
+    atlas.save(ATLAS)
+    print("atlas:", ATLAS, atlas.size, "tiles:", len(ATLAS_TILES))
+
+def write_tileset():
+    # a TileSet resource over the atlas — this is the founder's paint palette
+    lines = ["[gd_resource type=\"TileSet\" format=3 load_steps=3]", "",
+             "[ext_resource type=\"Texture2D\" path=\"res://assets/ground/town_atlas.png\" id=\"1_atlas\"]", "",
+             "[sub_resource type=\"TileSetAtlasSource\" id=\"atlas0\"]",
+             "texture = ExtResource(\"1_atlas\")",
+             "texture_region_size = Vector2i(%d, %d)" % (TILE, TILE)]
+    for i in range(len(ATLAS_TILES)):
+        lines.append("%d:0/0 = 0" % i)             # declare tile at atlas (col, 0)
+    lines += ["", "[resource]",
+              "tile_size = Vector2i(%d, %d)" % (TILE, TILE),
+              "sources/0 = SubResource(\"atlas0\")", ""]
+    open(TILESET, "w").write("\n".join(lines))
+    print("tileset:", TILESET)
+
+def tile_map_data(cells):
+    # Godot 4.6 TileMapLayer binary: u16 format(0), then per cell 12 bytes:
+    #   int16 x, int16 y, u16 source_id, u16 atlas_x, u16 atlas_y, u16 alternative
+    # flips ride in the alternative field (FLIP_H=0x1000, FLIP_V=0x2000).
+    import struct
+    out = bytearray(struct.pack("<H", 0))
+    for tx, ty, col, row, flags in cells:
+        alt = 0
+        if flags & 1: alt |= 0x1000
+        if flags & 2: alt |= 0x2000
+        out += struct.pack("<hhHHHH", tx, ty, 0, col, row, alt)
+    return ", ".join(str(b) for b in out)
 
 # --- buildings ---
 buildings, places, homes, collisions = [], [], [], []
@@ -293,19 +346,19 @@ def _sanitize(name):
         out = out.replace(ch, "_")
     return out.strip() or "Node"
 
-def write_scene():
-    # unique textures -> ext_resource ids (ground first, then buildings, then props)
+def write_scene(cells):
+    # unique building/prop textures -> ext_resource ids
     texids, order = {}, []
     def texid(rel):
         if rel not in texids:
             texids[rel] = "tex%d" % len(texids)
             order.append(rel)
         return texids[rel]
-    gid = texid("ground/town_ground.png")
     for b in buildings: texid(b["file"])
     for p in props: texid(p["file"])
 
-    ext = ['[ext_resource type="Script" path="res://scripts/World.gd" id="1_world"]']
+    ext = ['[ext_resource type="Script" path="res://scripts/World.gd" id="1_world"]',
+           '[ext_resource type="TileSet" path="res://data/town_tileset.tres" id="gnd_ts"]']
     for rel in order:
         ext.append('[ext_resource type="Texture2D" path="res://assets/%s" id="%s"]'
                     % (rel, texids[rel]))
@@ -327,10 +380,12 @@ def write_scene():
           "metadata/town_name = %s" % _qs("Busyworld"),
           "metadata/spawn = %s" % _vec2(spawn[0], spawn[1]), ""]
 
-    # baked ground (paths/roads/grass) sits behind everything
-    L += ['[node name="Ground" type="Sprite2D" parent="."]',
-          "z_index = -100", "centered = false",
-          'texture = ExtResource("%s")' % gid, ""]
+    # ground (paths/roads/grass) as a PAINTABLE TileMapLayer behind everything —
+    # select it in the editor and paint sidewalks/roads tile-by-tile
+    L += ['[node name="Ground" type="TileMapLayer" parent="."]',
+          "z_index = -100",
+          "tile_map_data = PackedByteArray(%s)" % tile_map_data(cells),
+          'tile_set = ExtResource("gnd_ts")', ""]
 
     # Y-sorted layer holding every building, prop and (at runtime) citizen
     L += ['[node name="Entities" type="Node2D" parent="."]', "y_sort_enabled = true", ""]
@@ -404,9 +459,11 @@ def render_preview(ground):
 
 if __name__ == "__main__":
     import sys
-    g = bake_ground()
+    g, cells = bake_ground()
+    build_atlas()
+    write_tileset()
     json.dump(layout, open(LAYOUT, "w"), indent=1)
     print("layout:", LAYOUT, "| buildings", len(buildings), "props", len(props), "homes", len(homes))
     if "--no-scene" not in sys.argv:        # pass --no-scene to keep your editor edits
-        write_scene()
+        write_scene(cells)
     render_preview(g)
