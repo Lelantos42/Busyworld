@@ -36,15 +36,26 @@ Claude-Session trailers (see existing commits).
   sidewalks/roads/grass tile-by-tile with the 14-tile palette, with the buildings
   visible for alignment. (`build_town.py` writes the atlas + tileset and bakes the
   initial cells straight into the scene's `tile_map_data`.)
+- **Editable rooms**: open `scenes/interiors/<design>.tscn` (e.g. `int_studio` =
+  Print Shop) — drag any furniture node under `Furniture`, paint the floor on the
+  `Shell` TileMapLayer, add pieces from `assets/interiors/furniture/`. The game
+  rebuilds each room's walkable grid from the live furniture nodes, so collision
+  follows your edits. (Re-running `build_interior_scenes.py` regenerates/overwrites
+  these scenes — same reset caveat as the town.)
 - **Citizens**: 4 in `godot/data/citizens.json` (shared by Godot + brain) — Mara
   (Coordinator), Theo (Designer), Iris (Maker), Sam (Seller); 2 women, 2 men.
   Animated from LimeZu premade sheets, A* pathfinding, nameplates, speech bubbles,
   ground shadows, configurable count (`--agents N`).
-- **Interiors with correct collision**: `tools/build_interiors.py` derives each
-  room's **walkable floor** from the design's furniture layer (footprint − furniture
-  − walls, eroded by the citizen's body height) → `godot/data/interiors.json`. Each
-  interior gets its own A* grid, so citizens path *around* furniture (no walking on
-  the counter). Click a building → enter; "Leave" returns to town.
+- **Editable furniture interiors**: `tools/build_interior_scenes.py` composes each
+  room from individual LimeZu furniture *singles* and writes
+  `godot/scenes/interiors/<design>.tscn` — a paintable floor `TileMapLayer` (Shell)
+  + a `Furniture` layer where every piece is a **draggable Sprite2D node** carrying
+  its own collision (`metadata/kind/collide/foot`). `World._build_interiors`
+  instances each room off-map and builds its A* grid from the floor cells **minus
+  the live furniture footprints** (read from the nodes), eroded by body height — so
+  citizens path *around* furniture and your edits to a room take effect on the next
+  run. `godot/data/interiors.json` carries what World needs (scene path, floor
+  cells, entry, exit-door pixel, spots). Click a building → enter; "Leave" returns.
 - **Travel state machine** (`World.travel` / `_step_travel` / `_on_agent_arrived`):
   citizens transition in/out **only at the door** — they walk to the door, then
   cross. No more teleporting through walls or "disappearing" mid-room. Indoor
@@ -70,7 +81,8 @@ Claude-Session trailers (see existing commits).
 
 ## 3. Repo map (the parts that matter)
 ```
-godot/scenes/       Main.tscn — GENERATED, editable: the town as draggable nodes
+godot/scenes/       Main.tscn (town as draggable nodes) + interiors/*.tscn
+                    (rooms as draggable furniture nodes) — GENERATED, editable
 godot/scripts/      World.gd (orchestrator; reads the town from Main.tscn's nodes),
                     Agent.gd, CharacterFrames.gd, DoorNode.gd, HUD.gd, Net.gd,
                     GameConfig.gd, TownBuilder.gd (legacy fallback if the scene
@@ -84,11 +96,12 @@ GameAssets/         LimeZu source art (Modern Interiors/Exteriors)
 
 Asset pipeline order (re-run after changing buildings/doors/interiors):
   select_assets.py / copy_extras.py / copy_interiors.py   (curate sprites)
-  build_doors.py        -> doors.json     (match animated doors to buildings)
-  build_interiors.py    -> interiors.json (walkable floors)
-  build_town.py         -> town_layout.json + baked ground + ground atlas/tileset
-                           + scenes/Main.tscn (paintable TileMapLayer ground;
-                           reads doors.json; pass --no-scene to keep editor edits)
+  build_doors.py          -> doors.json   (match animated doors to buildings)
+  build_interior_scenes.py-> scenes/interiors/*.tscn + interiors.json + furniture/
+                             (editable furniture-node rooms; overwrites the .tscn)
+  build_town.py           -> town_layout.json + baked ground + ground atlas/tileset
+                             + scenes/Main.tscn (paintable TileMapLayer ground;
+                             reads doors.json; pass --no-scene to keep editor edits)
 ```
 
 ## 4. How to run & verify (this is the important part)

@@ -231,31 +231,46 @@ func _build_interiors() -> void:
 		if design == "" or not GameConfig.interiors_data.has(design):
 			continue
 		var info: Dictionary = GameConfig.interiors_data[design]
-		var tex := load("res://assets/" + String(info.image)) as Texture2D
-		if tex == null:
+		var scene_path := "res://" + String(info.get("scene", ""))
+		if not ResourceLoader.exists(scene_path):
+			continue
+		var packed := load(scene_path) as PackedScene
+		if packed == null:
 			continue
 		var origin := Vector2(ix0 + float(i % 3) * 900.0, 200.0 + float(i / 3) * 900.0)
-		var sz := tex.get_size()
-		var room := Node2D.new()
+		# the editable room scene (paintable floor + draggable furniture nodes)
+		var room: Node2D = packed.instantiate()
 		room.position = origin
 		room.z_index = -10
 		interiors_root.add_child(room)
-		var floor_spr := Sprite2D.new()
-		floor_spr.texture = tex
-		floor_spr.centered = false
-		room.add_child(floor_spr)
 		var lbl := Label.new()
 		lbl.text = place
-		lbl.position = Vector2(6, -24)
+		lbl.position = Vector2(6, -48)
 		lbl.add_theme_font_size_override("font_size", 16)
 		lbl.add_theme_color_override("font_color", Color(1, 0.9, 0.6))
 		lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 		lbl.add_theme_constant_override("outline_size", 5)
 		room.add_child(lbl)
 
-		# per-room navigation grid from the walkable floor tiles
 		var tw := int(info.tw)
 		var th := int(info.th)
+		# block tiles under each colliding furniture node (read live from the scene)
+		var blocked := {}
+		var furn := room.get_node_or_null("Furniture")
+		if furn:
+			for n in furn.get_children():
+				if String(n.get_meta("kind", "")) != "furniture" or not bool(n.get_meta("collide", false)):
+					continue
+				var foot: Rect2 = n.get_meta("foot", Rect2())
+				var r := Rect2(n.position + foot.position, foot.size)
+				for ty in range(int(floor(r.position.y / tile)), int(floor((r.position.y + r.size.y) / tile)) + 1):
+					for tx in range(int(floor(r.position.x / tile)), int(floor((r.position.x + r.size.x) / tile)) + 1):
+						blocked[Vector2i(tx, ty)] = true
+		var floorset := {}
+		for c in info.floor:
+			floorset[Vector2i(int(c[0]), int(c[1]))] = true
+
+		# per-room A* grid: floor minus furniture, eroded so a body never overlaps furniture
 		var ra := AStarGrid2D.new()
 		ra.region = Rect2i(0, 0, tw, th)
 		ra.cell_size = Vector2(tile, tile)
@@ -266,13 +281,17 @@ func _build_interiors() -> void:
 			for tx in range(tw):
 				ra.set_point_solid(Vector2i(tx, ty), true)        # solid by default
 		var walk_world: Array = []
-		for c in info.walkable:
-			var cell := Vector2i(int(c[0]), int(c[1]))
+		for cell in floorset:
+			var above: Vector2i = cell + Vector2i(0, -1)
+			if blocked.has(cell) or blocked.has(above) or not floorset.has(above):
+				continue
 			ra.set_point_solid(cell, false)
 			walk_world.append(origin + Vector2(cell) * tile + Vector2(tile, tile) * 0.5)
 		var spots: Array = []
 		for s in info.spots:
-			spots.append(origin + Vector2(float(s[0]), float(s[1])) * tile + Vector2(tile, tile) * 0.5)
+			var sc := Vector2i(int(s[0]), int(s[1]))
+			if not blocked.has(sc):
+				spots.append(origin + Vector2(sc) * tile + Vector2(tile, tile) * 0.5)
 		var entry: Vector2 = origin + Vector2(float(info.entry[0]), float(info.entry[1])) * tile + Vector2(tile, tile) * 0.5
 
 		# interior exit door at the bottom-centre threshold
@@ -285,9 +304,9 @@ func _build_interiors() -> void:
 			interiors_root.add_child(idoor)
 		interiors[place] = {
 			"origin": origin, "astar": ra, "tw": tw, "th": th,
-			"center": origin + sz * 0.5, "entry": entry,
+			"center": origin + Vector2(tw, th) * tile * 0.5, "entry": entry,
 			"walk": walk_world, "spots": spots, "door": idoor,
-			"zoom": clampf(min(1180.0 / sz.x, 660.0 / sz.y), 0.55, 2.0),
+			"zoom": clampf(min(1180.0 / (tw * tile), 660.0 / (th * tile)), 0.55, 2.0),
 		}
 		i += 1
 
